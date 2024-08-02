@@ -1,10 +1,11 @@
 :root {
     --font: "Montserrat", sans-serif;
     /*--ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);*/
-    /*--transition-hover: 100ms ease;*/
+    --transition-hover: 100ms ease;
     /*--transition-show: 1200ms var(--ease-out-quint);*/
     /*--image-fallback: #F3F5F4;*/
     --container-padding: 40px;
+    --container-width: 1200px;
     /*--action-color: #0D7FC5;*/
     /*--action-color-hover: #2FA5ED;*/
     /*--input-border: #B3B3B3;*/
@@ -14,6 +15,17 @@
     /*--disabled-color: #999999;*/
     /*--error: #FF0033;*/
 }
+
+@media (1700px <= width) {
+    --container-width: 1600px;
+}
+
+@media (width < 740px) {
+    --container-width: auto;
+}
+
+
+
 
 @media (350px <= width < 740px) {
     :root {
