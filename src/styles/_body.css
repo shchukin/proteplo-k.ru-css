@@ -3,6 +3,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: var(--font);
-    font-size: var(--body-font-size);
-    line-height: var(--body-line-height);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
 }
