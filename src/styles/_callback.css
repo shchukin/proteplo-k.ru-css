@@ -28,6 +28,7 @@
 
         .callback__description {
             margin-top: 11px;
+            max-width: 440px;
             font-size: 18px;
             line-height: 22px;
         }

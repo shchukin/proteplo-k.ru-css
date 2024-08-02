@@ -38,4 +38,15 @@
 }
 
 
+@media (1700px <= width) {
+
+    .button {
+        padding: 16px 24px;
+        border-radius: 28px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+
 
