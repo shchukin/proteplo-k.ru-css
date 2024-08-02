@@ -50,3 +50,15 @@
 
 
 
+@media (width < 740px) {
+
+    .button {
+        padding: 12px 20px;
+        border-radius: 22px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+
+
