@@ -40,70 +40,18 @@ function addSourcesTimestamp(content) {
 }
 
 
-function symbolsImgToSpriteSvg(content) {
-
+function uncommentYandexMaps(content) {
     var source = content.split('\n');
-    var outputLine = [];
+    var outputLine = '';
     var result = '';
-
-    var i;
-    var indentString;
-    var classString;
-    var idString;
-    var widthString;
-    var heightString;
-    var titleString;
-    var srcString;
-    var pathString;
-    var nameString;
-    var timestamp = Math.round(new Date().getTime() / 1000);
 
     source.forEach(function (line) {
 
-        if (line.indexOf('symbols/') !== -1) {
-
-            /* get indent */
-
-            for (indentString = '', i = 0; i < line.indexOf('<img'); i++) {
-                indentString += ' ';
-            }
-
-
-            /* get attributes */
-
-            classString  = line.match('class[ \t]*=[ \t]*"[^"]+"');
-            idString     = line.match(    'id[ \t]*=[ \t]*"[^"]+"');
-            widthString  = line.match( 'width[ \t]*=[ \t]*"[^"]+"');
-            heightString = line.match('height[ \t]*=[ \t]*"[^"]+"');
-            titleString  = line.match( 'title[ \t]*=[ \t]*"[^"]+"');
-
-            classString  = classString  ? classString[0]  : null;
-            idString     = idString     ? idString[0]     : null;
-            widthString  = widthString  ? widthString[0]  : null;
-            heightString = heightString ? heightString[0] : null;
-            titleString  = titleString  ? titleString[0]  : null;
-
-
-            /* get path and name */
-
-            srcString = line.match('src[ \t]*=[ \t]*"[^"]+"');
-            srcString = srcString[0];
-            srcString = srcString.replace('src="', '');
-            srcString = srcString.replace('"', '');
-
-            nameString = srcString.replace(/^.*[\\\/]/, '');
-            nameString = nameString.replace('.svg', '');
-
-            pathString = srcString.replace(nameString + '.svg', '');
-
-
-            /* write down results */
-
-            outputLine[0] = indentString + '<svg' + (classString ? ' ' + classString : '') + (idString ? ' ' + idString : '') + (widthString ? ' ' + widthString : '') + (heightString ? ' ' + heightString : '') + '>';
-            outputLine[1] = indentString + '    ' + '<use xlink:href="' + pathString + 'symbols.svg?' + timestamp + '#' + nameString + '"></use>';
-            outputLine[2] = indentString + '</svg>';
-
-            result += outputLine[0] + '\n' + outputLine[1] + '\n' + outputLine[2] + '\n';
+        if (line.indexOf('api-maps.yandex.ru') !== -1) {
+            outputLine = line;
+            outputLine = outputLine.replace('<!--', '');
+            outputLine = outputLine.replace('-->', '');
+            result += outputLine + '\n';
         } else {
             result += line + '\n';
         }
@@ -180,7 +128,7 @@ gulp.task('images', function () {
 gulp.task('markups', function () {
     return gulp.src('src/markups/**/*')
         .pipe(plumber())
-        .pipe(change(symbolsImgToSpriteSvg))
+        .pipe(change(uncommentYandexMaps))
         .pipe(change(addSourcesTimestamp))
         .pipe(gulp.dest('build/markups/'))
         ;
@@ -190,11 +138,11 @@ gulp.task('markups', function () {
 // Layouts: copy and change symbols <img> to sprite <svg>
 
 gulp.task('layouts', function () {
-    return gulp.src('src/layouts/**/*')
+    return gulp.src('src/*.html')
         .pipe(plumber())
-        .pipe(change(symbolsImgToSpriteSvg))
+        .pipe(change(uncommentYandexMaps))
         .pipe(change(addSourcesTimestamp))
-        .pipe(gulp.dest('build/layouts/'))
+        .pipe(gulp.dest('build/'))
         ;
 });
 
@@ -223,17 +171,6 @@ gulp.task('scripts', function () {
 });
 
 
-// Symbols
-
-gulp.task('symbols', function () {
-    return gulp.src('src/symbols/*.svg')
-        .pipe(plumber())
-        .pipe(svgmin())
-        .pipe(svgstore())
-        .pipe(gulp.dest('build/symbols/'));
-});
-
-
 // Styles: concat, add prefixes, compress, copy
 
 gulp.task('styles', function () {
@@ -254,7 +191,7 @@ gulp.task('styles', function () {
         .pipe(postcss(processors))
         .pipe(base64({
             // Allow files from /vectors/ only
-            exclude: ['/sprite/', '/images/', '/symbols/']
+            exclude: ['/sprite/', '/images/']
         }))
         .pipe(gulp.dest('build/styles/'))
         .pipe(size())
@@ -281,7 +218,7 @@ gulp.task('lint', function () {
 
 
 gulp.task('default', function (fn) {
-    run('clean', 'manifest', 'favicon', 'temp', 'content', 'images', 'markups', 'layouts', 'vendors', 'scripts', 'symbols', 'styles', 'lint', fn);
+    run('clean', 'manifest', 'favicon', 'temp', 'content', 'images', 'markups', 'layouts', 'vendors', 'scripts', 'styles', 'lint', fn);
 });
 
 
