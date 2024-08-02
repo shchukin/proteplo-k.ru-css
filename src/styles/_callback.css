@@ -1,0 +1,68 @@
+.callback {
+    margin-top: 120px;
+    padding: 60px 40px;
+    background-color: #0086BF;
+    background-image: url("../images/callback.svg");
+    background-size: 540px 255px;
+    background-repeat: no-repeat;
+    background-position: -98px bottom;
+    color: #FFFFFF;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 447px 649px;
+    gap: 24px;
+}
+    .callback__data {
+
+    }
+        .callback__inner {
+            max-width: 430px;
+        }
+            .callback__heading {
+                margin-top: -3px;
+                margin-bottom: 0;
+            }
+
+            @media (740px <= width < 1700px) {
+                .callback__heading {
+                    font-size: 42px;
+                }
+            }
+
+            .callback__description {
+                margin-top: 11px;
+                font-size: 18px;
+                line-height: 22px;
+            }
+
+    .callback__form {
+
+    }
+        .callback__field {
+            margin-top: 24px;
+        }
+
+        .callback__field:first-child {
+            margin-top: 0;
+        }
+
+        .callback__footer {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+            .callback__agreement {
+                font-size: 15px;
+                line-height: 18px;
+                text-align: right;
+            }
+
+            .callback__submit {
+
+            }
+
+            .callback__submit.button,
+            .callback__submit .button {
+                width: 242px;
+            }

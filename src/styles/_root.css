@@ -6,14 +6,14 @@
     /*--image-fallback: #F3F5F4;*/
     --container-padding: 40px;
     --container-width: 1200px;
-    /*--action-color: #0D7FC5;*/
-    /*--action-color-hover: #2FA5ED;*/
-    /*--input-border: #B3B3B3;*/
-    /*--input-border-hover-and-focus: #7E7E7E;*/
-    /*--placeholder-color: #999999;*/
-    /*--disabled-background: #F6F6F6;*/
-    /*--disabled-color: #999999;*/
-    /*--error: #FF0033;*/
+    --action-color: #0D7FC5;
+    --action-color-hover: #2FA5ED;
+    --input-border: #B3B3B3;
+    --input-border-hover-and-focus: #7E7E7E;
+    --placeholder-color: #999999;
+    --disabled-background: #F6F6F6;
+    --disabled-color: #999999;
+    --error: #FF0033;
 }
 
 @media (1700px <= width) {
