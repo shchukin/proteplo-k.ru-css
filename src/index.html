@@ -73,12 +73,12 @@
                         Нужно эффективное решение задачи? Хотите сэкономить время и деньги? Позвоните или напишите нам, мы на связи!
                     </div>
                 </div>
-                <form class="callback__form">
+                <form class="callback__form" id="subscriptionForm">
                     <div class="callback__field input">
                         <input class="input__widget" type="text" placeholder="Ваше имя">
                     </div>
                     <div class="callback__field input">
-                        <input class="input__widget" type="tel" placeholder="Номер телефона">
+                        <input class="input__widget" type="tel" placeholder="Номер телефона *" required>
                     </div>
                     <div class="callback__field input">
                         <input class="input__widget" type="email" placeholder="E-mail">
@@ -90,7 +90,7 @@
                         <div class="callback__agreement">
                             Нажимая «Отправить», вы выражаете согласие на&nbsp;обработку персональных данных
                         </div>
-                        <button class="callback__submit button" type="submit">
+                        <button class="callback__submit button" type="submit" id="subscriptionSubmit">
                             Отправить
                         </button>
                     </div>
@@ -180,6 +180,26 @@
             </div>
         </div>
 
+        <!-- Alert -->
+        <div class="notifications-center">
+            <div class="alert alert--success" style="display: none;" id="subscriptionSuccessAlert">
+                <div class="alert__label">
+                    Ваша заявка получена. Спасибо за обращение!
+                </div>
+                <button class="alert__dismiss" type="button">
+                    Закрыть
+                </button>
+            </div>
+            <div class="alert alert--danger" style="display: none;" id="subscriptionFailureAlert">
+                <div class="alert__label">
+                    Во время отправки данных произошла ошибка.<br class="desktop-only">
+                    Проверьте ваше соединение и&nbsp;попробуйте позже.
+                </div>
+                <button class="alert__dismiss" type="button">
+                    Закрыть
+                </button>
+            </div>
+        </div>
 
 
 

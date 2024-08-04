@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subscriptionFailureAlert = document.querySelector('#subscriptionFailureAlert');
     const subscriptionForm = document.querySelector('#subscriptionForm');
     const subscriptionInputs = subscriptionForm.querySelectorAll('input, textarea, select');
-    const subscriptionSubmit = subscriptionForm.querySelector('.subscription__submit');
+    const subscriptionSubmit = subscriptionForm.querySelector('#subscriptionSubmit');
 
     /* На время отправки формы инпуты должны блокироваться. Пишем функции для этого: */
     function disableSubscriptionInputs() {
