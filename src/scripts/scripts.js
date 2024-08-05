@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         event.preventDefault();
 
-
         /* Если с прошлой попытки висит уведомление об ошибке: */
         subscriptionFailureAlert.style.display = 'none';
 
@@ -91,27 +90,36 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(function () {
 
             /* ... дальше развилка, пусть для примера будет рандом 50/50: */
+
+            // Если данные успешно отправлены
             if (Math.random() < 0.5) {
 
-                /* Если данные успешно отправлены -- показываем уведомление и галочку на кнопке на 4.5 секунды: */
+                // показываем зелёное уведомление:
+                subscriptionSuccessAlert.style.display = 'block';
+
+                // показываем галочку на кнопке:
                 changeSubmitStateToSuccess();
 
-                subscriptionSuccessAlert.style.display = 'block';
+                // и то и другое на 4.5 секунды:
                 setTimeout(function () {
                     subscriptionSuccessAlert.style.display = 'none';
                     changeSubmitStateToPristine();
                     enableSubscriptionInputs();
                 }, 4500);
 
-            } else {
+            }
 
-                /* Если данные не были отправлены: */
+            // Если произошла ошибка
+            else {
 
-                // Уведомление в этом случае показываем, и НЕ убираем -- пусть висит, пока пользователь не увидит и явно не закроет, или не начнёт заново заполнять форму:
+                // показываем красное уведомление
                 subscriptionFailureAlert.style.display = 'block';
 
-                // На кнопке показываем иконку восклицательного знака, но всего на пару секунд:
+                // Показываем восклицательный знак на кнопке:
                 changeSubmitStateToFailure();
+
+                // В данном случае всего 2 секунды, чтобы пользователь мог быстро вернуться к работе с формой.
+                // Уведомление в этом случае НЕ убираем -- пусть висит, пока пользователь не увидит и явно не закроет, или не начнёт заново заполнять форму / попытается отправить:
                 setTimeout(function () {
                     changeSubmitStateToPristine();
                     enableSubscriptionInputs();
@@ -122,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
 
     });
-
 
 });
 
