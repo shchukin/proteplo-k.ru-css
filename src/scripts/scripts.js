@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Форма */
 
-    const subscriptionSuccessAlert = document.querySelector('#subscriptionSuccessAlert');
-    const subscriptionFailureAlert = document.querySelector('#subscriptionFailureAlert');
     const subscriptionForm = document.querySelector('#subscriptionForm');
     const subscriptionInputs = subscriptionForm.querySelectorAll('.input');
     const subscriptionSubmit = subscriptionForm.querySelector('#subscriptionSubmit');
+    const subscriptionSuccessAlert = document.querySelector('#subscriptionSuccessAlert');
+    const subscriptionFailureAlert = document.querySelector('#subscriptionFailureAlert');
 
-    /* На время отправки формы инпуты должны блокироваться. Пишем функции для этого: */
+    /* Состояния инпутов (на время отправки формы инпуты должны блокироваться) */
     function disableSubscriptionInputs() {
         subscriptionInputs.forEach((input) => {
             input.classList.add('input--loading');
@@ -39,6 +39,32 @@ document.addEventListener('DOMContentLoaded', () => {
             input.querySelector('.input__widget').removeAttribute('disabled');
         });
     }
+
+
+    /* Состояния кнопки */
+
+    function changeSubmitStateToLoading() {
+        subscriptionSubmit.classList.add('button--loading');
+        subscriptionSubmit.setAttribute('disabled', 'disabled');
+    }
+
+    function changeSubmitStateToSuccess() {
+        subscriptionSubmit.classList.remove('button--loading');
+        subscriptionSubmit.classList.add('button--success');
+        subscriptionSubmit.setAttribute('disabled', 'disabled');
+    }
+
+    function changeSubmitStateToFailure() {
+        subscriptionSubmit.classList.remove('button--loading');
+        subscriptionSubmit.classList.add('button--warning');
+        subscriptionSubmit.setAttribute('disabled', 'disabled');
+    }
+
+    function changeSubmitStateToPristine() {
+        subscriptionSubmit.classList.remove('button--loading', 'button--success', 'button--warning');
+        subscriptionSubmit.removeAttribute('disabled');
+    }
+
 
     /* Если пользователь начал взаимодействовать с инпутами, то убираем уведомления с прошлой попытки отправки: */
 
@@ -59,26 +85,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* Начинаем отправку данных, для начала блокируем форму */
         disableSubscriptionInputs();
-        subscriptionSubmit.classList.add('button--loading');
-        subscriptionSubmit.setAttribute('disabled', 'disabled');
+        changeSubmitStateToLoading();
 
         /* Представим, что 3000ms отправляем данные */
         setTimeout(function () {
-
-            /* Как только пришёл ответ убираем button--loading ... */
-            subscriptionSubmit.classList.remove('button--loading');
 
             /* ... дальше развилка, пусть для примера будет рандом 50/50: */
             if (Math.random() < 0.5) {
 
                 /* Если данные успешно отправлены -- показываем уведомление и галочку на кнопке на 4.5 секунды: */
-                subscriptionSubmit.classList.add('button--success');
+                changeSubmitStateToSuccess();
 
                 subscriptionSuccessAlert.style.display = 'block';
                 setTimeout(function () {
-                    subscriptionSubmit.classList.remove('button--success');
-                    subscriptionSubmit.removeAttribute('disabled');
                     subscriptionSuccessAlert.style.display = 'none';
+                    changeSubmitStateToPristine();
                     enableSubscriptionInputs();
                 }, 4500);
 
@@ -90,10 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 subscriptionFailureAlert.style.display = 'block';
 
                 // На кнопке показываем иконку восклицательного знака, но всего на пару секунд:
-                subscriptionSubmit.classList.add('button--warning');
+                changeSubmitStateToFailure();
                 setTimeout(function () {
-                    subscriptionSubmit.classList.remove('button--warning');
-                    subscriptionSubmit.removeAttribute('disabled');
+                    changeSubmitStateToPristine();
                     enableSubscriptionInputs();
                 }, 2000);
 
