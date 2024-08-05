@@ -13,7 +13,7 @@
     --placeholder-color: #FFFFFF;
     --disabled-background: #D4D4D4;
     --disabled-color: #8F8F8F;
-    --error: #FF0033;
+    --error: #FF4444;
 }
 
 @media (1700px <= width) {

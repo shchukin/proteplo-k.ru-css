@@ -6,12 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../styles/style.css">
     </head>
-    <body>
+    <body style="background-color: #0086BF; color: #FFFFFF;">
 
         <div style="max-width: 720px; margin: 0 auto; padding: 0 var(--container-padding);">
             <br>
             <br>
             <h1>.input</h1>
+            <p>
+                В этом проекте инпуты используются только на синем фоне, так что они сразу белые,
+                состоят из бордюров, без фона.
+            </p>
 
             <div class="input">
                 <input class="input__widget" type="text" placeholder="Ваше имя">
@@ -27,18 +31,14 @@
             <br>
             <br>
             <br>
-            <h2>С <a href="_label.html">.label</a> и <a href="_helper.html">.helper</a></h2>
+            <h2>С <a class="link link--text-alike" href="_helper.html">.helper</a></h2>
             <p>
-                Эти два компонента, вообще говоря, не часть <b><i>.input</i></b>.
-                Но очень часто используются вместе. Выводим их друг за другом:
+                Этот компонент не часть <b><i>.input</i></b>.
+                Выводим его после:
             </p>
 
-            <label class="label" for="bp24napi">
-                Ваше имя
-            </label>
-
             <div class="input">
-                <input class="input__widget" type="text" id="bp24napi">
+                <input class="input__widget" type="text">
             </div>
 
             <div class="helper">
@@ -74,10 +74,27 @@
             <br>
             <br>
             <br>
+            <h2>.input--loading</h2>
+            <p>Здесь тоже используется атрибут :disabled</p>
+
+            <div class="input input--loading">
+                <input class="input__widget" type="text" placeholder="Ваше имя" disabled>
+            </div>
+
+            <br>
+
+            <div class="input">
+                <input class="input__widget" type="text" placeholder="Ваше имя" value="Konstantin Konstantinopolsky" disabled>
+            </div>
+
+
+            <br>
+            <br>
+            <br>
             <h2>.input--error</h2>
             <p>
-                Несмотря на то, что нативный атрибут <b><i>:invalid</i></b> хорошо поддерживается,
-                ожидаем, что валидация будет программироваться вручную. Вот класс и хелпер для вывода ошибок:
+                Думаю на этом проекте хватит и браузерной валидации, но на всякий случай
+                оставляю и кастомную.
             </p>
 
             <div class="input input--error">
@@ -185,6 +202,18 @@
                 </select>
             </div>
 
+
+            <br>
+
+            <div class="input input--loading">
+                <select class="input__widget" disabled>
+                    <option selected>Bangkok</option>
+                    <option>Moscow</option>
+                    <option>...</option>
+                    <option>Washington</option>
+                </select>
+            </div>
+
             <br>
 
             <div class="input input--error">
@@ -231,6 +260,18 @@
             <br>
 
             <div class="input">
+                <select class="input__widget" disabled>
+                    <option value="placeholder" selected>City</option>
+                    <option>Bangkok</option>
+                    <option>Moscow</option>
+                    <option>...</option>
+                    <option>Washington</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div class="input input--loading">
                 <select class="input__widget" disabled>
                     <option value="placeholder" selected>City</option>
                     <option>Bangkok</option>
@@ -382,8 +423,7 @@
 
         <script src="../vendors/jquery/jquery-3.7.1.min.js"></script>
         <script src="../vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
-        <script src="../scripts/_mfp.js"></script>
-        <script src="../scripts/_input.js"></script>
+        <script src="../scripts/scripts.js"></script>
 
 
     </body>

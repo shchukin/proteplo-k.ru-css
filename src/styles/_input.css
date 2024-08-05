@@ -61,32 +61,42 @@
     }
 
 
-/* Disabled */
-/*.input__widget:disabled {*/
-/*    border-color: var(--input-border);*/
-/*    background-color: var(--disabled-background);*/
-/*    color: var(--disabled-color);*/
-/*}*/
+/* Disabled
+  Здесь добавляется .input:not(.input--loading) потому что
+  иначе :disabled может поломать кейс с loading.
+  Там тоже используется :disabled.
 
-/*.input__widget:disabled::placeholder {*/
-/*    color: var(--disabled-color);*/
-/*}*/
+  Впрочем, инпутов кроме как в форме нет на лендинге,
+  так что пока оставляем просто шаблон.
+*/
+.input:not(.input--loading) .input__widget:disabled {
+    border-color: var(--input-border);
+    background-color: rgb(255 255 255 / 20%);
+    box-shadow: none;
+    color: rgb(255 255 255 / 80%);
+}
+
+.input:not(.input--loading) .input__widget:disabled::placeholder {
+    color: rgb(255 255 255 / 80%);
+}
 
 
 /* loading */
+
 .input--loading .input__widget {
     border-color: var(--input-border);
     background-color: rgb(255 255 255 / 20%);
     box-shadow: none;
-    color: #EEEEEE;
+    color: rgb(255 255 255 / 80%);
 }
 
 .input--loading .input__widget::placeholder {
-    color: #EEEEEE;
+    color: rgb(255 255 255 / 80%);
 }
 
 
 /* Error */
+
 .input--error {
 
 }
@@ -97,6 +107,7 @@
 
     .input--error .input__widget:hover {
         border-color: var(--input-border-hover-and-focus);
+
     }
 
     .input--error .input__widget::placeholder {
@@ -107,8 +118,8 @@
 /* stylelint-disable */
 textarea.input__widget {
     height: auto; /* user rows="" attribute to set a default height */
-    min-height: 50px; /* 1 row */
-    max-height: calc(10*24px + 2*11px + 2*2px); /* rows + vertical paddings + vertical borders */
+    min-height: 48px; /* 1 row */
+    max-height: calc(10*22px + 2*11px + 2*1px); /* rows + vertical paddings + vertical borders */
     resize: vertical;
 }
 /* stylelint-enable */
@@ -127,12 +138,16 @@ select.input__widget {
 select.input__widget:hover {
     box-shadow: none; /* same as base, not hover input */
     border-color: var(--input-border); /* same as base, not hover input */
-    background-color: #F6F6F6;
+    background-color: rgba(255 255 255 / 10%);
 }
 
 /* Disabled */
 select.input__widget:disabled {
     cursor: default;
+}
+
+.input--loading select.input__widget {
+    background-color: rgb(255 255 255 / 20%);
 }
 
 
@@ -150,11 +165,15 @@ select.input__widget:disabled {
 
 }
     .input--placeholder-is-chosen select.input__widget {
-        color: var(--placeholder-color);
+        color: rgb(255 255 255 / 20%);
     }
 
-    .input--placeholder-is-chosen select.input__widget:disabled {
-        color: var(--disabled-color);
+    .input--placeholder-is-chosen:not(.input--loading) select.input__widget:disabled {
+        color: rgb(255 255 255 / 80%);
+    }
+
+    .input--placeholder-is-chosen.input--loading select.input__widget:disabled {
+        color: rgb(255 255 255 / 80%);
     }
 
     .input--placeholder-is-chosen.input--error select.input__widget {
