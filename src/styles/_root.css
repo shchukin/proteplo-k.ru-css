@@ -8,9 +8,9 @@
     --container-width: 1200px;
     --action-color: #0D7FC5;
     --action-color-hover: #2FA5ED;
-    --input-border: #B3B3B3;
-    --input-border-hover-and-focus: #7E7E7E;
-    --placeholder-color: #999999;
+    --input-border: #FFFFFF;
+    --input-border-hover-and-focus: #FFFFFF;
+    --placeholder-color: #FFFFFF;
     --disabled-background: #D4D4D4;
     --disabled-color: #8F8F8F;
     --error: #FF0033;

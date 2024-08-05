@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Уведомления */
 
-    document.querySelectorAll('.alert').forEach(function(alert) {
-        alert.addEventListener('click', function() {
+    document.querySelectorAll('.alert').forEach(function (alert) {
+        alert.addEventListener('click', function () {
             alert.style.display = 'none';
         });
     });
 
-    document.addEventListener('keyup', function(event) {
+    document.addEventListener('keyup', function (event) {
         if (event.keyCode === 27) {
-            document.querySelectorAll('.alert').forEach(function(alert) {
+            document.querySelectorAll('.alert').forEach(function (alert) {
                 alert.style.display = 'none';
             });
         }
@@ -22,16 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const subscriptionSuccessAlert = document.querySelector('#subscriptionSuccessAlert');
     const subscriptionFailureAlert = document.querySelector('#subscriptionFailureAlert');
     const subscriptionForm = document.querySelector('#subscriptionForm');
-    const subscriptionInputs = subscriptionForm.querySelectorAll('input, textarea, select');
+    const subscriptionInputs = subscriptionForm.querySelectorAll('.input');
     const subscriptionSubmit = subscriptionForm.querySelector('#subscriptionSubmit');
 
     /* На время отправки формы инпуты должны блокироваться. Пишем функции для этого: */
     function disableSubscriptionInputs() {
-        subscriptionInputs.forEach(input => input.setAttribute('disabled', 'disabled'));
+        subscriptionInputs.forEach((input) => {
+            input.classList.add('input--loading');
+            input.querySelector('.input__widget').setAttribute('disabled', 'disabled');
+        });
     }
 
     function enableSubscriptionInputs() {
-        subscriptionInputs.forEach(input => input.removeAttribute('disabled'));
+        subscriptionInputs.forEach((input) => {
+            input.classList.remove('input--loading');
+            input.querySelector('.input__widget').removeAttribute('disabled');
+        });
     }
 
     /* Если пользователь начал взаимодействовать с инпутами, то убираем уведомления с прошлой попытки отправки: */
@@ -43,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Отправка */
 
-    subscriptionForm.addEventListener('submit', function(event) {
+    subscriptionForm.addEventListener('submit', function (event) {
 
         event.preventDefault();
 
@@ -54,9 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
         /* Начинаем отправку данных, для начала блокируем форму */
         disableSubscriptionInputs();
         subscriptionSubmit.classList.add('button--loading');
+        subscriptionSubmit.setAttribute('disabled', 'disabled');
 
         /* Представим, что 3000ms отправляем данные */
-        setTimeout(function() {
+        setTimeout(function () {
 
             /* Как только пришёл ответ убираем button--loading ... */
             subscriptionSubmit.classList.remove('button--loading');
@@ -66,9 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 /* Если данные успешно отправлены -- показываем уведомление и галочку на кнопке на 4.5 секунды: */
                 subscriptionSubmit.classList.add('button--success');
+
                 subscriptionSuccessAlert.style.display = 'block';
-                setTimeout(function() {
+                setTimeout(function () {
                     subscriptionSubmit.classList.remove('button--success');
+                    subscriptionSubmit.removeAttribute('disabled');
                     subscriptionSuccessAlert.style.display = 'none';
                     enableSubscriptionInputs();
                 }, 4500);
@@ -82,8 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // На кнопке показываем иконку восклицательного знака, но всего на пару секунд:
                 subscriptionSubmit.classList.add('button--warning');
-                setTimeout(function() {
+                setTimeout(function () {
                     subscriptionSubmit.classList.remove('button--warning');
+                    subscriptionSubmit.removeAttribute('disabled');
                     enableSubscriptionInputs();
                 }, 2000);
 
@@ -97,10 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 /* Модалка */
 
-(function($) {
+(function ($) {
 
     $('.mfp-handler').magnificPopup({
         type: 'inline',
@@ -109,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 })(jQuery);
-
 
 
 /* Инпуты */
