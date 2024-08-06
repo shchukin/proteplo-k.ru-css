@@ -67,6 +67,7 @@
 .swiper-navigation {
     display: flex;
     align-items: stretch;
+    justify-content: center;
     gap: 16px;
 }
     .swiper-button {
@@ -110,6 +111,10 @@
     .swiper-button {
         width: 40px;
         height: 40px;
+    }
+
+    .swiper-navigation {
+        padding-top: 16px;
     }
 }
 

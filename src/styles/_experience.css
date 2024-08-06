@@ -123,9 +123,7 @@
              margin-top: 40px;
         }
             .experience__partners-navigation {
-                margin-top: 16px;
-                display: flex;
-                justify-content: center;
+
             }
 
         .experience__solutions-heading {
@@ -146,7 +144,6 @@
             margin-top: 40px;
         }
             .experience__solutions-navigation {
-                margin-top: 16px;
                 display: flex;
                 justify-content: center;
             }

@@ -1,16 +1,32 @@
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* Слайдер "Steps" */
+    /* Слайдер "Guide" */
 
-    const spacing = window.matchMedia("(min-width: 740px)").matches ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
+    const isDesktop = window.matchMedia("(min-width: 740px)").matches;
+    const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
+
+    if( ! isDesktop ) {
+        new Swiper('.swiper--guide', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: responsiveSpacing,
+            autoHeight: true,
+
+            navigation: {
+                prevEl: '.guide__navigation .swiper-button-prev',
+                nextEl: '.guide__navigation .swiper-button-next',
+            },
+        });
+    }
+
+
+
+    /* Слайдер "Solutions" */
 
     new Swiper('.swiper--partners', {
         slidesPerView: 1,
         slidesPerGroup: 1,
-        spaceBetween: spacing,
+        spaceBetween: responsiveSpacing,
         autoHeight: true,
 
         navigation: {
@@ -26,10 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+    /* Слайдер "Solutions" */
+
     new Swiper('.swiper--solutions', {
         slidesPerView: 1,
         slidesPerGroup: 1,
-        spaceBetween: spacing,
+        spaceBetween: responsiveSpacing,
         autoHeight: true,
 
         navigation: {

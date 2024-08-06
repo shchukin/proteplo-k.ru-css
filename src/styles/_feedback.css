@@ -53,8 +53,6 @@
         }
 
         .feedback__navigation {
-            margin-top: 16px;
             position: static;
-            justify-content: center;
         }
 }
