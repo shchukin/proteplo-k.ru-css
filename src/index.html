@@ -603,18 +603,44 @@
 
 
         <!-- .mfp -->
-        <div class="window mfp-hide" id="login">
+        <div class="window mfp-hide" id="callback-popup">
             <button class="window__close mfp-close" type="button">
                 Close
             </button>
-            <div class="login">
-                <h2 class="login__heading">
-                    Magnific Popup!
-                </h2>
-                <div class="login__body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequatur debitis eligendi fugiat provident sed, velit! At debitis dolore fuga ipsum laudantium nemo reiciendis temporibus voluptates? Ab, accusantium aspernatur cumque dicta ducimus eaque eius eos eum in maxime nihil nulla numquam velit. Accusamus, aliquid atque beatae culpa cupiditate fugiat iure iusto non odit pariatur quae saepe ullam voluptatibus.
+            <section class="callback callback--in-popup">
+                <div class="callback__wrap container">
+                    <div class="callback__data">
+                        <h2 class="callback__heading title">
+                            Оставить заявку
+                        </h2>
+                        <div class="callback__description">
+                            Нужно эффективное решение задачи? Хотите сэкономить время и деньги? Позвоните или напишите нам, мы на связи!
+                        </div>
+                    </div>
+                    <form class="callback__form" id="subscriptionForm">
+                        <div class="callback__field input">
+                            <input class="input__widget" type="text" placeholder="Ваше имя">
+                        </div>
+                        <div class="callback__field input">
+                            <input class="input__widget" type="tel" placeholder="Номер телефона *" required>
+                        </div>
+                        <div class="callback__field input">
+                            <input class="input__widget" type="email" placeholder="E-mail">
+                        </div>
+                        <div class="callback__field input input--expandable">
+                            <textarea class="input__widget" placeholder="Комментарии" rows="3"></textarea>
+                        </div>
+                        <div class="callback__footer">
+                            <div class="callback__agreement">
+                                Нажимая «Отправить», вы выражаете согласие на&nbsp;обработку персональных данных
+                            </div>
+                            <button class="callback__submit button" type="submit" id="subscriptionSubmit">
+                                Отправить
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </section>
         </div>
 
         <!-- Alert -->

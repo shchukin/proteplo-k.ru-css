@@ -1,8 +1,7 @@
 .callback {
-
+    margin-top: 120px;
 }
     .callback__wrap {
-        margin-top: 120px;
         padding: 60px 40px;
         background-color: var(--primary);
         background-image: url("../images/callback.svg");
@@ -71,14 +70,21 @@
                 }
 
 
+.callback--in-popup {
+    margin-top: 0;
+}
+    .callback--in-popup .callback__wrap {
+        border-radius: 8px;
+    }
+
+
 
 @media (1700px <= width) {
 
     .callback {
-
+        /*margin-top: 120px;*/
     }
         .callback__wrap {
-            /*margin-top: 120px;*/
             /*padding: 60px 40px;*/
             /*background-color: #0086BF;*/
             /*background-image: url("../images/callback.svg");*/
@@ -139,6 +145,15 @@
                         /*width: 242px;*/
                         /*flex-shrink: 0;*/
                     }
+
+
+
+    .callback--in-popup {
+
+    }
+        .callback--in-popup .callback__wrap {
+
+        }
 }
 
 
@@ -146,6 +161,7 @@
 @media (width < 740px) {
 
     .callback {
+        margin-top: 0;
         padding-top: 43px;
         padding-bottom: 116px;
         background-color: var(--primary);
@@ -155,7 +171,6 @@
         background-position: center bottom;
     }
         .callback__wrap {
-            margin-top: 0;
             padding: 0;
             background-color: transparent;
             background-image: none;
@@ -214,5 +229,13 @@
                         width: 100%;
                         /*flex-shrink: 0;*/
                     }
+
+
+    .callback--in-popup {
+        border-radius: 8px;
+    }
+        .callback--in-popup .callback__wrap {
+
+        }
 }
 
