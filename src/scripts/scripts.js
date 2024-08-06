@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         //     clickable: true,
         // },
         //
-        // navigation: {
-        //     prevEl: '#feedback-prev',
-        //     nextEl: '#feedback-next',
-        // },
+        navigation: {
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+        },
 
     });
 

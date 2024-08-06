@@ -1,3 +1,59 @@
 .feedback {
+    margin-top: 120px;
+    position: relative;
+}
+    .feedback__heading {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 
+    .feedback__body {
+        margin-top: 50px;
+    }
+
+    .feedback__navigation {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+
+
+@media (1700px <= width) {
+
+    .feedback {
+        margin-top: 140px;
+    }
+        .feedback__heading {
+
+        }
+
+        .feedback__body {
+            margin-top: 60px;
+        }
+
+        .feedback__navigation {
+            top: -4px;
+        }
+}
+
+
+@media (width < 740px) {
+
+    .feedback {
+        margin-top: 80px;
+    }
+        .feedback__heading {
+
+        }
+
+        .feedback__body {
+            margin-top: 40px;
+        }
+
+        .feedback__navigation {
+            margin-top: 16px;
+            position: static;
+            justify-content: center;
+        }
 }
