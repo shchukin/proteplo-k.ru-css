@@ -33,6 +33,16 @@
 }
 
 
+.wysiwyg b + ul {
+    margin-top: 0;
+}
+
+
+.wysiwyg ul,
+.wysiwyg ol {
+    padding-left: 28px;
+}
+
 .wysiwyg h2 {
 
 }

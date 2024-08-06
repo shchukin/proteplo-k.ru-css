@@ -10,7 +10,7 @@
         margin-top: 50px;
         display: grid;
         align-items: start;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 480px auto;
         gap: 24px;
     }
         .faq__tabs {
@@ -103,6 +103,9 @@
     .faq {
         margin-top: 140px;
     }
+        .faq__body {
+            grid-template-columns: 560px auto;
+        }
 }
 
 
