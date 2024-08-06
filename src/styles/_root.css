@@ -1,9 +1,9 @@
 :root {
     --font: "Montserrat", sans-serif;
-    /*--ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);*/
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
     --transition-hover: 100ms ease;
-    /*--transition-show: 1200ms var(--ease-out-quint);*/
-    /*--image-fallback: #F3F5F4;*/
+    --transition-show: 800ms var(--ease-out-quint);
+    --image-fallback: #F3F5F4;
     --container-padding: 40px;
     --container-width: 1200px;
     --action-color: #0D7FC5;
@@ -14,18 +14,26 @@
     --disabled-background: #D4D4D4;
     --disabled-color: #8F8F8F;
     --error: #FF4444;
+    --primary: #0086BF;
+    --body-font-size: 18px;
+    --body-line-height: 22px;
 }
 
 @media (1700px <= width) {
-    --container-width: 1600px;
+    :root {
+        --container-width: 1600px;
+        --body-font-size: 20px;
+        --body-line-height: 24px;
+    }
 }
 
 @media (width < 740px) {
-    --container-width: auto;
+    :root {
+        --container-width: auto;
+        --body-font-size: 16px;
+        --body-line-height: 20px;
+    }
 }
-
-
-
 
 @media (350px <= width < 740px) {
     :root {

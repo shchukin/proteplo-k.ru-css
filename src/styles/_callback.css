@@ -4,7 +4,7 @@
     .callback__wrap {
         margin-top: 120px;
         padding: 60px 40px;
-        background-color: #0086BF;
+        background-color: var(--primary);
         background-image: url("../images/callback.svg");
         background-size: 540px 255px;
         background-repeat: no-repeat;
@@ -148,7 +148,7 @@
     .callback {
         padding-top: 43px;
         padding-bottom: 116px;
-        background-color: #0086BF;
+        background-color: var(--primary);
         background-image: url("../images/callback-mobile.svg");
         background-size: 740px 93px;
         background-repeat: no-repeat;

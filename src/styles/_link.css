@@ -8,7 +8,7 @@
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    color: #0086BF;
+    color: var(--primary);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.25em;

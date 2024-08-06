@@ -5,7 +5,7 @@
     gap: 24px;
 }
     .contacts__data {
-        border: 2px solid #0086BF;
+        border: 2px solid var(--primary);
         border-radius: 6px;
         padding: 38px 22px;
     }

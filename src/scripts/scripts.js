@@ -1,3 +1,31 @@
+
+/* Слайдер "Feedback" */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    new Swiper('.swiper--feedback', {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        // spaceBetween: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding')),
+        autoHeight: true,
+
+        // pagination: {
+        //     el: '.swiper-pagination',
+        //     clickable: true,
+        // },
+        //
+        // navigation: {
+        //     prevEl: '#feedback-prev',
+        //     nextEl: '#feedback-next',
+        // },
+
+    });
+
+});
+
+
+/* Форма */
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* Уведомления */
@@ -131,6 +159,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+});
+
+
+/* FAQ */
+
+/* Переписать FAQ */
+//
+// const faqQuestions = document.querySelectorAll('.faq__question');
+//
+// faqQuestions.forEach(question => {
+//     question.addEventListener('click', () => {
+//         const faqItem = question.parentElement;
+//         faqItem.classList.toggle('faq__item--expanded');
+//     });
+// });
+//
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tags = document.querySelectorAll('.faq__tag');
+    const items = document.querySelectorAll('.faq__item');
+
+    tags.forEach((tab, index) => {
+        tab.addEventListener('click', function() {
+
+            tags.forEach(t => t.classList.remove('faq__tag--current'));
+            items.forEach(i => i.classList.remove('faq__item--current'));
+
+            // Добавляем активный класс текущему табу и показываем соответствующий блок
+            tab.classList.add('faq__tag--current');
+            items[index].classList.add('faq__item--current');
+        });
+    });
 });
 
 
