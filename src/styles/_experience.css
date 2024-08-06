@@ -7,15 +7,28 @@
     }
 
     .experience__description {
-
+        max-width: 689px;
+        margin-top: 24px;
+        font-size: 20px;
+        line-height: 24px;
     }
 
     .experience__partners {
-
+        margin-top: 60px;
     }
+        .experience__partners-navigation {
+
+        }
+
+        @media (740px <= width) {
+
+            .experience__partners-navigation {
+                display: none;
+            }
+        }
 
     .experience__solutions-heading {
-        margin-top: 0;
+        margin-top: 120px;
         margin-bottom: 0;
         font-weight: 800;
         font-size: 28px;
@@ -31,6 +44,10 @@
     .experience__solutions-body {
         margin-top: 60px;
     }
+        .experience__solutions-navigation {
+
+        }
+
         @media (740px <= width) {
             .experience__solutions-navigation {
                 display: none;
@@ -50,15 +67,21 @@
         }
 
         .experience__description {
-
+            margin-top: 40px;
+            max-width: 701px;
+            font-size: 20px;
+            line-height: 24px;
         }
 
         .experience__partners {
 
         }
+            .experience__partners-navigation {
+
+            }
 
         .experience__solutions-heading {
-            /*margin-top: 0;*/
+            margin-top: 132px;
             /*margin-bottom: 0;*/
             /*font-weight: 800;*/
             font-size: 32px;
@@ -74,7 +97,9 @@
         .experience__solutions-body {
             /*margin-top: 60px;*/
         }
+            .experience__solutions-navigation {
 
+            }
 }
 
 
@@ -90,15 +115,21 @@
         }
 
         .experience__description {
-
+            font-size: 18px;
+            line-height: 22px;
         }
 
         .experience__partners {
-
+             margin-top: 40px;
         }
+            .experience__partners-navigation {
+                margin-top: 16px;
+                display: flex;
+                justify-content: center;
+            }
 
         .experience__solutions-heading {
-            /*margin-top: 0;*/
+            margin-top: 80px;
             /*margin-bottom: 0;*/
             /*font-weight: 800;*/
             font-size: 20px;
@@ -114,11 +145,10 @@
         .experience__solutions-body {
             margin-top: 40px;
         }
-
-        .experience__solutions-navigation {
-            margin-top: 16px;
-            display: flex;
-            justify-content: center;
-        }
+            .experience__solutions-navigation {
+                margin-top: 16px;
+                display: flex;
+                justify-content: center;
+            }
 }
 

@@ -7,6 +7,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const spacing = window.matchMedia("(min-width: 740px)").matches ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
 
+    new Swiper('.swiper--partners', {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: spacing,
+        autoHeight: true,
+
+        navigation: {
+            prevEl: '.experience__partners-navigation .swiper-button-prev',
+            nextEl: '.experience__partners-navigation .swiper-button-next',
+        },
+
+        breakpoints: {
+            740: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+            }
+        }
+    });
+
     new Swiper('.swiper--solutions', {
         slidesPerView: 1,
         slidesPerGroup: 1,
