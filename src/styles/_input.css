@@ -107,7 +107,6 @@
 
     .input--error .input__widget:hover {
         border-color: var(--input-border-hover-and-focus);
-
     }
 
     .input--error .input__widget::placeholder {
