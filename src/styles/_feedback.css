@@ -1,5 +1,5 @@
 .feedback {
-    margin-top: 120px;
+    margin-top: calc(120px - 58px); /* 58px -- невидимая кнопка внизу плиток у блока experience */
     position: relative;
 }
     .feedback__heading {
@@ -22,7 +22,8 @@
 @media (1700px <= width) {
 
     .feedback {
-        margin-top: 140px;
+        margin-top: calc(140px - 66px); /* 58px -- невидимая кнопка внизу плиток у блока experience */
+
     }
         .feedback__heading {
 

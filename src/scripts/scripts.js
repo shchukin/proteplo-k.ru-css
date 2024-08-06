@@ -1,26 +1,45 @@
 
-/* Слайдер "Feedback" */
+
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* Слайдер "Steps" */
+
+    const spacing = window.matchMedia("(min-width: 740px)").matches ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
+
+    new Swiper('.swiper--solutions', {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: spacing,
+        autoHeight: true,
+
+        navigation: {
+            prevEl: '.experience__solutions-navigation .swiper-button-prev',
+            nextEl: '.experience__solutions-navigation .swiper-button-next',
+        },
+
+        breakpoints: {
+            740: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+            }
+        }
+    });
+
+    /* Слайдер "Feedback" */
 
     new Swiper('.swiper--feedback', {
         slidesPerView: 1,
         slidesPerGroup: 1,
-        // spaceBetween: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding')),
+        spaceBetween: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding')),
         autoHeight: true,
 
-        // pagination: {
-        //     el: '.swiper-pagination',
-        //     clickable: true,
-        // },
-        //
         navigation: {
-            prevEl: '.swiper-button-prev',
-            nextEl: '.swiper-button-next',
+            prevEl: '.feedback__navigation .swiper-button-prev',
+            nextEl: '.feedback__navigation .swiper-button-next',
         },
 
     });
-
 });
 
 

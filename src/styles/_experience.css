@@ -1,0 +1,124 @@
+.experience {
+    margin-top: 120px;
+}
+    .experience__heading {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .experience__description {
+
+    }
+
+    .experience__partners {
+
+    }
+
+    .experience__solutions-heading {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 800;
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .experience__solutions-descriptions {
+        margin-top: 24px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .experience__solutions-body {
+        margin-top: 60px;
+    }
+        @media (740px <= width) {
+            .experience__solutions-navigation {
+                display: none;
+            }
+        }
+
+
+
+@media (1700px <= width) {
+
+    .experience {
+        margin-top: 140px;
+    }
+        .experience__heading {
+            /*margin-top: 0;*/
+            /*margin-bottom: 0;*/
+        }
+
+        .experience__description {
+
+        }
+
+        .experience__partners {
+
+        }
+
+        .experience__solutions-heading {
+            /*margin-top: 0;*/
+            /*margin-bottom: 0;*/
+            /*font-weight: 800;*/
+            font-size: 32px;
+            line-height: 39px;
+        }
+
+        .experience__solutions-descriptions {
+            /*margin-top: 24px;*/
+            font-size: 22px;
+            line-height: 27px;
+        }
+
+        .experience__solutions-body {
+            /*margin-top: 60px;*/
+        }
+
+}
+
+
+
+@media (width < 740px) {
+
+    .experience {
+        /*margin-top: 120px;*/
+    }
+        .experience__heading {
+            /*margin-top: 0;*/
+            /*margin-bottom: 0;*/
+        }
+
+        .experience__description {
+
+        }
+
+        .experience__partners {
+
+        }
+
+        .experience__solutions-heading {
+            /*margin-top: 0;*/
+            /*margin-bottom: 0;*/
+            /*font-weight: 800;*/
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        .experience__solutions-descriptions {
+            /*margin-top: 24px;*/
+            font-size: 18px;
+            line-height: 22px;
+        }
+
+        .experience__solutions-body {
+            margin-top: 40px;
+        }
+
+        .experience__solutions-navigation {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+        }
+}
+
