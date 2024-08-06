@@ -6,3 +6,8 @@
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+.trapezoid--smaller {
+    width: 27px;
+    height: 13px;
+}
