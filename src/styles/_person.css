@@ -1,0 +1,126 @@
+.person {
+
+}
+    .person__preview {
+        background-color: #B4E0F2; /* Фон под картинкой тянется */
+        border-radius: 6px;
+        overflow: hidden;
+        text-align: center;
+    }
+        .person__image {
+            vertical-align: top;
+            width: auto;
+            height: 346px;
+            background-color: #B4E0F2;
+        }
+
+    .person__name {
+        margin-top: 12px;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 27px;
+        color: var(--primary);
+    }
+
+    .person__position {
+        margin-top: 14px;
+        padding-bottom: 12px;
+        font-size: 16px;
+        line-height: 20px;
+        color: #A1A1A3;
+    }
+
+    .person__channel {
+        margin-top: 12px;
+        font-size: 16px;
+        line-height: 20px;
+        color: #181818;
+    }
+
+
+
+@media (1700px <= width) {
+
+    .person {
+
+    }
+        .person__preview {
+            padding-top: 17px;
+        }
+            .person__image {
+                /*vertical-align: top;*/
+                width: auto;
+                height: 407px;
+                /*background-color: #B4E0F2;*/
+                /*border-radius: 6px;*/
+            }
+
+        .person__name {
+            /*margin-top: 12px;*/
+            /*font-weight: bold;*/
+            font-size: 24px;
+            line-height: 29px;
+            /*color: var(--primary);*/
+        }
+
+        .person__position {
+            /*margin-top: 14px;*/
+            /*padding-bottom: 12px;*/
+            font-size: 18px;
+            line-height: 22px;
+            /*color: #A1A1A3;*/
+        }
+
+        .person__channel {
+            /*margin-top: 12px;*/
+            font-size: 18px;
+            line-height: 22px;
+            /*color: #181818;*/
+        }
+}
+
+
+
+@media (width < 740px) {
+
+    .person {
+
+    }
+        .person__preview {
+            /*background-color: #B4E0F2; !* Фон под картинкой тянется *!*/
+            /*border-radius: 6px;*/
+            /*overflow: hidden;*/
+            /*text-align: center;*/
+        }
+            .person__image {
+                /*vertical-align: top;*/
+                /*width: auto;*/
+                /*height: 346px;*/
+                /*background-color: #B4E0F2;*/
+            }
+
+        .person__name {
+            /*margin-top: 12px;*/
+            /*font-weight: bold;*/
+            font-size: 20px;
+            line-height: 24px;
+            /*color: var(--primary);*/
+        }
+
+        .person__position {
+            margin-top: 11px;
+            /*padding-bottom: 12px;*/
+            /*font-size: 16px;*/
+            /*line-height: 20px;*/
+            /*color: #A1A1A3;*/
+        }
+
+        .person__channel {
+            /*margin-top: 12px;*/
+            /*font-size: 16px;*/
+            /*line-height: 20px;*/
+            /*color: #181818;*/
+        }
+}
+
+

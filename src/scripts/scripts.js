@@ -5,6 +5,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDesktop = window.matchMedia("(min-width: 740px)").matches;
     const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
 
+
+
+    /* Слайдер "Team" */
+
+    new Swiper('.swiper--team', {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: responsiveSpacing,
+        autoHeight: true,
+
+        navigation: {
+            prevEl: '.team__navigation .swiper-button-prev',
+            nextEl: '.team__navigation .swiper-button-next',
+        },
+
+        breakpoints: {
+            740: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+            }
+        }
+    });
+
+
+    /* Слайдер "Guide" */
+
     if( ! isDesktop ) {
         new Swiper('.swiper--guide', {
             slidesPerView: 1,
@@ -18,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     }
-
 
 
     /* Слайдер "Solutions" */
