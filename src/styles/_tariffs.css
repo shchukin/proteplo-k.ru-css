@@ -58,6 +58,7 @@
                     font-weight: bold;
                     font-size: 22px;
                     line-height: 28px;
+                    white-space: nowrap;
                 }
 
                 .tariffs__callback {
@@ -134,3 +135,79 @@
 
                     }
 }
+
+
+
+@media (width < 740px) {
+
+    .tariffs {
+        display: block;
+        /*grid-template-columns: 360px auto;*/
+        /*gap: 48px;*/
+    }
+        .tariffs__heading-column {
+
+        }
+            .tariffs__heading {
+                /*margin-top: 0;*/
+                /*margin-bottom: 0;*/
+                /*position: sticky;*/
+                /*top: 40px;*/
+            }
+
+        .tariffs__body {
+            margin-top: 40px;
+        }
+            .tariffs__card {
+                margin-top: 24px;
+                padding: 20px 16px 28px;
+                /*background-color: #EAF8FF;*/
+                /*border-radius: 6px;*/
+            }
+
+            .tariffs__card:first-child {
+                /*margin-top: 0;*/
+            }
+
+            .tariffs__card:nth-child(even) {
+                /*background-color: var(--primary);*/
+                /*color: #FFFFFF;*/
+            }
+                .tariffs__sub-heading {
+                    /*margin-top: 0;*/
+                    /*margin-bottom: 0;*/
+                    /*font-weight: 600;*/
+                    font-size: 22px;
+                    line-height: 27px;
+                }
+
+                .tariffs__content {
+                    /*margin-top: 24px;*/
+                    /*max-width: 664px;*/
+                }
+
+                .tariffs__card:nth-child(even) .tariffs__content {
+                    /*color: #CCE8F1;*/
+                }
+
+                .tariffs__footer {
+                    /*margin-top: 22px;*/
+                    display: block;
+                    /*align-items: center;*/
+                    /*justify-content: space-between;*/
+                }
+                    .tariffs__price {
+                        /*font-weight: bold;*/
+                        font-size: 20px;
+                        line-height: 24px;
+                    }
+
+                    .tariffs__callback {
+                        margin-top: 24px;
+                    }
+                        .tariffs__callback.button,
+                        .tariffs__callback .button {
+                            width: 100%;
+                        }
+}
+
