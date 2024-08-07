@@ -341,6 +341,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
+                
+                $header.classList.remove('header--expanded');
+
                 const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
                 const offsetPosition = elementPosition - headerHeight - anchorOffset;
 
