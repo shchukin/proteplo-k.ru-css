@@ -1,0 +1,58 @@
+.tariffs {
+    display: grid;
+    grid-template-columns: 360px auto;
+    gap: 48px;
+}
+    .tariffs__heading-column {
+
+    }
+        .tariffs__heading {
+            margin-top: 0;
+            margin-bottom: 0;
+            position: sticky;
+            top: 40px;
+        }
+
+    .tariffs__body {
+
+    }
+        .tariffs__card {
+            padding: 24px 24px 32px;
+            background-color: #EAF8FF;
+            border-radius: 6px;
+        }
+
+        .tariffs__card:nth-child(even) {
+            background-color: var(--primary);
+            color: #FFFFFF;
+        }
+
+            .tariffs__sub-heading {
+                font-weight: 600;
+                font-size: 28px;
+                line-height: 34px;
+            }
+
+            .tariffs__content {
+                margin-top: 24px;
+            }
+
+            .tariffs__card:nth-child(even) {
+                color: #CCE8F1;
+            }
+
+            .tariffs__footer {
+                margin-top: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+                .tariffs__price {
+                    font-weight: bold;
+                    font-size: 22px;
+                    line-height: 28px;
+                }
+
+                .tariffs__callback {
+
+                }
