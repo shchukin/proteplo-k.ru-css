@@ -1,4 +1,5 @@
 .contacts {
+    margin-top: var(--sections-spacing);
     display: grid;
     grid-template-columns: minmax(0, 486fr) minmax(0, 690fr);
     gap: 24px;

@@ -1,4 +1,5 @@
 .tariffs {
+    margin-top: var(--sections-spacing);
     display: grid;
     grid-template-columns: 360px auto;
     gap: 48px;

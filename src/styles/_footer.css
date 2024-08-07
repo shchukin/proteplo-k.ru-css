@@ -1,4 +1,5 @@
 .footer {
+    margin-top: var(--sections-spacing);
     display: flex;
     align-items: flex-start;
     gap: 22px;

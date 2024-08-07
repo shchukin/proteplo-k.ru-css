@@ -1,4 +1,5 @@
 .feedback {
+    margin-top: var(--sections-spacing);
     position: relative;
 }
     .feedback__heading {

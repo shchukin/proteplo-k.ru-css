@@ -1,5 +1,5 @@
 .callback {
-
+    margin-top: var(--sections-spacing);
 }
     .callback__wrap {
         padding: 60px 40px;
