@@ -72,6 +72,12 @@
                         padding: 11px 22px;
                         font-size: 16px;
                         line-height: 22px;
+                        text-transform: lowercase; /* Из-за header__request и замеса на < 370px (смотри конец файла) */
+                    }
+
+                    .header__handler.button:first-letter,
+                    .header__handler .button:first-child {
+                        text-transform: uppercase;
                     }
 
 
