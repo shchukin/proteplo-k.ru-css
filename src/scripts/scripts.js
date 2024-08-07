@@ -302,6 +302,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    /* Расхлопывание бургера */
+
     const header = document.querySelector('.header');
     const headerMenu = header.querySelector('.header__menu');
     const burger = header.querySelector('.header__burger');
@@ -320,6 +322,37 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key === 'Escape') {
             header.classList.remove('header--expanded');
         }
+    });
+
+
+
+    function getHeaderOffset() {
+        const rootStyles = getComputedStyle(document.documentElement);
+        const headerOffset = parseInt(rootStyles.getPropertyValue('--header')) || 0;
+        return headerOffset + 50; // Adding the additional 50px
+    }
+
+    // Attach event listeners to all anchor links in the header
+    const headerLinks = document.querySelectorAll('.header__link');
+
+    headerLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1); // Get the target ID without the #
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const headerOffset = getHeaderOffset();
+                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 
 });
