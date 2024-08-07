@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* Константы для слайдеров */
+    /* Глобальные константы */
 
     const isDesktop = window.matchMedia("(min-width: 740px)").matches;
     const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
+
 
 
     /* Слайдер "Service" */
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
 
     /* Слайдер "Team" */
 
@@ -109,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     /* Слайдер "Feedback" */
 
     new Swiper('.swiper--feedback', {
@@ -123,12 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
     });
-});
 
 
-/* Форма */
 
-document.addEventListener('DOMContentLoaded', () => {
+
+    /* Форма */
 
     /* Уведомления */
 
@@ -147,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* Форма */
+    /* Отправка */
 
     const subscriptionForm = document.querySelector('#subscriptionForm');
     const subscriptionInputs = subscriptionForm.querySelectorAll('.input');
@@ -261,25 +263,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-});
 
 
-/* FAQ */
 
-/* Переписать FAQ */
-//
-// const faqQuestions = document.querySelectorAll('.faq__question');
-//
-// faqQuestions.forEach(question => {
-//     question.addEventListener('click', () => {
-//         const faqItem = question.parentElement;
-//         faqItem.classList.toggle('faq__item--expanded');
-//     });
-// });
-//
+    /* FAQ */
 
+    /* Переписать FAQ */
+    //
+    // const faqQuestions = document.querySelectorAll('.faq__question');
+    //
+    // faqQuestions.forEach(question => {
+    //     question.addEventListener('click', () => {
+    //         const faqItem = question.parentElement;
+    //         faqItem.classList.toggle('faq__item--expanded');
+    //     });
+    // });
+    //
 
-document.addEventListener('DOMContentLoaded', function() {
     const tags = document.querySelectorAll('.faq__tag');
     const items = document.querySelectorAll('.faq__item');
 
@@ -294,14 +294,10 @@ document.addEventListener('DOMContentLoaded', function() {
             items[index].classList.add('faq__item--current');
         });
     });
-});
 
 
 
-/* Шапка */
-
-document.addEventListener('DOMContentLoaded', function() {
-
+    /* Шапка */
 
     const $header = document.querySelector('.header');
     const $headerMenu = $header.querySelector('.header__menu');
@@ -309,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const $headerLinks = document.querySelectorAll('.header__link');
 
     const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 0;
-    const anchorOffset = 50;
+    const anchorOffset = isDesktop ? 50 : 24;
 
 
     /* Расхлопывание бургера */
@@ -341,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
-                
+
                 $header.classList.remove('header--expanded');
 
                 const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
