@@ -204,6 +204,10 @@
                         overflow: hidden;
                     }
 
+                    .header--expanded .header__burger {
+                        background-image: url("../vectors/header-close.svg");
+                    }
+
                     .header__logo {
                         /*display: block;*/
                         width: 141px;
@@ -222,7 +226,13 @@
                         left: calc(-1 * var(--container-padding));
                         top: var(--header);
                         background-color: #FFFFFF;
+                        display: none;
                     }
+
+                    .header--expanded .header__menu {
+                        display: block;
+                    }
+
                         .header__nav {
                             display: block;
                             padding-top: 12px;
