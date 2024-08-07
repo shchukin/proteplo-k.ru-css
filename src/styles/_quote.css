@@ -1,0 +1,130 @@
+.quote {
+
+}
+    .quote__wrap {
+
+    }
+        .quote__body {
+            position: relative;
+            margin: 0;
+            padding: 44px 40px 48px;
+            min-height: 381px;
+            background-color: var(--primary);
+            background-image: url("../vectors/quote-background.svg");
+            background-size: 701px 450px;
+            background-repeat: no-repeat;
+            background-position: right -157px top;
+            border-radius: 8px;
+            color: #FFFFFF;
+        }
+            .quote__text {
+                max-width: 745px;
+                margin: 0;
+                padding: 10px 30px 10px 20px;
+                margin-left: -20px;
+                background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");
+                background-repeat: no-repeat;
+                background-position: left top, right bottom;
+                font-weight: 600;
+                font-style: italic;
+                font-size: 28px;
+                line-height: 34px;
+            }
+                .quote__text p {
+                    margin: 0;
+                }
+
+            .quote__caption {
+                margin-top: 46px;
+            }
+                .quote__photo {
+                    position: absolute;
+                    right: 11px;
+                    bottom: 0;
+                    vertical-align: top;
+                    width: 331px;
+                    height: 353px;
+                }
+
+                .quote__name {
+                    margin-top: 14px;
+                    font-weight: 600;
+                    font-style: normal;
+                    font-size: 22px;
+                    line-height: 27px;
+                }
+
+                .quote__position {
+                    margin-top: 6px;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: #9CCFE9;
+                }
+
+
+
+@media (1700px <= width) {
+
+    .quote {
+
+    }
+        .quote__wrap {
+
+        }
+            .quote__body {
+                /*position: relative;*/
+                /*margin: 0;*/
+                padding: 44px 40px 93px;
+                min-height: 450px;
+                /*background-color: var(--primary);*/
+                /*background-image: url("../vectors/quote-background.svg");*/
+                /*background-size: 701px 450px;*/
+                /*background-repeat: no-repeat;*/
+                background-position: right top;
+                /*border-radius: 8px;*/
+                /*color: #FFFFFF;*/
+            }
+                .quote__text {
+                    max-width: 878px;
+                    /*margin: 0;*/
+                    /*padding: 10px 30px 10px 20px;*/
+                    /*margin-left: -20px;*/
+                    /*background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");*/
+                    /*background-repeat: no-repeat;*/
+                    /*background-position: left top, right bottom;*/
+                    /*font-weight: 600;*/
+                    /*font-style: italic;*/
+                    font-size: 32px;
+                    line-height: 39px;
+                }
+                    .quote__text p {
+                        /*margin: 0;*/
+                    }
+
+                .quote__caption {
+                    margin-top: 41px;
+                }
+                    .quote__photo {
+                        /*position: absolute;*/
+                        /*right: 11px;*/
+                        /*bottom: 0;*/
+                        /*vertical-align: top;*/
+                        width: 389px;
+                        height: 415px;
+                    }
+
+                    .quote__name {
+                        /*margin-top: 14px;*/
+                        /*font-weight: 600;*/
+                        /*font-style: normal;*/
+                        font-size: 24px;
+                        line-height: 29px;
+                    }
+
+                    .quote__position {
+                        /*margin-top: 6px;*/
+                        font-size: 18px;
+                        line-height: 22px;
+                        /*color: #9CCFE9;*/
+                    }
+}
