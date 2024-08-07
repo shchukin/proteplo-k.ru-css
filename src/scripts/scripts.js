@@ -1,11 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* Слайдер "Guide" */
+
+    /* Константы для слайдеров */
 
     const isDesktop = window.matchMedia("(min-width: 740px)").matches;
     const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
 
 
+
+
+    /* Слайдер "Service" */
+
+    new Swiper('.swiper--service', {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: responsiveSpacing,
+        autoHeight: true,
+
+        navigation: {
+            prevEl: '.service__navigation .swiper-button-prev',
+            nextEl: '.service__navigation .swiper-button-next',
+        },
+
+        breakpoints: {
+            740: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+            }
+        }
+    });
 
     /* Слайдер "Team" */
 
