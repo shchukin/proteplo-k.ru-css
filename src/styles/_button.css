@@ -3,7 +3,7 @@
     display: inline-block;
     vertical-align: top;
     border: none;
-    padding: 14px 20px;
+    padding: 14px 24px;
     min-width: 100px;
     background-color: #FC8901;
     border-radius: 25px;
@@ -22,7 +22,6 @@
 .button:hover {
     background-color: #FEBA66;
 }
-
 
 .button:active {
     translate: 0 1px;
@@ -43,6 +42,34 @@
     translate: none;
     cursor: default;
 }
+
+
+
+@media (1700px <= width) {
+
+    .button {
+        padding: 16px 28px;
+        border-radius: 28px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+
+
+@media (width < 740px) {
+
+    .button {
+        padding: 12px 20px;
+        border-radius: 22px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+
+
+
 
 
 
@@ -113,30 +140,4 @@
         background-repeat: no-repeat;
         background-position: center center;
     }
-
-
-
-@media (1700px <= width) {
-
-    .button {
-        padding: 16px 24px;
-        border-radius: 28px;
-        font-size: 20px;
-        line-height: 24px;
-    }
-}
-
-
-
-@media (width < 740px) {
-
-    .button {
-        padding: 12px 20px;
-        border-radius: 22px;
-        font-size: 16px;
-        line-height: 20px;
-    }
-}
-
-
 
