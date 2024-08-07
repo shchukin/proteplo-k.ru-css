@@ -141,3 +141,93 @@
                     }
 }
 
+
+
+@media (width < 740px) {
+
+    .header {
+        /*height: var(--header);*/
+    }
+        .header__fixed-part {
+            /*position: fixed;*/
+            /*left: 0;*/
+            /*right: 0;*/
+            /*z-index: 1000;*/
+            /*height: var(--header);*/
+        }
+            .header__panel {
+                /*height: var(--header);*/
+                /*background-color: #FFFFFF;*/
+            }
+                .header__wrap {
+                    /*position: relative;*/
+                    /*height: var(--header);*/
+                    /*display: flex;*/
+                    /*align-items: center;*/
+                    /*justify-content: space-between;*/
+                }
+                    .header__burger {
+                        /*display: none;*/
+                    }
+
+                    .header__logo {
+                        /*display: block;*/
+                        /*width: 237px;*/
+                        /*height: 34px;*/
+                        /*background-image: url("../vectors/logo.svg");*/
+                        /*background-size: contain;*/
+                        /*background-repeat: no-repeat;*/
+                        /*background-position: center center;*/
+                        /*text-indent: 200%;*/
+                        /*white-space: nowrap;*/
+                        /*overflow: hidden;*/
+                    }
+
+                    .header__menu {
+                        position: absolute;
+                        left: 0;
+                        top: var(--header);
+                        background-color: #FFFFFF;
+                    }
+                        .header__nav {
+                            display: block;
+                            padding-top: 12px;
+                            /*align-items: stretch;*/
+                        }
+                            .header__link {
+                                /*display: block;*/
+                                padding: 12px 60px 12px 24px;
+                                /*text-decoration: none;*/
+                                /*transition: background-color var(--transition-hover);*/
+                                /*border-radius: 4px;*/
+                                font-size: 18px;
+                                line-height: 22px;
+                                /*color: inherit;*/
+                            }
+
+                            .header__link:hover {
+                                /*background-color: #EAF8FF;*/
+                            }
+
+                        .header__social-networks {
+                            margin-top: 28px;
+                            padding-bottom: 60px;
+                            display: flex;
+                            align-items: flex-start;
+                            margin-left: 24px;
+                            gap: 20px;
+                        }
+                            .header__social-networks .net__icon {
+                                width: 36px;
+                                height: 36px;
+                            }
+
+
+                    .header__handler {
+
+                    }
+}
+
+
+
+
