@@ -201,6 +201,8 @@
         .about__summary {
             margin-top: 28px;
             /*position: relative;*/
+            margin-left: -8px;
+            margin-right: -8px;
             width: 343px;
             height: 472px;
         }
@@ -261,6 +263,77 @@
                 height: 155px;
                 /*border: 1px solid #65B6D6;*/
                 /*border-radius: 50%;*/
+            }
+
+
+        @media (width < 370px) {
+
+            .about__summary {
+                width: calc(100% + 16px);
+            }
+                .about__stat {
+
+                }
+                    .about__param {
+                        font-size: 34px;
+                        line-height: 40px;
+                    }
+
+                    .about__value {
+                        margin-top: -2px;
+                        font-size: 14px;
+                        line-height: 18px;
+                    }
+
+                .about__stat--projects {
+                    width: 184px;
+                    height: 184px;
+                }
+
+                .about__stat--power {
+                    width: 244px;
+                    height: 244px;
+                }
+
+                .about__stat--experience {
+                    width: 134px;
+                    height: 134px;
+                }
+            }
+
+
+        @media (width < 350px) {
+
+            .about__summary {
+
+            }
+                .about__stat {
+
+                }
+                    .about__param {
+                        font-size: 34px;
+                        line-height: 40px;
+                    }
+
+                    .about__value {
+                        font-size: 14px;
+                        line-height: 18px;
+                    }
+
+                .about__stat--projects {
+                    width: 174px;
+                    height: 174px;
+                }
+
+                .about__stat--power {
+                    width: 234px;
+                    height: 234px;
+                }
+
+                .about__stat--experience {
+                    width: 124px;
+                    height: 124px;
+                }
             }
 }
 
