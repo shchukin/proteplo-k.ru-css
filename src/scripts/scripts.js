@@ -302,40 +302,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+
+    const $header = document.querySelector('.header');
+    const $headerMenu = $header.querySelector('.header__menu');
+    const $headerBurger = $header.querySelector('.header__burger');
+    const $headerLinks = document.querySelectorAll('.header__link');
+
+    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 0;
+    const anchorOffset = 50;
+
+
     /* Расхлопывание бургера */
 
-    const header = document.querySelector('.header');
-    const headerMenu = header.querySelector('.header__menu');
-    const burger = header.querySelector('.header__burger');
-
-    burger.addEventListener('click', () => {
-        header.classList.toggle('header--expanded');
+    $headerBurger.addEventListener('click', () => {
+        $header.classList.toggle('header--expanded');
     });
 
     document.addEventListener('click', (event) => {
-        if (!headerMenu.contains(event.target) && !burger.contains(event.target)) {
-            header.classList.remove('header--expanded');
+        if (!$headerMenu.contains(event.target) && !$headerBurger.contains(event.target)) {
+            $header.classList.remove('header--expanded');
         }
     });
 
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-            header.classList.remove('header--expanded');
+            $header.classList.remove('header--expanded');
         }
     });
 
 
+    // Якоря
 
-    function getHeaderOffset() {
-        const rootStyles = getComputedStyle(document.documentElement);
-        const headerOffset = parseInt(rootStyles.getPropertyValue('--header')) || 0;
-        return headerOffset + 50; // Adding the additional 50px
-    }
-
-    // Attach event listeners to all anchor links in the header
-    const headerLinks = document.querySelectorAll('.header__link');
-
-    headerLinks.forEach(link => {
+    $headerLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
 
@@ -343,9 +341,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
-                const headerOffset = getHeaderOffset();
                 const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - headerOffset;
+                const offsetPosition = elementPosition - headerHeight - anchorOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
