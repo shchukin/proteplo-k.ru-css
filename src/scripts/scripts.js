@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-
     /* Константы для слайдеров */
 
     const isDesktop = window.matchMedia("(min-width: 740px)").matches;
     const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
-
-
 
 
     /* Слайдер "Service" */
@@ -297,6 +294,34 @@ document.addEventListener('DOMContentLoaded', function() {
             items[index].classList.add('faq__item--current');
         });
     });
+});
+
+
+
+/* Шапка */
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const header = document.querySelector('.header');
+    const headerMenu = header.querySelector('.header__menu');
+    const burger = header.querySelector('.header__burger');
+
+    burger.addEventListener('click', () => {
+        header.classList.toggle('header--expanded');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!headerMenu.contains(event.target) && !burger.contains(event.target)) {
+            header.classList.remove('header--expanded');
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            header.classList.remove('header--expanded');
+        }
+    });
+
 });
 
 
