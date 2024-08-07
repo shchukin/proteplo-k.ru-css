@@ -71,7 +71,7 @@
 
 
 .callback--in-popup {
-
+    margin-top: 0;
 }
     .callback--in-popup .callback__wrap {
         border-radius: 8px;

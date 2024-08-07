@@ -1,4 +1,5 @@
 .about {
+    margin-top: var(--sections-spacing);
     display: grid;
     grid-template-columns: auto 476px;
 }

@@ -37,6 +37,14 @@
                     .savings__highlight {
                         font-weight: inherit;
                         color: var(--primary);
+                        text-decoration: underline;
+                        text-decoration-thickness: 2px;
+                        text-underline-offset: 2px;
+                        transition: text-decoration-color var(--transition-hover);
+                    }
+
+                    .savings__highlight:hover {
+                        text-decoration-color: transparent;
                     }
 
                 .savings__cta {
