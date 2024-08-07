@@ -19,10 +19,10 @@
         }
             .quote__text {
                 max-width: 745px;
-                margin: 0;
+                margin: 0 0 0 -20px;
                 padding: 10px 30px 10px 20px;
-                margin-left: -20px;
                 background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");
+                background-size: 62px 47px;
                 background-repeat: no-repeat;
                 background-position: left top, right bottom;
                 font-weight: 600;
@@ -90,6 +90,7 @@
                     /*padding: 10px 30px 10px 20px;*/
                     /*margin-left: -20px;*/
                     /*background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");*/
+                    background-size: 62px 47px;
                     /*background-repeat: no-repeat;*/
                     /*background-position: left top, right bottom;*/
                     /*font-weight: 600;*/
@@ -128,3 +129,74 @@
                         /*color: #9CCFE9;*/
                     }
 }
+
+
+
+@media (width < 740px) {
+
+    .quote {
+        background-color: var(--primary);
+        background-image: url("../vectors/quote-background-mobile.svg");
+        background-size: 740px 323px;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+    }
+        .quote__wrap {
+
+        }
+            .quote__body {
+                /*position: relative;*/
+                /*margin: 0;*/
+                padding: 40px 16px 280px;
+                /*min-height: 381px;*/
+                background-color: transparent;
+                background-image: none;
+                /*border-radius: 8px;*/
+                /*color: #FFFFFF;*/
+            }
+                .quote__text {
+                    /*max-width: 745px;*/
+                    /*margin: 0;*/
+                    /*padding: 10px 30px 10px 20px;*/
+                    /*margin-left: -20px;*/
+                    /*background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");*/
+                    background-size: 44px 33px;
+                    /*background-repeat: no-repeat;*/
+                    /*background-position: left top, right bottom;*/
+                    /*font-weight: 600;*/
+                    /*font-style: italic;*/
+                    font-size: 24px;
+                    line-height: 29px;
+                }
+                    .quote__text p {
+                        /*margin: 0;*/
+                    }
+
+                .quote__caption {
+                    /*margin-top: 46px;*/
+                }
+                    .quote__photo {
+                        position: absolute;
+                        /*right: 11px;*/
+                        /*bottom: 0;*/
+                        /*vertical-align: top;*/
+                        width: 240px;
+                        height: 256px;
+                    }
+
+                    .quote__name {
+                        /*margin-top: 14px;*/
+                        /*font-weight: 600;*/
+                        /*font-style: normal;*/
+                        /*font-size: 22px;*/
+                        /*line-height: 27px;*/
+                    }
+
+                    .quote__position {
+                        /*margin-top: 6px;*/
+                        /*font-size: 16px;*/
+                        /*line-height: 20px;*/
+                        /*color: #9CCFE9;*/
+                    }
+}
+
