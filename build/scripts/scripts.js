@@ -1,10 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* Слайдер "Guide" */
+    /* Глобальные константы */
 
     const isDesktop = window.matchMedia("(min-width: 740px)").matches;
     const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
 
+
+
+    /* Слайдер "Service" */
+
+    new Swiper('.swiper--service', {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: responsiveSpacing,
+        autoHeight: true,
+
+        navigation: {
+            prevEl: '.service__navigation .swiper-button-prev',
+            nextEl: '.service__navigation .swiper-button-next',
+        },
+
+        breakpoints: {
+            740: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+            }
+        }
+    });
 
 
     /* Слайдер "Team" */
@@ -89,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     /* Слайдер "Feedback" */
 
     new Swiper('.swiper--feedback', {
@@ -103,12 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
     });
-});
 
 
-/* Форма */
 
-document.addEventListener('DOMContentLoaded', () => {
+
+    /* Форма */
 
     /* Уведомления */
 
@@ -127,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* Форма */
+    /* Отправка */
 
     const subscriptionForm = document.querySelector('#subscriptionForm');
     const subscriptionInputs = subscriptionForm.querySelectorAll('.input');
@@ -241,25 +263,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-});
 
 
-/* FAQ */
 
-/* Переписать FAQ */
-//
-// const faqQuestions = document.querySelectorAll('.faq__question');
-//
-// faqQuestions.forEach(question => {
-//     question.addEventListener('click', () => {
-//         const faqItem = question.parentElement;
-//         faqItem.classList.toggle('faq__item--expanded');
-//     });
-// });
-//
+    /* FAQ */
 
+    /* Переписать FAQ */
+    //
+    // const faqQuestions = document.querySelectorAll('.faq__question');
+    //
+    // faqQuestions.forEach(question => {
+    //     question.addEventListener('click', () => {
+    //         const faqItem = question.parentElement;
+    //         faqItem.classList.toggle('faq__item--expanded');
+    //     });
+    // });
+    //
 
-document.addEventListener('DOMContentLoaded', function() {
     const tags = document.querySelectorAll('.faq__tag');
     const items = document.querySelectorAll('.faq__item');
 
@@ -274,6 +294,63 @@ document.addEventListener('DOMContentLoaded', function() {
             items[index].classList.add('faq__item--current');
         });
     });
+
+
+
+    /* Шапка */
+
+    const $header = document.querySelector('.header');
+    const $headerMenu = $header.querySelector('.header__menu');
+    const $headerBurger = $header.querySelector('.header__burger');
+    const $headerLinks = document.querySelectorAll('.header__link');
+
+    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 0;
+    const anchorOffset = isDesktop ? 50 : 24;
+
+
+    /* Расхлопывание бургера */
+
+    $headerBurger.addEventListener('click', () => {
+        $header.classList.toggle('header--expanded');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!$headerMenu.contains(event.target) && !$headerBurger.contains(event.target)) {
+            $header.classList.remove('header--expanded');
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            $header.classList.remove('header--expanded');
+        }
+    });
+
+
+    // Якоря
+
+    $headerLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1); // Get the target ID without the #
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+
+                $header.classList.remove('header--expanded');
+
+                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - headerHeight - anchorOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
 });
 
 
