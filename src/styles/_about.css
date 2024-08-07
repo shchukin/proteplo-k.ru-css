@@ -158,3 +158,109 @@
                 /*border-radius: 50%;*/
             }
 }
+
+
+
+@media (width < 740px) {
+
+    .about {
+        display: block;
+        /*grid-template-columns: auto 476px;*/
+    }
+        .about__body {
+
+        }
+            .about__heading {
+                /*margin-top: 0;*/
+                /*margin-bottom: 0;*/
+                /*font-weight: 800;*/
+                font-size: 19px;
+                line-height: 24px;
+            }
+
+            /* Слово "высококвалифицированными" не влезает */
+            @media (width < 370px) {
+                .about__heading {
+                    font-size: 17px;
+                    line-height: 20px;
+                }
+            }
+
+            @media (width < 340px) {
+                .about__heading {
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+
+            .about__content {
+                margin-top: 24px;
+                padding-right: 0;
+            }
+
+        .about__summary {
+            margin-top: 28px;
+            /*position: relative;*/
+            width: 343px;
+            height: 472px;
+        }
+            .about__stat {
+                /*display: flex;*/
+                /*flex-direction: column;*/
+                /*align-items: center;*/
+                /*justify-content: center;*/
+            }
+                .about__param {
+                    /*font-weight: 800;*/
+                    font-size: 38px;
+                    line-height: 46px;
+                    /*text-align: center;*/
+                    /*color: #0086BF;*/
+                }
+
+                .about__value {
+                    /*margin-top: 6px;*/
+                    font-size: 16px;
+                    line-height: 20px;
+                    /*text-align: center;*/
+                }
+
+            .about__stat--projects {
+                /*position: absolute;*/
+                left: auto;
+                right: 0;
+                top: 0;
+                width: 191px;
+                height: 191px;
+                background-image: url("../vectors/about-mobile.svg");
+                /*background-size: contain;*/
+                /*background-repeat: no-repeat;*/
+                /*background-position: center center;*/
+            }
+
+            .about__stat--power {
+                /*position: absolute;*/
+                left: auto;
+                right: 0;
+                top: 221px;
+                width: 251px;
+                height: 251px;
+                /*background-color: #0086BF;*/
+                /*border-radius: 50%;*/
+                /*color: #FFFFFF;*/
+            }
+                .about__stat--power .about__param {
+                    /*color: inherit;*/
+                }
+
+            .about__stat--experience {
+                /*position: absolute;*/
+                left: 0;
+                top: 106px;
+                width: 155px;
+                height: 155px;
+                /*border: 1px solid #65B6D6;*/
+                /*border-radius: 50%;*/
+            }
+}
+
