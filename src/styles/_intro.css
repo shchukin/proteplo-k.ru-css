@@ -12,8 +12,9 @@
             min-height: 500px;
             background-color: var(--primary);
             background-image: url("../vectors/intro.svg");
+            background-size: 730px 600px;
             background-repeat: no-repeat;
-            background-position: right top;
+            background-position: right -100px top -20px;
             border-radius: 8px;
             color: #FFFFFF;
         }
@@ -100,11 +101,12 @@
                 grid-template-columns: auto 684px;
                 /*gap: 48px;*/
                 padding: 35px 35px 83px 80px;
-                /*min-height: 500px;*/
+                min-height: 600px;
                 /*background-color: var(--primary);*/
                 /*background-image: url("../vectors/intro.svg");*/
+                background-size: 796px 600px;
                 /*background-repeat: no-repeat;*/
-                /*background-position: right top;*/
+                background-position: right top;
                 /*border-radius: 8px;*/
                 /*color: #FFFFFF;*/
             }
