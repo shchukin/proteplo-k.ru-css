@@ -24,6 +24,7 @@
                 }
 
                 .header__logo {
+                    flex-shrink: 0;
                     display: block;
                     width: 237px;
                     height: 34px;
@@ -37,7 +38,7 @@
                 }
 
                 .header__menu {
-
+                    flex-shrink: 0;
                 }
                     .header__nav {
                         display: flex;
@@ -64,8 +65,14 @@
 
 
                 .header__handler {
-
+                    flex-shrink: 0;
                 }
+                    .header__handler.button,
+                    .header__handler .button {
+                        padding: 11px 22px;
+                        font-size: 16px;
+                        line-height: 22px;
+                    }
 
 
 
@@ -139,6 +146,12 @@
                     .header__handler {
 
                     }
+                        .header__handler.button,
+                        .header__handler .button {
+                            padding: 11px 24px;
+                            font-size: 18px;
+                            line-height: 24px;
+                        }
 }
 
 
@@ -162,18 +175,33 @@
                 .header__wrap {
                     /*position: relative;*/
                     /*height: var(--header);*/
-                    /*display: flex;*/
-                    /*align-items: center;*/
-                    /*justify-content: space-between;*/
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
                 }
                     .header__burger {
-                        /*display: none;*/
+                        flex-shrink: 0;
+                        display: flex;
+                        margin-left: calc(-1 * var(--container-padding));
+                        width: calc(var(--container-padding) + 24px + 10px); /* 24px - иконка, 10px - отступ до лого */
+                        height: var(--header);
+                        border: none;
+                        padding: 0;
+                        background-color: transparent;
+                        background-image: url("../vectors/header-burder.svg");
+                        background-size: 24px 24px;
+                        background-repeat: no-repeat;
+                        background-position: var(--container-padding) center;
+                        cursor: pointer;
+                        text-indent: 200%;
+                        white-space: nowrap;
+                        overflow: hidden;
                     }
 
                     .header__logo {
                         /*display: block;*/
-                        /*width: 237px;*/
-                        /*height: 34px;*/
+                        width: 141px;
+                        height: 22px;
                         /*background-image: url("../vectors/logo.svg");*/
                         /*background-size: contain;*/
                         /*background-repeat: no-repeat;*/
@@ -185,7 +213,7 @@
 
                     .header__menu {
                         position: absolute;
-                        left: 0;
+                        left: calc(-1 * var(--container-padding));
                         top: var(--header);
                         background-color: #FFFFFF;
                     }
@@ -196,7 +224,7 @@
                         }
                             .header__link {
                                 /*display: block;*/
-                                padding: 12px 60px 12px 24px;
+                                padding: 12px 60px 12px var(--container-padding);
                                 /*text-decoration: none;*/
                                 /*transition: background-color var(--transition-hover);*/
                                 /*border-radius: 4px;*/
@@ -224,8 +252,31 @@
 
 
                     .header__handler {
-
+                        margin-left: auto;
                     }
+                        .header__handler.button,
+                        .header__handler .button {
+                            padding: 5px 12px;
+                            font-size: 15px;
+                            line-height: 18px;
+                        }
+
+                        @media (width < 380px) {
+                            .header__handler.button,
+                            .header__handler .button {
+                                font-size: 14px;
+                            }
+                        }
+
+                        @media (width < 370px) {
+                            .header__handler.button:first-child,
+                            .header__handler .button:first-child {
+                                text-transform: uppercase;
+                            }
+                                .header__request {
+                                    display: none;
+                                }
+                        }
 }
 
 
