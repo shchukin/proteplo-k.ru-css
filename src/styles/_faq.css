@@ -1,5 +1,5 @@
 .faq {
-    margin-top: 120px;
+
 }
     .faq__heading {
         margin-top: 0;
@@ -101,7 +101,7 @@
 @media (1700px <= width) {
 
     .faq {
-        margin-top: 140px;
+
     }
         .faq__body {
             grid-template-columns: 560px auto;
@@ -112,7 +112,7 @@
 @media (width < 740px) {
 
     .faq {
-        margin-top: 80px;
+
     }
         .faq__body {
             margin-top: 40px;

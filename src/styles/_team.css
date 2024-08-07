@@ -1,5 +1,5 @@
 .team {
-    margin-top: 120px;
+
 }
     .team__heading {
         margin-top: 0;
@@ -29,7 +29,7 @@
 @media (1700px <= width) {
 
     .team {
-        margin-top: 140px;
+
     }
         .team__heading {
             max-width: 940px;
@@ -50,7 +50,7 @@
 @media (width < 740px) {
 
     .team {
-        margin-top: 80px;
+
     }
         .team__heading {
             /*margin-top: 0;*/

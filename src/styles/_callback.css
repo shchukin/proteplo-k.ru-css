@@ -1,5 +1,5 @@
 .callback {
-    margin-top: 120px;
+
 }
     .callback__wrap {
         padding: 60px 40px;
@@ -71,7 +71,7 @@
 
 
 .callback--in-popup {
-    margin-top: 0;
+
 }
     .callback--in-popup .callback__wrap {
         border-radius: 8px;
@@ -82,7 +82,7 @@
 @media (1700px <= width) {
 
     .callback {
-        /*margin-top: 120px;*/
+
     }
         .callback__wrap {
             /*padding: 60px 40px;*/
@@ -161,7 +161,6 @@
 @media (width < 740px) {
 
     .callback {
-        margin-top: 0;
         padding-top: 43px;
         padding-bottom: 116px;
         background-color: var(--primary);
