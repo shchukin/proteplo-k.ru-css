@@ -267,16 +267,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* FAQ */
-
-    /* Переписать FAQ */
-// Select all original FAQ questions
     const faq2Questions = document.querySelectorAll('.faq2__question');
 
-// Create a new container for the copied elements
+
+    /* Дублируем хендлеры для десктопов */
+
     const faq2DesktopTabs = document.createElement('div');
     faq2DesktopTabs.classList.add('faq2__desktop-tabs');
 
-// Copy all faq2__question elements, modify them, and append to the new container
     faq2Questions.forEach(question => {
         const questionCopy = question.cloneNode(true);
         questionCopy.classList.remove('faq2__question');
@@ -284,62 +282,80 @@ document.addEventListener('DOMContentLoaded', () => {
         faq2DesktopTabs.appendChild(questionCopy);
     });
 
-// Insert the new container before the original .faq2__list
     const faq2List = document.querySelector('.faq2__list');
     faq2List.parentElement.insertBefore(faq2DesktopTabs, faq2List);
 
-// Add event listeners to the copied elements
+    //
     const faq2DesktopCopies = document.querySelectorAll('.faq2__desktop-question-copy');
+
+
+
+    /* Расхлопывание */
+
+    function handleFaqToggle(index) {
+        const faq2Item = faq2Questions[index].parentElement;
+        const correspondingCopy = faq2DesktopCopies[index];
+
+        // Toggle the expanded state
+        const isExpanded = faq2Item.classList.toggle('faq2__item--expanded');
+
+        if (isExpanded) {
+
+            faq2Questions.forEach((q, i) => {
+                if (i !== index) {
+                    q.parentElement.classList.remove('faq2__item--expanded');
+                }
+            });
+
+            faq2DesktopCopies.forEach((c, i) => {
+                if (i !== index) {
+                    c.classList.remove('faq2__desktop-question-copy--current');
+                }
+            });
+
+            // Expand the clicked item and its corresponding copy
+            correspondingCopy.classList.add('faq2__desktop-question-copy--current');
+        } else {
+            // Collapse the clicked item and its corresponding copy
+            correspondingCopy.classList.remove('faq2__desktop-question-copy--current');
+        }
+    }
+
+    faq2Questions.forEach((question, index) => {
+        question.addEventListener('click', () => {
+            handleFaqToggle(index);
+        });
+    });
 
     faq2DesktopCopies.forEach((copy, index) => {
         copy.addEventListener('click', () => {
-            // Close all other expanded items
-            faq2Questions.forEach(q => {
-                const faq2Item = q.parentElement;
-                faq2Item.classList.remove('faq2__item--expanded');
-            });
-
-            // Expand the corresponding original item
-            const correspondingItem = faq2Questions[index].parentElement;
-            correspondingItem.classList.add('faq2__item--expanded');
-        });
-    });
-
-// Add event listeners to the original questions
-    faq2Questions.forEach(question => {
-        question.addEventListener('click', () => {
-            // Close all other expanded items
-            faq2Questions.forEach(q => {
-                const faq2Item = q.parentElement;
-                faq2Item.classList.remove('faq2__item--expanded');
-            });
-
-            // Toggle the current item
-            const faq2Item = question.parentElement;
-            faq2Item.classList.toggle('faq2__item--expanded');
+            handleFaqToggle(index);
         });
     });
 
 
-
-
-
-
-
-    const tags = document.querySelectorAll('.faq__tag');
-    const items = document.querySelectorAll('.faq__item');
-
-    tags.forEach((tab, index) => {
-        tab.addEventListener('click', function() {
-
-            tags.forEach(t => t.classList.remove('faq__tag--current'));
-            items.forEach(i => i.classList.remove('faq__item--current'));
-
-            // Добавляем активный класс текущему табу и показываем соответствующий блок
-            tab.classList.add('faq__tag--current');
-            items[index].classList.add('faq__item--current');
-        });
-    });
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    // const tags = document.querySelectorAll('.faq__tag');
+    // const items = document.querySelectorAll('.faq__item');
+    //
+    // tags.forEach((tab, index) => {
+    //     tab.addEventListener('click', function() {
+    //
+    //         tags.forEach(t => t.classList.remove('faq__tag--current'));
+    //         items.forEach(i => i.classList.remove('faq__item--current'));
+    //
+    //         // Добавляем активный класс текущему табу и показываем соответствующий блок
+    //         tab.classList.add('faq__tag--current');
+    //         items[index].classList.add('faq__item--current');
+    //     });
+    // });
 
 
 
