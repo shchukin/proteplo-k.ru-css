@@ -285,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const faqList = document.querySelector('.faq__list');
     faqList.parentElement.insertBefore(faqDesktopTabs, faqList);
 
-    //
     const faqDesktopCopies = document.querySelectorAll('.faq__desktop-question-copy');
 
 
@@ -333,29 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    // const tags = document.querySelectorAll('.faq__tag');
-    // const items = document.querySelectorAll('.faq__item');
-    //
-    // tags.forEach((tab, index) => {
-    //     tab.addEventListener('click', function() {
-    //
-    //         tags.forEach(t => t.classList.remove('faq__tag--current'));
-    //         items.forEach(i => i.classList.remove('faq__item--current'));
-    //
-    //         // Добавляем активный класс текущему табу и показываем соответствующий блок
-    //         tab.classList.add('faq__tag--current');
-    //         items[index].classList.add('faq__item--current');
-    //     });
-    // });
 
 
 
