@@ -75,8 +75,7 @@
                         text-transform: lowercase; /* Из-за header__request и замеса на < 370px (смотри конец файла) */
                     }
 
-                    .header__handler.button:first-letter,
-                    .header__handler .button:first-child {
+                    .header__handler.button::first-letter {
                         text-transform: uppercase;
                     }
 
