@@ -188,6 +188,7 @@ gulp.task('styles', function () {
         }))
         .pipe(postcss(processors))
         .pipe(base64({
+            maxImageSize: 10 * 1024 * 1024, // Set the limit to 10 MB
             // Allow files from /vectors/ only
             exclude: ['/sprite/', '/images/']
         }))
