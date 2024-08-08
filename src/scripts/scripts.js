@@ -436,17 +436,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    /* Модалка */
+
+    (function ($) {
+
+        $('.mfp-handler').magnificPopup({
+            type: 'inline',
+            removalDelay: 200,
+            showCloseBtn: false,
+            callbacks: {
+                open: function() {
+                    // Use jQuery to select the content of the currently opened modal
+                    const modalContent = $('.mfp-content');
+                    const textareas = modalContent.find('.input--expandable .input__widget');
+
+                    textareas.each(function() {
+                        expandTextarea(this);
+                    });
+                }
+            }
+        });
+
+    })(jQuery);
+
 });
 
-
-/* Модалка */
-
-(function ($) {
-
-    $('.mfp-handler').magnificPopup({
-        type: 'inline',
-        removalDelay: 200,
-        showCloseBtn: false
-    });
-
-})(jQuery);
