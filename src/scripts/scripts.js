@@ -269,16 +269,62 @@ document.addEventListener('DOMContentLoaded', () => {
     /* FAQ */
 
     /* Переписать FAQ */
-    //
-    // const faqQuestions = document.querySelectorAll('.faq__question');
-    //
-    // faqQuestions.forEach(question => {
-    //     question.addEventListener('click', () => {
-    //         const faqItem = question.parentElement;
-    //         faqItem.classList.toggle('faq__item--expanded');
-    //     });
-    // });
-    //
+// Select all original FAQ questions
+    const faq2Questions = document.querySelectorAll('.faq2__question');
+
+// Create a new container for the copied elements
+    const faq2DesktopTabs = document.createElement('div');
+    faq2DesktopTabs.classList.add('faq2__desktop-tabs');
+
+// Copy all faq2__question elements, modify them, and append to the new container
+    faq2Questions.forEach(question => {
+        const questionCopy = question.cloneNode(true);
+        questionCopy.classList.remove('faq2__question');
+        questionCopy.classList.add('faq2__desktop-question-copy');
+        faq2DesktopTabs.appendChild(questionCopy);
+    });
+
+// Insert the new container before the original .faq2__list
+    const faq2List = document.querySelector('.faq2__list');
+    faq2List.parentElement.insertBefore(faq2DesktopTabs, faq2List);
+
+// Add event listeners to the copied elements
+    const faq2DesktopCopies = document.querySelectorAll('.faq2__desktop-question-copy');
+
+    faq2DesktopCopies.forEach((copy, index) => {
+        copy.addEventListener('click', () => {
+            // Close all other expanded items
+            faq2Questions.forEach(q => {
+                const faq2Item = q.parentElement;
+                faq2Item.classList.remove('faq2__item--expanded');
+            });
+
+            // Expand the corresponding original item
+            const correspondingItem = faq2Questions[index].parentElement;
+            correspondingItem.classList.add('faq2__item--expanded');
+        });
+    });
+
+// Add event listeners to the original questions
+    faq2Questions.forEach(question => {
+        question.addEventListener('click', () => {
+            // Close all other expanded items
+            faq2Questions.forEach(q => {
+                const faq2Item = q.parentElement;
+                faq2Item.classList.remove('faq2__item--expanded');
+            });
+
+            // Toggle the current item
+            const faq2Item = question.parentElement;
+            faq2Item.classList.toggle('faq2__item--expanded');
+        });
+    });
+
+
+
+
+
+
 
     const tags = document.querySelectorAll('.faq__tag');
     const items = document.querySelectorAll('.faq__item');
@@ -294,6 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
             items[index].classList.add('faq__item--current');
         });
     });
+
+
 
 
 

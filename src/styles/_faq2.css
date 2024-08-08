@@ -1,0 +1,27 @@
+.faq2 {
+
+}
+    .faq2__heading {
+
+    }
+
+    .faq2__body {
+
+    }
+        .faq2__list {
+
+        }
+            .faq2__item {
+
+            }
+                .faq2__tag {
+
+                }
+
+                .faq2__answer {
+                    display: none;
+                }
+
+                .faq2__item--expanded .faq2__answer {
+                    display: block;
+                }
