@@ -261,10 +261,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* FAQ */
+
     const faqQuestions = document.querySelectorAll('.faq__question');
 
 
     /* Дублируем хендлеры для десктопов */
+
+    // Здесь большая сложность с тем, что на смартфонах требуется аккордеон, а не десктопах табы.
+    // А это принципиально разная вложенность тегов. К сожаление вёрсткой не придумал как это разрулить.
+
+    // Базовой делаем версию аккордеона -- она проще. Она же и в HTML. А для версии с табами,
+    // дублируем кнопки, но уже в другом месте в DOM-дереве. Дальше стили показывают либо одну пачку
+    // кнопок, либо другую.
 
     const faqDesktopTabs = document.createElement('div');
     faqDesktopTabs.classList.add('faq__desktop-tabs');
@@ -367,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
 
-            const targetId = this.getAttribute('href').substring(1); // Get the target ID without the #
+            const targetId = this.getAttribute('href').substring(1); // target ID without без '#'
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
@@ -390,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Инпуты */
 
-    // Select placeholder
+    // placeholder у селекта (см. markups/_input.html)
     function selectPlaceholder(element) {
         if (element.value === 'placeholder') {
             element.parentElement.classList.add('input--placeholder-is-chosen');
@@ -406,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Expanding textarea
+    // Expanding textarea -- авторасхлопывание при печати (см. markups/_input.html)
     function expandTextarea(element) {
         element.style.height = 'auto';
         element.style.height = (element.scrollHeight + 2 * parseInt(getComputedStyle(element).borderWidth, 10)) + 'px';
@@ -419,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Ошибки
+    // Вывод ошибок
     document.querySelectorAll('.input__widget').forEach(input => {
         input.addEventListener('focus', () => {
             let parent = input.closest('.input');
@@ -436,7 +444,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    /* Модалка */
+    /* Модалка -- здесь кусок кода на jQuery посколько пока не могу
+       найти хорошую замену magnific popup */
 
     (function ($) {
 
@@ -445,14 +454,16 @@ document.addEventListener('DOMContentLoaded', () => {
             removalDelay: 200,
             showCloseBtn: false,
             callbacks: {
+                // Перезапускаем обсчёт expanding textareas для инстансов внутри откртой модалки
                 open: function() {
-                    // Use jQuery to select the content of the currently opened modal
-                    const modalContent = $('.mfp-content');
-                    const textareas = modalContent.find('.input--expandable .input__widget');
+                    const instance = $.magnificPopup.instance;
+                        const modalContent = instance.content[0];
+                        const textareas = $(modalContent).find('.input--expandable .input__widget');
 
-                    textareas.each(function() {
-                        expandTextarea(this);
-                    });
+                        textareas.each(function() {
+                            expandTextarea(this);
+                        });
+
                 }
             }
         });
