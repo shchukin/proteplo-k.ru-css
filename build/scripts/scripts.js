@@ -267,33 +267,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* FAQ */
+    const faqQuestions = document.querySelectorAll('.faq__question');
 
-    /* Переписать FAQ */
-    //
-    // const faqQuestions = document.querySelectorAll('.faq__question');
-    //
-    // faqQuestions.forEach(question => {
-    //     question.addEventListener('click', () => {
-    //         const faqItem = question.parentElement;
-    //         faqItem.classList.toggle('faq__item--expanded');
-    //     });
-    // });
-    //
 
-    const tags = document.querySelectorAll('.faq__tag');
-    const items = document.querySelectorAll('.faq__item');
+    /* Дублируем хендлеры для десктопов */
 
-    tags.forEach((tab, index) => {
-        tab.addEventListener('click', function() {
+    const faqDesktopTabs = document.createElement('div');
+    faqDesktopTabs.classList.add('faq__desktop-tabs');
 
-            tags.forEach(t => t.classList.remove('faq__tag--current'));
-            items.forEach(i => i.classList.remove('faq__item--current'));
+    faqQuestions.forEach(question => {
+        const questionCopy = question.cloneNode(true);
+        questionCopy.classList.remove('faq__question');
+        questionCopy.classList.add('faq__desktop-question-copy');
+        faqDesktopTabs.appendChild(questionCopy);
+    });
 
-            // Добавляем активный класс текущему табу и показываем соответствующий блок
-            tab.classList.add('faq__tag--current');
-            items[index].classList.add('faq__item--current');
+    const faqList = document.querySelector('.faq__list');
+    faqList.parentElement.insertBefore(faqDesktopTabs, faqList);
+
+    const faqDesktopCopies = document.querySelectorAll('.faq__desktop-question-copy');
+
+
+
+    /* Расхлопывание */
+
+    function handleFaqToggle(index) {
+        const faqItem = faqQuestions[index].parentElement;
+        const correspondingCopy = faqDesktopCopies[index];
+
+        const isExpanded = faqItem.classList.toggle('faq__item--expanded');
+
+        if (isExpanded) {
+
+            faqQuestions.forEach((q, i) => {
+                if (i !== index) {
+                    q.parentElement.classList.remove('faq__item--expanded');
+                }
+            });
+
+            faqDesktopCopies.forEach((c, i) => {
+                if (i !== index) {
+                    c.classList.remove('faq__desktop-question-copy--current');
+                }
+            });
+
+            correspondingCopy.classList.add('faq__desktop-question-copy--current');
+        } else {
+            correspondingCopy.classList.remove('faq__desktop-question-copy--current');
+        }
+    }
+
+    faqQuestions.forEach((question, index) => {
+        question.addEventListener('click', () => {
+            handleFaqToggle(index);
         });
     });
+
+    faqDesktopCopies.forEach((copy, index) => {
+        copy.addEventListener('click', () => {
+            if (!copy.classList.contains('faq__desktop-question-copy--current')) { // на десктопах не закрываем текущий айтем по повторному клику
+                handleFaqToggle(index);
+            }
+        });
+    });
+
+    /* При первом открытии страницы расхлопываем первый элемент */
+    handleFaqToggle(0);
+
 
 
 
