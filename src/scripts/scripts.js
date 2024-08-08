@@ -267,67 +267,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* FAQ */
-    const faq2Questions = document.querySelectorAll('.faq2__question');
+    const faqQuestions = document.querySelectorAll('.faq__question');
 
 
     /* Дублируем хендлеры для десктопов */
 
-    const faq2DesktopTabs = document.createElement('div');
-    faq2DesktopTabs.classList.add('faq2__desktop-tabs');
+    const faqDesktopTabs = document.createElement('div');
+    faqDesktopTabs.classList.add('faq__desktop-tabs');
 
-    faq2Questions.forEach(question => {
+    faqQuestions.forEach(question => {
         const questionCopy = question.cloneNode(true);
-        questionCopy.classList.remove('faq2__question');
-        questionCopy.classList.add('faq2__desktop-question-copy');
-        faq2DesktopTabs.appendChild(questionCopy);
+        questionCopy.classList.remove('faq__question');
+        questionCopy.classList.add('faq__desktop-question-copy');
+        faqDesktopTabs.appendChild(questionCopy);
     });
 
-    const faq2List = document.querySelector('.faq2__list');
-    faq2List.parentElement.insertBefore(faq2DesktopTabs, faq2List);
+    const faqList = document.querySelector('.faq__list');
+    faqList.parentElement.insertBefore(faqDesktopTabs, faqList);
 
     //
-    const faq2DesktopCopies = document.querySelectorAll('.faq2__desktop-question-copy');
+    const faqDesktopCopies = document.querySelectorAll('.faq__desktop-question-copy');
 
 
 
     /* Расхлопывание */
 
     function handleFaqToggle(index) {
-        const faq2Item = faq2Questions[index].parentElement;
-        const correspondingCopy = faq2DesktopCopies[index];
+        const faqItem = faqQuestions[index].parentElement;
+        const correspondingCopy = faqDesktopCopies[index];
 
         // Toggle the expanded state
-        const isExpanded = faq2Item.classList.toggle('faq2__item--expanded');
+        const isExpanded = faqItem.classList.toggle('faq__item--expanded');
 
         if (isExpanded) {
 
-            faq2Questions.forEach((q, i) => {
+            faqQuestions.forEach((q, i) => {
                 if (i !== index) {
-                    q.parentElement.classList.remove('faq2__item--expanded');
+                    q.parentElement.classList.remove('faq__item--expanded');
                 }
             });
 
-            faq2DesktopCopies.forEach((c, i) => {
+            faqDesktopCopies.forEach((c, i) => {
                 if (i !== index) {
-                    c.classList.remove('faq2__desktop-question-copy--current');
+                    c.classList.remove('faq__desktop-question-copy--current');
                 }
             });
 
             // Expand the clicked item and its corresponding copy
-            correspondingCopy.classList.add('faq2__desktop-question-copy--current');
+            correspondingCopy.classList.add('faq__desktop-question-copy--current');
         } else {
             // Collapse the clicked item and its corresponding copy
-            correspondingCopy.classList.remove('faq2__desktop-question-copy--current');
+            correspondingCopy.classList.remove('faq__desktop-question-copy--current');
         }
     }
 
-    faq2Questions.forEach((question, index) => {
+    faqQuestions.forEach((question, index) => {
         question.addEventListener('click', () => {
             handleFaqToggle(index);
         });
     });
 
-    faq2DesktopCopies.forEach((copy, index) => {
+    faqDesktopCopies.forEach((copy, index) => {
         copy.addEventListener('click', () => {
             handleFaqToggle(index);
         });
