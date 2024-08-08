@@ -295,7 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const faqItem = faqQuestions[index].parentElement;
         const correspondingCopy = faqDesktopCopies[index];
 
-        // Toggle the expanded state
         const isExpanded = faqItem.classList.toggle('faq__item--expanded');
 
         if (isExpanded) {
@@ -312,10 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Expand the clicked item and its corresponding copy
             correspondingCopy.classList.add('faq__desktop-question-copy--current');
         } else {
-            // Collapse the clicked item and its corresponding copy
             correspondingCopy.classList.remove('faq__desktop-question-copy--current');
         }
     }
@@ -328,12 +325,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     faqDesktopCopies.forEach((copy, index) => {
         copy.addEventListener('click', () => {
-            handleFaqToggle(index);
+            if (!copy.classList.contains('faq__desktop-question-copy--current')) { // на десктопах не закрываем текущий айтем по повторному клику
+                handleFaqToggle(index);
+            }
         });
     });
-
-
-
 
 
 
