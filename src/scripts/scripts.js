@@ -385,6 +385,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+
+
+    /* Инпуты */
+
+    // Select placeholder
+    function selectPlaceholder(element) {
+        if (element.value === 'placeholder') {
+            element.parentElement.classList.add('input--placeholder-is-chosen');
+        } else {
+            element.parentElement.classList.remove('input--placeholder-is-chosen');
+        }
+    }
+
+    document.querySelectorAll('select.input__widget').forEach(select => {
+        selectPlaceholder(select);
+        select.addEventListener('change', () => {
+            selectPlaceholder(select);
+        });
+    });
+
+    // Expanding textarea
+    function expandTextarea(element) {
+        element.style.height = 'auto';
+        element.style.height = (element.scrollHeight + 2 * parseInt(getComputedStyle(element).borderWidth, 10)) + 'px';
+    }
+
+    document.querySelectorAll('.input--expandable .input__widget').forEach(textarea => {
+        expandTextarea(textarea);
+        textarea.addEventListener('input', () => {
+            expandTextarea(textarea);
+        });
+    });
+
+    // Ошибки
+    document.querySelectorAll('.input__widget').forEach(input => {
+        input.addEventListener('focus', () => {
+            let parent = input.closest('.input');
+            if (parent) {
+                parent.classList.remove('input--error');
+                let siblings = parent.nextElementSibling;
+                while (siblings && siblings.classList.contains('helper--error')) {
+                    siblings.remove();
+                    siblings = parent.nextElementSibling;
+                }
+            }
+        });
+    });
+
+
+
 });
 
 
@@ -396,46 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
         type: 'inline',
         removalDelay: 200,
         showCloseBtn: false
-    });
-
-})(jQuery);
-
-
-/* Инпуты */
-
-(function ($) {
-
-    /* Select placeholder */
-    function selectPlaceholder($element) {
-        if ($element.val() === 'placeholder') {
-            $element.parent('.input').addClass('input--placeholder-is-chosen');
-        } else {
-            $element.parent('.input').removeClass('input--placeholder-is-chosen');
-        }
-    }
-
-    $('select.input__widget').each(function () {
-        selectPlaceholder($(this));
-    }).on('change', function () {
-        selectPlaceholder($(this));
-    });
-
-    /* Expanding textarea */
-    function expandTextarea($element) {
-        $element.css('height', 'auto');
-        $element.css('height', ($element[0].scrollHeight + 2 * parseInt($element.css('border-width'), 10)) + 'px');
-    }
-
-    $('.input--expandable .input__widget').each(function () {
-        expandTextarea($(this));
-    }).on('input', function () {
-        expandTextarea($(this));
-    });
-
-    /* Error field */
-    $('.input__widget').on('focus', function () {
-        $(this).parents('.input').removeClass('input--error');
-        $(this).parents('.input').nextUntil(':not(.helper--error)').remove();
     });
 
 })(jQuery);
