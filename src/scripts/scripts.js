@@ -331,6 +331,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* При первом открытии страницы расхлопываем первый элемент */
+    handleFaqToggle(0);
+
+
 
 
     /* Шапка */
