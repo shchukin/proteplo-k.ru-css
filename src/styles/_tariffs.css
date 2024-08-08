@@ -11,7 +11,7 @@
             margin-top: 0;
             margin-bottom: 0;
             position: sticky;
-            top: calc(var(--header) + 40px);
+            top: calc(var(--header) + 50px);
         }
 
     .tariffs__body {
