@@ -395,6 +395,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    /* Анимация цифр в секции about */
+    const aboutCounter1 = {
+        reference: document.querySelector('.about__counter-1'),
+        value: document.querySelector('.about__counter-1').textContent
+    };
+
+    const aboutCounter2 = {
+        reference: document.querySelector('.about__counter-2'),
+        value: document.querySelector('.about__counter-2').textContent
+    };
+
+    const aboutCounter3 = {
+        reference: document.querySelector('.about__counter-3'),
+        value: document.querySelector('.about__counter-3').textContent
+    };
+
+    new CountUp(aboutCounter1.reference, 0, aboutCounter1.value).start()
+    new CountUp(aboutCounter2.reference, 0, aboutCounter2.value).start()
+    new CountUp(aboutCounter3.reference, 0, aboutCounter3.value).start()
+
+
 
     /* Инпуты */
 
