@@ -72,6 +72,7 @@
 
 .callback--in-popup {
     margin-top: 0;
+    width: 1200px;
 }
     .callback--in-popup .callback__wrap {
         border-radius: 8px;
@@ -149,7 +150,7 @@
 
 
     .callback--in-popup {
-
+        width: 1400px;
     }
         .callback--in-popup .callback__wrap {
 
@@ -232,6 +233,10 @@
 
     .callback--in-popup {
         border-radius: 8px;
+        width: 100%;
+        max-width: 366px;
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
     }
         .callback--in-popup .callback__wrap {
 

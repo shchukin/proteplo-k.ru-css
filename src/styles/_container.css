@@ -1,14 +1,16 @@
 .container {
-    width: 1200px;
+    width: calc(1200px + 2 * var(--container-padding));
     margin-left: auto;
     margin-right: auto;
+    border-left: var(--container-padding) solid transparent;
+    border-right: var(--container-padding) solid transparent;
 }
 
 
 @media (1700px <= width) {
 
     .container {
-        width: 1600px;
+        width: calc(1600px + 2 * var(--container-padding));
     }
 }
 
@@ -18,7 +20,5 @@
     .container {
         width: auto;
         max-width: 414px;
-        border-left: var(--container-padding) solid transparent;
-        border-right: var(--container-padding) solid transparent;
     }
 }
