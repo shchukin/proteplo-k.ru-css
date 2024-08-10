@@ -1,6 +1,27 @@
 .person {
 
 }
+
+@media (740px <= width) {
+
+    .person.fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1200ms var(--ease-out-quint),
+        transform 1200ms var(--ease-out-quint);
+    }
+
+    .person.fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .swiper-slide:nth-child(1) .person {  }
+    .swiper-slide:nth-child(2) .person { transition-delay: 100ms; }
+    .swiper-slide:nth-child(3) .person { transition-delay: 200ms; }
+    .swiper-slide:nth-child(4) .person { transition-delay: 300ms; }
+}
+
     .person__preview {
         background-color: #B4E0F2; /* Фон под картинкой тянется */
         border-radius: 6px;

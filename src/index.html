@@ -42,6 +42,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/style.css">
 
+        <!-- Fade in анимация при скроллировании
+            Этот скрипт критически важен и запускать его надо прям сразу.
+            Если что-то пошло бы не так, что элементы бы застряли в своем
+            состоянии перед анимацией (невидимые, смещённые вниз),
+            типа такого:
+            .person.fade-in {
+                opacity: 0;
+                transform: translateY(40px);
+                ...
+           }
+        -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const elements = document.querySelectorAll('.fade-in');
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                        }
+                    });
+                }, { threshold: 0.3 }); // Trigger when 30% of the element is visible
+                elements.forEach(element => observer.observe(element));
+            });
+        </script>
+
     </head>
     <body>
 
@@ -384,8 +409,8 @@
                 <div class="swiper swiper--team">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-a@2x.jpg 2x"
                                          src="temp/team/person-a@1x.jpg"
@@ -409,8 +434,8 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-b@2x.jpg 2x"
                                          src="temp/team/person-b@1x.jpg"
@@ -434,8 +459,8 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-c@2x.jpg 2x"
                                          src="temp/team/person-c@1x.jpg"
@@ -459,8 +484,8 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-d@2x.jpg 2x"
                                          src="temp/team/person-d@1x.jpg"
@@ -1431,7 +1456,6 @@
                 </button>
             </div>
         </div>
-
 
 
         <script src="vendors/jquery/jquery-3.7.1.min.js"></script>
