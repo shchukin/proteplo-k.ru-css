@@ -62,7 +62,7 @@
                             entry.target.classList.add('show');
                         }
                     });
-                }, { threshold: 0.3 }); // Trigger when 30% of the element is visible
+                }, { threshold: 0.3 }); // порог, когда 30% элемента видимо
                 elements.forEach(element => observer.observe(element));
             });
         </script>
