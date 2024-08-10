@@ -40,7 +40,7 @@
 
         <!-- assets -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles/style.css?1723262477">
+        <link rel="stylesheet" href="styles/style.css?1723268330">
 
         <!-- Fade in анимация при скроллировании
             Этот скрипт критически важен и запускать его надо прям сразу.
@@ -62,13 +62,15 @@
                             entry.target.classList.add('show');
                         }
                     });
-                }, { threshold: 0.3 }); // Trigger when 30% of the element is visible
+                }, { threshold: 0.3 }); // порог, когда 30% элемента видимо
                 elements.forEach(element => observer.observe(element));
             });
         </script>
 
     </head>
     <body>
+
+
 
         <!--[if IE]>
             <div class="browser">
@@ -178,15 +180,15 @@
             </div>
             <div class="about__summary">
                 <div class="about__stat about__stat--projects">
-                    <div class="about__param">400+</div>
+                    <div class="about__param"><span class="about__counter-1">400</span>+</div>
                     <div class="about__value">реализованных<br> проектов</div>
                 </div>
                 <div class="about__stat about__stat--power">
-                    <div class="about__param">до 98 МВт</div>
+                    <div class="about__param">до <span class="about__counter-2">98</span> МВт</div>
                     <div class="about__value">Единичной мощности</div>
                 </div>
                 <div class="about__stat about__stat--experience">
-                    <div class="about__param">20+</div>
+                    <div class="about__param"><span class="about__counter-3">20</span>+</div>
                     <div class="about__value">лет опыта</div>
                 </div>
             </div>
@@ -1458,10 +1460,14 @@
         </div>
 
 
+        <!-- jQuery dependant -->
         <script src="vendors/jquery/jquery-3.7.1.min.js"></script>
         <script src="vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Vanilla JS -->
         <script src="vendors/swiper/swiper-bundle.min.js"></script>
-        <script src="scripts/scripts.js?1723262477"></script>
+        <script src="vendors/countup/count-1.8.2.min.js"></script>
+        <script src="scripts/scripts.js?1723268330"></script>
 
     </body>
 </html>
