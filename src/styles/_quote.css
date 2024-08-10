@@ -10,13 +10,24 @@
             padding: 44px 40px 48px;
             min-height: 381px;
             background-color: var(--primary);
-            background-image: url("../vectors/quote-background.svg");
-            background-size: 701px 450px;
-            background-repeat: no-repeat;
-            background-position: right -157px top;
             border-radius: 8px;
+            overflow: hidden;
             color: #FFFFFF;
         }
+            /* фон вытаскиваем в отдельный слой, чтобы можно было анимировать */
+            .quote__body::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url("../vectors/quote-background.svg");
+                background-size: 701px 450px;
+                background-repeat: no-repeat;
+                background-position: right -157px top;
+            }
+
             .quote__text {
                 max-width: 760px;
                 margin: 0 0 0 -10px;
@@ -63,6 +74,39 @@
 
 
 
+@media (740px <= width) {
+
+    /* фон */
+    .quote.fade-in .quote__body::before {
+        opacity: 0;
+        transform: translateX(80px);
+        transition: opacity 2000ms var(--ease-out-quint),
+                    transform 1200ms var(--ease-out-quint);
+    }
+
+    .quote.fade-in.show .quote__body::before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+
+    /* фото */
+    .quote.fade-in .quote__photo {
+        opacity: 0;
+        transform: translateX(140px);
+        transition: opacity 1600ms var(--ease-out-quint),
+                    transform 1600ms var(--ease-out-quint);
+        transition-delay: 300ms; /* фото выводится с задержкой (после фона) */
+    }
+
+    .quote.fade-in.show .quote__photo {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
 @media (1700px <= width) {
 
     .quote {
@@ -77,13 +121,16 @@
                 padding: 44px 40px 93px;
                 min-height: 450px;
                 /*background-color: var(--primary);*/
-                /*background-image: url("../vectors/quote-background.svg");*/
-                /*background-size: 701px 450px;*/
-                /*background-repeat: no-repeat;*/
-                background-position: right top;
                 /*border-radius: 8px;*/
                 /*color: #FFFFFF;*/
             }
+                .quote__body::before {
+                    /*background-image: url("../vectors/quote-background.svg");*/
+                    /*background-size: 701px 450px;*/
+                    /*background-repeat: no-repeat;*/
+                    background-position: right top;
+                }
+
                 .quote__text {
                     max-width: 940px;
                     margin: 0 0 0 -10px;
@@ -153,7 +200,12 @@
                 background-image: none;
                 /*border-radius: 8px;*/
                 /*color: #FFFFFF;*/
+                overflow: visible;
             }
+                .quote__body::before {
+                    display: none;
+                }
+
                 .quote__text {
                     /*max-width: 745px;*/
                     /*margin: 0;*/
