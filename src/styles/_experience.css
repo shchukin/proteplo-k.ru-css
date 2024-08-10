@@ -15,16 +15,13 @@
 
     .experience__partners {
         margin-top: 60px;
+        position: relative;
     }
         .experience__partners-navigation {
-
-        }
-
-        @media (740px <= width) {
-
-            .experience__partners-navigation {
-                display: none;
-            }
+            position: absolute;
+            right: 0;
+            bottom: 100%;
+            margin-bottom: 69px;
         }
 
     .experience__solutions-heading {
@@ -124,7 +121,8 @@
              margin-top: 40px;
         }
             .experience__partners-navigation {
-
+                position: static;
+                margin: 0;
             }
 
         .experience__solutions-heading {
