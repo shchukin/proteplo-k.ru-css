@@ -4,6 +4,30 @@
     border-radius: 8px; /* обрезаем уголки сразу у двух слоёв */
     overflow: hidden;
 }
+
+
+@media (740px <= width) {
+
+    .partner.fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1200ms var(--ease-out-quint),
+        transform 1200ms var(--ease-out-quint);
+    }
+
+    .partner.fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .swiper-slide:nth-child(1) .partner {  }
+    .swiper-slide:nth-child(2) .partner { transition-delay: 100ms; }
+    .swiper-slide:nth-child(3) .partner { transition-delay: 200ms; }
+    .swiper-slide:nth-child(4) .partner { transition-delay: 300ms; }
+}
+
+
+
     .partner__logo-wrap {
         display: flex;
         align-items: center;
