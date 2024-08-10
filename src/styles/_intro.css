@@ -17,6 +17,7 @@
             background-position: right -100px top -20px;
             border-radius: 8px;
             color: #FFFFFF;
+            overflow: hidden; /* Обрезаем анимации */
         }
             .intro__content {
                 padding-top: 14px;
@@ -84,6 +85,28 @@
                     .intro__photo--c .intro__image {
                         width: 207px;
                         height: auto;
+                    }
+
+
+
+                    @media (740px <= width) {
+
+                        /* фон */
+                        .intro__photo.fade-in {
+                            opacity: 0;
+                            transform: translateX(80px);
+                            transition: opacity 2000ms var(--ease-out-quint),
+                            transform 1200ms var(--ease-out-quint);
+                        }
+
+                        .intro__photo.fade-in.show {
+                            opacity: 1;
+                            transform: translateX(0);
+                        }
+
+                        .intro__photo--a.fade-in { transition-delay: 100ms; }
+                        .intro__photo--b.fade-in { transition-delay: 200ms; }
+                        .intro__photo--c.fade-in { transition-delay: 300ms; }
                     }
 
 

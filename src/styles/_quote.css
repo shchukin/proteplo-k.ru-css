@@ -11,7 +11,7 @@
             min-height: 381px;
             background-color: var(--primary);
             border-radius: 8px;
-            overflow: hidden;
+            overflow: hidden; /* Обрезаем анимации */
             color: #FFFFFF;
         }
             /* фон вытаскиваем в отдельный слой, чтобы можно было анимировать */
