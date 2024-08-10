@@ -129,80 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Якоря
-
-    $headerLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            const targetId = this.getAttribute('href').substring(1); // target ID without без '#'
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-
-                $header.classList.remove('header--expanded');
-
-                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - headerHeight - anchorOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-
-
-    /* Анимация цифр в секции about */
-
-    const $about = document.querySelector('.about__summary')
-
-    function runCounters() {
-
-        // Создаём счетчики, заполняем их данными со страницы
-        const aboutCounter1 = {
-            reference: document.querySelector('.about__counter-1'),
-            value: document.querySelector('.about__counter-1').textContent
-        };
-
-        const aboutCounter2 = {
-            reference: document.querySelector('.about__counter-2'),
-            value: document.querySelector('.about__counter-2').textContent
-        };
-
-        const counter3 = {
-            reference: document.querySelector('.about__counter-3'),
-            value: document.querySelector('.about__counter-3').textContent
-        };
-
-        // запускаем countUp
-        new CountUp(aboutCounter1.reference, 0, aboutCounter1.value).start();
-        new CountUp(aboutCounter2.reference, 0, aboutCounter2.value).start();
-        new CountUp(counter3.reference, 0, counter3.value).start();
-    }
-
-    // Но всё это не сразу, а только тогда, когда докрутили до этой секции
-    const observer = new IntersectionObserver(
-        ([about]) => {
-            if (about.isIntersecting) {
-                runCounters()
-                observer.unobserve(about.target); /* Останавливаем observer */
-            }
-        },
-        {
-            root: null, // Используем viewport в качестве контейнер
-            rootMargin: '0px',
-            threshold: 0.7 // порог, когда 70% элемента видимо
-        }
-    );
-
-    // Запускаем observer
-    observer.observe($about);
-
-
-
 
     /* Форма */
 
@@ -441,6 +367,80 @@ document.addEventListener('DOMContentLoaded', () => {
             $header.classList.remove('header--expanded');
         }
     });
+
+
+    // Якоря
+
+    $headerLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1); // target ID without без '#'
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+
+                $header.classList.remove('header--expanded');
+
+                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - headerHeight - anchorOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+
+
+    /* Анимация цифр в секции about */
+
+    const $about = document.querySelector('.about__summary')
+
+    function runCounters() {
+
+        // Создаём счетчики, заполняем их данными со страницы
+        const aboutCounter1 = {
+            reference: document.querySelector('.about__counter-1'),
+            value: document.querySelector('.about__counter-1').textContent
+        };
+
+        const aboutCounter2 = {
+            reference: document.querySelector('.about__counter-2'),
+            value: document.querySelector('.about__counter-2').textContent
+        };
+
+        const counter3 = {
+            reference: document.querySelector('.about__counter-3'),
+            value: document.querySelector('.about__counter-3').textContent
+        };
+
+        // запускаем countUp
+        new CountUp(aboutCounter1.reference, 0, aboutCounter1.value).start();
+        new CountUp(aboutCounter2.reference, 0, aboutCounter2.value).start();
+        new CountUp(counter3.reference, 0, counter3.value).start();
+    }
+
+    // Но всё это не сразу, а только тогда, когда докрутили до этой секции
+    const observer = new IntersectionObserver(
+        ([about]) => {
+            if (about.isIntersecting) {
+                runCounters()
+                observer.unobserve(about.target); /* Останавливаем observer */
+            }
+        },
+        {
+            root: null, // Используем viewport в качестве контейнер
+            rootMargin: '0px',
+            threshold: 0.7 // порог, когда 70% элемента видимо
+        }
+    );
+
+    // Запускаем observer
+    observer.observe($about);
+
 
 
     /* Инпуты */
