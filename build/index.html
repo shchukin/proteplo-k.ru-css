@@ -40,7 +40,32 @@
 
         <!-- assets -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles/style.css?1723119312">
+        <link rel="stylesheet" href="styles/style.css?1723262477">
+
+        <!-- Fade in анимация при скроллировании
+            Этот скрипт критически важен и запускать его надо прям сразу.
+            Если что-то пошло бы не так, что элементы бы застряли в своем
+            состоянии перед анимацией (невидимые, смещённые вниз),
+            типа такого:
+            .person.fade-in {
+                opacity: 0;
+                transform: translateY(40px);
+                ...
+           }
+        -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const elements = document.querySelectorAll('.fade-in');
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                        }
+                    });
+                }, { threshold: 0.3 }); // Trigger when 30% of the element is visible
+                elements.forEach(element => observer.observe(element));
+            });
+        </script>
 
     </head>
     <body>
@@ -63,7 +88,7 @@
                         </div>
                         <div class="header__menu">
                             <nav class="header__nav">
-                                <a class="header__link" href="#about">О компании</a>
+                                <a class="header__link" href="#about">О компании</a>
                                 <a class="header__link" href="#tariffs">Тарифы</a>
                                 <a class="header__link" href="#guide">Этапы работы</a>
                                 <a class="header__link" href="#feedback">Отзывы</a>
@@ -104,12 +129,12 @@
                             Теплоснабжение Генерация Когенерация
                         </h1>
                         <div class="intro__description">
-                            Решаем Ваши задачи эффективно, без&nbsp;лишних затрат
+                            Решаем Ваши задачи эффективно, без лишних затрат
                         </div>
                         <a class="intro__handler mfp-handler button" href="#callback-popup">Получить консультацию</a>
                     </div>
                     <div class="intro__gallery">
-                        <div class="intro__photo intro__photo--a"><!-- intro__photo можно сделать ссылкой на галерею -->
+                        <div class="intro__photo intro__photo--a fade-in"><!-- intro__photo можно сделать ссылкой на галерею -->
                             <img class="intro__image"
                                  srcset="content/intro-a@2x.jpg 2x"
                                  src="content/intro-a@1x.jpg"
@@ -118,7 +143,7 @@
                                  alt=""
                             >
                         </div>
-                        <div class="intro__photo intro__photo--b"><!-- intro__photo можно сделать ссылкой на галерею -->
+                        <div class="intro__photo intro__photo--b fade-in"><!-- intro__photo можно сделать ссылкой на галерею -->
                             <img class="intro__image"
                                  srcset="content/intro-b@2x.jpg 2x"
                                  src="content/intro-b@1x.jpg"
@@ -127,7 +152,7 @@
                                  alt=""
                             >
                         </div>
-                        <div class="intro__photo intro__photo--c"><!-- intro__photo можно сделать ссылкой на галерею -->
+                        <div class="intro__photo intro__photo--c fade-in"><!-- intro__photo можно сделать ссылкой на галерею -->
                             <img class="intro__image"
                                  srcset="content/intro-c@2x.jpg 2x"
                                  src="content/intro-c@1x.jpg"
@@ -144,11 +169,11 @@
         <article class="about container" id="about">
             <div class="about__body">
                 <h2 class="about__heading">
-                    ООО «Теплоэнергоконсалт» — это небольшая компания с высококвалифицированными специалистами и богатым опытом в сфере малой энергетики и генерации
+                    ООО «Теплоэнергоконсалт» — это небольшая компания с высококвалифицированными специалистами и богатым опытом в сфере малой энергетики и генерации
                 </h2>
                 <div class="about__content wysiwyg wysiwyg--half">
-                    <p>Мы давно работаем в качестве проектировщиков, производителей, подрядчиков, заказчиков, поставщиков газа и инвесторов.</p>
-                    <p>Благодаря этому опыту мы можем помочь вам определить путь к созданию собственных объектов генерации, подобрать подходящих партнёров, рассчитать стоимость проекта и предложить стратегии для преодоления сложных и нестандартных задач.</p>
+                    <p>Мы давно работаем в качестве проектировщиков, производителей, подрядчиков, заказчиков, поставщиков газа и инвесторов.</p>
+                    <p>Благодаря этому опыту мы можем помочь вам определить путь к созданию собственных объектов генерации, подобрать подходящих партнёров, рассчитать стоимость проекта и предложить стратегии для преодоления сложных и нестандартных задач.</p>
                 </div>
             </div>
             <div class="about__summary">
@@ -157,7 +182,7 @@
                     <div class="about__value">реализованных<br> проектов</div>
                 </div>
                 <div class="about__stat about__stat--power">
-                    <div class="about__param">до 98 МВт</div>
+                    <div class="about__param">до 98 МВт</div>
                     <div class="about__value">Единичной мощности</div>
                 </div>
                 <div class="about__stat about__stat--experience">
@@ -170,7 +195,7 @@
         <section class="service container">
             <h2 class="service__heading">
                 Представляем услуги технических
-                и коммерческих специалистов, для решения задач по теплоснабжению объектов
+                и коммерческих специалистов, для решения задач по теплоснабжению объектов
             </h2>
             <div class="service__body">
                 <div class="swiper swiper--service">
@@ -181,7 +206,7 @@
                                     Команда высококлассных специалистов
                                 </div>
                                 <div class="supply__description">
-                                    Прорабатываем узкие потребности в энергетике, теплотехнике, эксплуатационном инжиниринге и коммерции.
+                                    Прорабатываем узкие потребности в энергетике, теплотехнике, эксплуатационном инжиниринге и коммерции.
                                 </div>
                             </div>
                         </div>
@@ -191,27 +216,27 @@
                                     Подберем верное для вас решение
                                 </div>
                                 <div class="supply__description">
-                                    Консультируем по подбору оборудования для котельных, энергоцентров, тепловых пунктов и дымовых труб.
+                                    Консультируем по подбору оборудования для котельных, энергоцентров, тепловых пунктов и дымовых труб.
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="supply">
                                 <div class="supply__heading">
-                                    Экономия вашего времени и денег
+                                    Экономия вашего времени и денег
                                 </div>
                                 <div class="supply__description">
-                                    Продумаем все детали с технической и финансовой стороны. С нами Вам не нужно нанимать множество непрофильных специалистов.
+                                    Продумаем все детали с технической и финансовой стороны. С нами Вам не нужно нанимать множество непрофильных специалистов.
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="supply">
                                 <div class="supply__heading">
-                                    Все проблемы по реализации проекта берем на себя
+                                    Все проблемы по реализации проекта берем на себя
                                 </div>
                                 <div class="supply__description">
-                                    Мы знаем, как пройти Ваш путь без лишних переживаний и напряженных совещаний, обеспечивая выполнение задач в срок и без осечек!
+                                    Мы знаем, как пройти Ваш путь без лишних переживаний и напряженных совещаний, обеспечивая выполнение задач в срок и без осечек!
                                 </div>
                             </div>
                         </div>
@@ -232,11 +257,11 @@
             </div>
         </section>
 
-        <div class="quote">
+        <div class="quote fade-in">
             <div class="quote__wrap container">
                 <figure class="quote__body">
                     <blockquote class="quote__text">
-                        <p>Наша цель — помочь Вам принять правильное решение. Рассказать, какой путь вас ждет и выбрать наилучший для вас!</p>
+                        <p>Наша цель — помочь Вам принять правильное решение. Рассказать, какой путь вас ждет и выбрать наилучший для вас!</p>
                     </blockquote>
                     <figcaption class="quote__caption">
                         <img class="quote__photo"
@@ -260,11 +285,11 @@
             </div>
             <div class="features__item">
                 <div class="features__trapezoid trapezoid"></div>
-                Снизим стоимость ресурсов в долгосрочной перспективе
+                Снизим стоимость ресурсов в долгосрочной перспективе
             </div>
             <div class="features__item">
                 <div class="features__trapezoid trapezoid"></div>
-                Найдем решения для&nbsp;сложных задач
+                Найдем решения для сложных задач
             </div>
         </div>
 
@@ -281,14 +306,14 @@
                     </h3>
                     <div class="tariffs__content wysiwyg">
                         <ul>
-                            <li>Выполнение работ по ТЗ заказчика;</li>
-                            <li>Подбор трех блочно-модульных котельных в установленные сроки;</li>
-                            <li>Согласование условий с поставщиками;</li>
-                            <li>Определение сроков и стоимости проекта.</li>
+                            <li>Выполнение работ по ТЗ заказчика;</li>
+                            <li>Подбор трех блочно-модульных котельных в установленные сроки;</li>
+                            <li>Согласование условий с поставщиками;</li>
+                            <li>Определение сроков и стоимости проекта.</li>
                         </ul>
                     </div>
                     <div class="tariffs__footer">
-                        <div class="tariffs__price">от 130 000 ₽</div>
+                        <div class="tariffs__price">от 130 000 ₽</div>
                         <a class="tariffs__callback button mfp-handler" href="#callback-popup">Оставить заявку</a>
                     </div>
                 </article>
@@ -298,16 +323,16 @@
                     </h3>
                     <div class="tariffs__content wysiwyg">
                         <ul>
-                            <li>Доработка ТЗ заказчика;</li>
-                            <li>Выезд на строительную площадку;</li>
+                            <li>Доработка ТЗ заказчика;</li>
+                            <li>Выезд на строительную площадку;</li>
                             <li>Анализ технических параметров;</li>
-                            <li>Консультирование по оптимизации;</li>
+                            <li>Консультирование по оптимизации;</li>
                             <li>Подбор основного оборудования (котлы, горелки, дымовые трубы);</li>
-                            <li>Составление итогового ТЗ и подбор трех вариантов реализации проекта с фиксацией стоимости на три месяца.</li>
+                            <li>Составление итогового ТЗ и подбор трех вариантов реализации проекта с фиксацией стоимости на три месяца.</li>
                         </ul>
                     </div>
                     <div class="tariffs__footer">
-                        <div class="tariffs__price">от 290 000 ₽</div>
+                        <div class="tariffs__price">от 290 000 ₽</div>
                         <a class="tariffs__callback button mfp-handler" href="#callback-popup">Оставить заявку</a>
                     </div>
                 </article>
@@ -318,18 +343,18 @@
                     <div class="tariffs__content wysiwyg">
                         <ul>
                             <li>Определение потребностей заказчика;</li>
-                            <li>Сбор и анализ данных;</li>
+                            <li>Сбор и анализ данных;</li>
                             <li>Проработка технической возможности реализации;</li>
-                            <li>Расчет потребности в тепле и топливе;</li>
-                            <li>Составление и согласование ТЗ;</li>
-                            <li>Подбор основного и вспомогательного оборудования;</li>
-                            <li>Предложение 3 вариантов реализации проекта (оборудование, сроки, стоимость) с фиксацией цен у поставщиков;</li>
-                            <li>Предварительные схемы и демонстрация выполненных объектов (презентация решений);</li>
+                            <li>Расчет потребности в тепле и топливе;</li>
+                            <li>Составление и согласование ТЗ;</li>
+                            <li>Подбор основного и вспомогательного оборудования;</li>
+                            <li>Предложение 3 вариантов реализации проекта (оборудование, сроки, стоимость) с фиксацией цен у поставщиков;</li>
+                            <li>Предварительные схемы и демонстрация выполненных объектов (презентация решений);</li>
                             <li>Техническая поддержка при заключении договора.</li>
                         </ul>
                     </div>
                     <div class="tariffs__footer">
-                        <div class="tariffs__price">от 490 000 ₽</div>
+                        <div class="tariffs__price">от 490 000 ₽</div>
                         <a class="tariffs__callback button mfp-handler" href="#callback-popup">Оставить заявку</a>
                     </div>
                 </article>
@@ -339,16 +364,16 @@
                     </h3>
                     <div class="tariffs__content wysiwyg">
                         <ul>
-                            <li>Помощь в получении технических условий: подготовка запросов и консолидация данных;</li>
-                            <li>Участие в проектировании: контроль и оптимизация решений;</li>
-                            <li>Сопровождение экспертизы и контроль на каждой стадии производства;</li>
+                            <li>Помощь в получении технических условий: подготовка запросов и консолидация данных;</li>
+                            <li>Участие в проектировании: контроль и оптимизация решений;</li>
+                            <li>Сопровождение экспертизы и контроль на каждой стадии производства;</li>
                             <li>Проверка соответствия готового объекта техническим требованиям;</li>
-                            <li>Полное ведение проекта от имени заказчика и координация взаимодействия участников;</li>
+                            <li>Полное ведение проекта от имени заказчика и координация взаимодействия участников;</li>
                             <li>Ежемесячная плата рассчитывается индивидуально.</li>
                         </ul>
                     </div>
                     <div class="tariffs__footer">
-                        <div class="tariffs__price">от 150 000 ₽/меc</div>
+                        <div class="tariffs__price">от 150 000 ₽/меc</div>
                         <a class="tariffs__callback button mfp-handler" href="#callback-popup">Оставить заявку</a>
                     </div>
                 </article>
@@ -360,13 +385,13 @@
                 <div class="savings__body">
                     <div class="savings__inner">
                         <h2 class="savings__heading">
-                            Сэкономил — значит заработал!
+                            Сэкономил — значит заработал!
                         </h2>
                         <div class="savings__description">
-                            При выборе нашего решения и заключения договора, стоимость услуг для вас = <strong>0 рублей</strong>
+                            При выборе нашего решения и заключения договора, стоимость услуг для вас = <strong>0 рублей</strong>
                         </div>
                         <div class="savings__cta">
-                            Узнайте, как <s class="savings__strike">сэкономить</s> <a class="savings__highlight mfp-handler" href="#callback-popup">заработать</a> на услугах прямо сейчас!
+                            Узнайте, как <s class="savings__strike">сэкономить</s> <a class="savings__highlight mfp-handler" href="#callback-popup">заработать</a> на услугах прямо сейчас!
                         </div>
                         <a class="savings__handler button mfp-handler" href="#callback-popup">
                             Заказать звонок
@@ -378,14 +403,14 @@
 
         <section class="team container">
             <h2 class="team__heading">
-                Профессиональная команда экспертов с глубоким знанием и практическим опытом в сфере малой энергетики и генерации
+                Профессиональная команда экспертов с глубоким знанием и практическим опытом в сфере малой энергетики и генерации
             </h2>
             <div class="team__body">
                 <div class="swiper swiper--team">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-a@2x.jpg 2x"
                                          src="temp/team/person-a@1x.jpg"
@@ -409,8 +434,8 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-b@2x.jpg 2x"
                                          src="temp/team/person-b@1x.jpg"
@@ -434,8 +459,8 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-c@2x.jpg 2x"
                                          src="temp/team/person-c@1x.jpg"
@@ -459,8 +484,8 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="person">
-                                <div class="person__preview"><!-- person__preview можно сделать ссылкой на галерею -->
+                            <div class="person fade-in">
+                                <div class="person__preview"><!-- person__preview fade-in можно сделать ссылкой на галерею -->
                                     <img class="person__image"
                                          srcset="temp/team/person-d@2x.jpg 2x"
                                          src="temp/team/person-d@1x.jpg"
@@ -558,7 +583,7 @@
                                     5
                                 </div>
                                 <div class="step__content">
-                                    Оцениваем соответствие потенциальных вариантов Вашим требованиям и планам по её выполнению
+                                    Оцениваем соответствие потенциальных вариантов Вашим требованиям и планам по её выполнению
                                 </div>
                             </div>
                         </div>
@@ -570,7 +595,7 @@
                                 </div>
                                 <div class="step__content">
                                     Оформляем результаты
-                                    в отчет, подробно описывая преимущества и недочеты предлагаемых решений
+                                    в отчет, подробно описывая преимущества и недочеты предлагаемых решений
                                 </div>
                             </div>
                         </div>
@@ -581,7 +606,7 @@
                                     7
                                 </div>
                                 <div class="step__content">
-                                    Предоставляем консультации и рекомендации бесплатно
+                                    Предоставляем консультации и рекомендации бесплатно
                                 </div>
                             </div>
                         </div>
@@ -607,7 +632,7 @@
                 Наш опыт
             </h2>
             <div class="experience__description">
-                Наша команда более 20 лет работает в крупных котельных компаниях, сотрудничестве с ведущими предприятиями, и ресурсоснабжающими организациями
+                Наша команда более 20 лет работает в крупных котельных компаниях, сотрудничестве с ведущими предприятиями, и ресурсоснабжающими организациями
             </div>
             <div class="experience__partners">
                 <div class="swiper swiper--partners">
@@ -615,13 +640,14 @@
                         <div class="swiper-slide">
                             <div class="partner">
                                 <div class="partner__logo-wrap">
-                                    <!-- У логотипов ширина/высота любая. Но чтобы влезала в плитку на смартфоне, например, не более чем 250x250.
-                                        При этом width и height обязательны. Высота, желательно, одинаковая между всем логотипами. -->
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
                                     <img class="partner__logo"
-                                         srcset="temp/experience/experience-logo-a@2x.jpg 2x"
-                                         src="temp/experience/experience-logo-a@1x.jpg"
-                                         width="217"
-                                         height="70"
+                                         srcset="content/experience/logos/experience-logo-a@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-a@1x.jpg"
+                                         width="382"
+                                         height="86"
                                          alt=""
                                     >
                                 </div>
@@ -631,8 +657,8 @@
                                          более квадратный или более растянутый.
                                     -->
                                     <img class="partner__image"
-                                         srcset="temp/experience/experience-image-a@2x.jpg 2x"
-                                         src="temp/experience/experience-image-a@1x.jpg"
+                                         srcset="content/experience/images/experience-image-a@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-a@1x.jpg"
                                          width="382"
                                          height="208"
                                          alt=""
@@ -643,24 +669,25 @@
                         <div class="swiper-slide">
                             <div class="partner">
                                 <div class="partner__logo-wrap">
-                                    <!-- У логотипов ширина/высота любая. Но чтобы влезала в плитку на смартфоне, например, не более чем 250x250.
-                                           При этом width и height обязательны. Высота, желательно, одинаковая между всем логотипами. -->
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
                                     <img class="partner__logo"
-                                         srcset="temp/experience/experience-logo-b@2x.jpg 2x"
-                                         src="temp/experience/experience-logo-b@1x.jpg"
-                                         width="197"
-                                         height="70"
+                                         srcset="content/experience/logos/experience-logo-b@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-b@1x.jpg"
+                                         width="382"
+                                         height="86"
                                          alt=""
                                     >
                                 </div>
                                 <div class="partner__overlay">
                                     <!-- Картинки будут растянуты на 100% x 100%. Загружаем либо 282x187 как на ноутбуках,
-                                        либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
-                                        более квадратный или более растянутый.
-                                   -->
+                                         либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
+                                         более квадратный или более растянутый.
+                                    -->
                                     <img class="partner__image"
-                                         srcset="temp/experience/experience-image-b@2x.jpg 2x"
-                                         src="temp/experience/experience-image-b@1x.jpg"
+                                         srcset="content/experience/images/experience-image-b@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-b@1x.jpg"
                                          width="382"
                                          height="208"
                                          alt=""
@@ -671,24 +698,25 @@
                         <div class="swiper-slide">
                             <div class="partner">
                                 <div class="partner__logo-wrap">
-                                    <!-- У логотипов ширина/высота любая. Но чтобы влезала в плитку на смартфоне, например, не более чем 250x250.
-                                           При этом width и height обязательны. Высота, желательно, одинаковая между всем логотипами. -->
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
                                     <img class="partner__logo"
-                                         srcset="temp/experience/experience-logo-c@2x.jpg 2x"
-                                         src="temp/experience/experience-logo-c@1x.jpg"
-                                         width="179"
-                                         height="70"
+                                         srcset="content/experience/logos/experience-logo-c@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-c@1x.jpg"
+                                         width="382"
+                                         height="86"
                                          alt=""
                                     >
                                 </div>
                                 <div class="partner__overlay">
                                     <!-- Картинки будут растянуты на 100% x 100%. Загружаем либо 282x187 как на ноутбуках,
-                                        либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
-                                        более квадратный или более растянутый.
-                                   -->
+                                         либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
+                                         более квадратный или более растянутый.
+                                    -->
                                     <img class="partner__image"
-                                         srcset="temp/experience/experience-image-c@2x.jpg 2x"
-                                         src="temp/experience/experience-image-c@1x.jpg"
+                                         srcset="content/experience/images/experience-image-c@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-c@1x.jpg"
                                          width="382"
                                          height="208"
                                          alt=""
@@ -699,24 +727,141 @@
                         <div class="swiper-slide">
                             <div class="partner">
                                 <div class="partner__logo-wrap">
-                                    <!-- У логотипов ширина/высота любая. Но чтобы влезала в плитку на смартфоне, например, не более чем 250x250.
-                                        При этом width и height обязательны. Высота, желательно, одинаковая между всем логотипами. -->
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
                                     <img class="partner__logo"
-                                         srcset="temp/experience/experience-logo-d@2x.jpg 2x"
-                                         src="temp/experience/experience-logo-d@1x.jpg"
-                                         width="143"
-                                         height="70"
+                                         srcset="content/experience/logos/experience-logo-d@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-d@1x.jpg"
+                                         width="382"
+                                         height="86"
                                          alt=""
                                     >
                                 </div>
                                 <div class="partner__overlay">
                                     <!-- Картинки будут растянуты на 100% x 100%. Загружаем либо 282x187 как на ноутбуках,
-                                        либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
-                                        более квадратный или более растянутый.
-                                   -->
+                                         либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
+                                         более квадратный или более растянутый.
+                                    -->
                                     <img class="partner__image"
-                                         srcset="temp/experience/experience-image-d@2x.jpg 2x"
-                                         src="temp/experience/experience-image-d@1x.jpg"
+                                         srcset="content/experience/images/experience-image-d@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-d@1x.jpg"
+                                         width="382"
+                                         height="208"
+                                         alt=""
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="partner">
+                                <div class="partner__logo-wrap">
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
+                                    <img class="partner__logo"
+                                         srcset="content/experience/logos/experience-logo-e@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-e@1x.jpg"
+                                         width="382"
+                                         height="86"
+                                         alt=""
+                                    >
+                                </div>
+                                <div class="partner__overlay">
+                                    <!-- Картинки будут растянуты на 100% x 100%. Загружаем либо 282x187 как на ноутбуках,
+                                         либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
+                                         более квадратный или более растянутый.
+                                    -->
+                                    <img class="partner__image"
+                                         srcset="content/experience/images/experience-image-e@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-e@1x.jpg"
+                                         width="382"
+                                         height="208"
+                                         alt=""
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="partner">
+                                <div class="partner__logo-wrap">
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
+                                    <img class="partner__logo"
+                                         srcset="content/experience/logos/experience-logo-f@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-f@1x.jpg"
+                                         width="382"
+                                         height="86"
+                                         alt=""
+                                    >
+                                </div>
+                                <div class="partner__overlay">
+                                    <!-- Картинки будут растянуты на 100% x 100%. Загружаем либо 282x187 как на ноутбуках,
+                                         либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
+                                         более квадратный или более растянутый.
+                                    -->
+                                    <img class="partner__image"
+                                         srcset="content/experience/images/experience-image-f@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-f@1x.jpg"
+                                         width="382"
+                                         height="208"
+                                         alt=""
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="partner">
+                                <div class="partner__logo-wrap">
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
+                                    <img class="partner__logo"
+                                         srcset="content/experience/logos/experience-logo-g@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-g@1x.jpg"
+                                         width="382"
+                                         height="86"
+                                         alt=""
+                                    >
+                                </div>
+                                <div class="partner__overlay">
+                                    <!-- Картинки будут растянуты на 100% x 100%. Загружаем либо 282x187 как на ноутбуках,
+                                         либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
+                                         более квадратный или более растянутый.
+                                    -->
+                                    <img class="partner__image"
+                                         srcset="content/experience/images/experience-image-g@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-g@1x.jpg"
+                                         width="382"
+                                         height="208"
+                                         alt=""
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="partner">
+                                <div class="partner__logo-wrap">
+                                    <!-- Логотипы режем по ширине/высоте плиток с картинками (382x208),
+                                         но потом по высоте уменьшаем, чтобы на смартфонах вписываться по высоте
+                                    -->
+                                    <img class="partner__logo"
+                                         srcset="content/experience/logos/experience-logo-h@2x.jpg 2x"
+                                         src="content/experience/logos/experience-logo-h@1x.jpg"
+                                         width="382"
+                                         height="86"
+                                         alt=""
+                                    >
+                                </div>
+                                <div class="partner__overlay">
+                                    <!-- Картинки будут растянуты на 100% x 100%. Загружаем либо 282x187 как на ноутбуках,
+                                         либо более растянутую 382x208 как на мониторах. В зависимости от того, какой оригинал:
+                                         более квадратный или более растянутый.
+                                    -->
+                                    <img class="partner__image"
+                                         srcset="content/experience/images/experience-image-h@2x.jpg 2x"
+                                         src="content/experience/images/experience-image-h@1x.jpg"
                                          width="382"
                                          height="208"
                                          alt=""
@@ -740,7 +885,7 @@
                 </div>
             </div>
             <h3 class="experience__solutions-heading">
-                Решите проблему быстро и&nbsp;эффективно.
+                Решите проблему быстро и эффективно.
             </h3>
             <div class="experience__solutions-descriptions">
                 Получите экспертную консультацию <strong>бесплатно</strong>
@@ -752,7 +897,7 @@
                             <div class="tile">
                                 <div class="tile__body">
                                     <div class="trapezoid" role="presentation" aria-hidden="true"></div>
-                                    Не знаете, как реализовать свои идеи?
+                                    Не знаете, как реализовать свои идеи?
                                 </div>
                                 <a class="tile__action button mfp-handler" href="#callback-popup">
                                     Получить консультацию
@@ -763,7 +908,7 @@
                             <div class="tile">
                                 <div class="tile__body">
                                     <div class="trapezoid" role="presentation" aria-hidden="true"></div>
-                                    Не уверены, что именно вам нужно?
+                                    Не уверены, что именно вам нужно?
                                 </div>
                                 <a class="tile__action button mfp-handler" href="#callback-popup">
                                     Получить консультацию
@@ -774,7 +919,7 @@
                             <div class="tile">
                                 <div class="tile__body">
                                     <div class="trapezoid" role="presentation" aria-hidden="true"></div>
-                                    Не знаете, с чего начать?
+                                    Не знаете, с чего начать?
                                 </div>
                                 <a class="tile__action button mfp-handler" href="#callback-popup">
                                     Получить консультацию
@@ -785,7 +930,7 @@
                             <div class="tile">
                                 <div class="tile__body">
                                     <div class="trapezoid" role="presentation" aria-hidden="true"></div>
-                                    Хотите сэкономить время и получить результат?
+                                    Хотите сэкономить время и получить результат?
                                 </div>
                                 <a class="tile__action button mfp-handler" href="#callback-popup">
                                     Получить консультацию
@@ -820,7 +965,7 @@
                             <div class="comment__preview">
                                 <img class="comment__image"
                                      srcset="temp/feedback/comment-preview-a@2x.jpg 2x"
-                                     src="temp/feedback/comment-preview-a@2x.jpg"
+                                     src="temp/feedback/comment-preview-a@1x.jpg"
                                      width="518"
                                      height="418"
                                      alt="Фото Газпром"
@@ -828,16 +973,15 @@
                             </div>
                             <div class="comment__body">
                                 <div class="comment__message wysiwyg">
-                                    <p>Компания ПАО «Газпром» выражает благодарность ООО «Теплоэнергоконсалт» за профессиональное сотрудничество и высокое качество предоставляемых услуг. Мы ценим индивидуальный подход, оперативность и внимание к деталям, проявленные специалистами вашей компании в процессе работы над проектом.</p>
-                                    <p>Надеемся на дальнейшее укрепление деловых отношений и уверены, что наше сотрудничество будет успешным и продуктивным.</p>
+                                    <p>Компания ПАО «Газпром» выражает благодарность ООО «Теплоэнергоконсалт» за профессиональное сотрудничество и высокое качество предоставляемых услуг. Мы ценим индивидуальный подход, оперативность и внимание к деталям, проявленные специалистами вашей компании в процессе работы над проектом.</p>
+                                    <p>Надеемся на дальнейшее укрепление деловых отношений и уверены, что наше сотрудничество будет успешным и продуктивным.</p>
                                 </div>
                                 <div class="comment__footer">
                                     <div class="comment__author">
                                         <div class="comment__name">Иванов Иван Иванович</div>
                                         <div class="comment__position">Директор</div>
                                     </div>
-                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол,
-                                      например, не более чем 200x120. При этом width и height обязательны -->
+                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол, например, не более чем 200x120. При этом width и height обязательны -->
                                     <img class="comment__logo"
                                          srcset="temp/feedback/comment-logo-a@2x.png 2x"
                                          src="temp/feedback/comment-logo-a@1x.png"
@@ -854,7 +998,7 @@
                             <div class="comment__preview">
                                 <img class="comment__image"
                                      srcset="temp/feedback/comment-preview-b@2x.jpg 2x"
-                                     src="temp/feedback/comment-preview-b@2x.jpg"
+                                     src="temp/feedback/comment-preview-b@1x.jpg"
                                      width="518"
                                      height="418"
                                      alt="Фото Газпром"
@@ -862,16 +1006,15 @@
                             </div>
                             <div class="comment__body">
                                 <div class="comment__message wysiwyg">
-                                    <p>ООО «Роснефть» выражает благодарность компании ООО «Теплоэнергоконсалт» за плодотворное сотрудничество и высококвалифицированную работу. Мы особенно ценим ответственность и профессионализм сотрудников вашей компании, что позволило успешно реализовать проект в установленные сроки.</p>
-                                    <p>С нетерпением ждем продолжения нашего сотрудничества и уверены в его успешности и взаимовыгодности.</p>
+                                    <p>ООО «Роснефть» выражает благодарность компании ООО «Теплоэнергоконсалт» за плодотворное сотрудничество и высококвалифицированную работу. Мы особенно ценим ответственность и профессионализм сотрудников вашей компании, что позволило успешно реализовать проект в установленные сроки.</p>
+                                    <p>С нетерпением ждем продолжения нашего сотрудничества и уверены в его успешности и взаимовыгодности.</p>
                                 </div>
                                 <div class="comment__footer">
                                     <div class="comment__author">
                                         <div class="comment__name">Иванов Иван Иванович</div>
                                         <div class="comment__position">Директор</div>
                                     </div>
-                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол,
-                                      например, не более чем 200x120. При этом width и height обязательны -->
+                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол, например, не более чем 200x120. При этом width и height обязательны -->
                                     <img class="comment__logo"
                                          srcset="temp/feedback/comment-logo-b@2x.png 2x"
                                          src="temp/feedback/comment-logo-b@1x.png"
@@ -888,7 +1031,7 @@
                             <div class="comment__preview">
                                 <img class="comment__image"
                                      srcset="temp/feedback/comment-preview-c@2x.jpg 2x"
-                                     src="temp/feedback/comment-preview-c@2x.jpg"
+                                     src="temp/feedback/comment-preview-c@1x.jpg"
                                      width="518"
                                      height="418"
                                      alt="Фото Газпром"
@@ -896,16 +1039,15 @@
                             </div>
                             <div class="comment__body">
                                 <div class="comment__message wysiwyg">
-                                    <p>ООО «Новатэк» выражает благодарность ООО «Теплоэнергоконсалт» за профессионализм и ответственное отношение к выполнению поставленных задач. Ваше внимание к нашим требованиям и гибкий подход к работе значительно способствовали успешному завершению проекта.</p>
-                                    <p>Мы надеемся на дальнейшее плодотворное сотрудничество и уверенны, что вместе мы достигнем еще больших результатов.</p>
+                                    <p>ООО «Новатэк» выражает благодарность ООО «Теплоэнергоконсалт» за профессионализм и ответственное отношение к выполнению поставленных задач. Ваше внимание к нашим требованиям и гибкий подход к работе значительно способствовали успешному завершению проекта.</p>
+                                    <p>Мы надеемся на дальнейшее плодотворное сотрудничество и уверенны, что вместе мы достигнем еще больших результатов.</p>
                                 </div>
                                 <div class="comment__footer">
                                     <div class="comment__author">
                                         <div class="comment__name">Иванов Иван Иванович</div>
                                         <div class="comment__position">Директор</div>
                                     </div>
-                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол,
-                                      например, не более чем 200x120. При этом width и height обязательны -->
+                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол, например, не более чем 200x120. При этом width и height обязательны -->
                                     <img class="comment__logo"
                                          srcset="temp/feedback/comment-logo-c@2x.png 2x"
                                          src="temp/feedback/comment-logo-c@1x.png"
@@ -922,7 +1064,7 @@
                             <div class="comment__preview">
                                 <img class="comment__image"
                                      srcset="temp/feedback/comment-preview-d@2x.jpg 2x"
-                                     src="temp/feedback/comment-preview-d@2x.jpg"
+                                     src="temp/feedback/comment-preview-d@1x.jpg"
                                      width="518"
                                      height="418"
                                      alt="Фото Газпром"
@@ -930,16 +1072,15 @@
                             </div>
                             <div class="comment__body">
                                 <div class="comment__message wysiwyg">
-                                    <p>Компания ПАО «Газпром» выражает благодарность ООО «Теплоэнергоконсалт» за профессиональное сотрудничество и высокое качество предоставляемых услуг. Мы ценим индивидуальный подход, оперативность и внимание к деталям, проявленные специалистами вашей компании в процессе работы над проектом.</p>
-                                    <p>Надеемся на дальнейшее укрепление деловых отношений и уверены, что наше сотрудничество будет успешным и продуктивным.</p>
+                                    <p>Компания ПАО «Газпром» выражает благодарность ООО «Теплоэнергоконсалт» за профессиональное сотрудничество и высокое качество предоставляемых услуг. Мы ценим индивидуальный подход, оперативность и внимание к деталям, проявленные специалистами вашей компании в процессе работы над проектом.</p>
+                                    <p>Надеемся на дальнейшее укрепление деловых отношений и уверены, что наше сотрудничество будет успешным и продуктивным.</p>
                                 </div>
                                 <div class="comment__footer">
                                     <div class="comment__author">
                                         <div class="comment__name">Иванов Иван Иванович</div>
                                         <div class="comment__position">Директор</div>
                                     </div>
-                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол,
-                                      например, не более чем 200x120. При этом width и height обязательны -->
+                                    <!-- У логотипов ширина/высота любая. Но чтобы не сильно большинм был и умещался в угол, например, не более чем 200x120. При этом width и height обязательны -->
                                     <img class="comment__logo"
                                          srcset="temp/feedback/comment-logo-d@2x.png 2x"
                                          src="temp/feedback/comment-logo-d@1x.png"
@@ -975,12 +1116,12 @@
                 <div class="faq__list">
                     <div class="faq__item">
                         <button class="faq__question" type="button">
-                            Уф… Начал собирать, но по ТУ на газ – отказ. И что делать?
+                            Уф... Начал собирать, но по ТУ на газ — отказ. И что делать?
                         </button>
                         <div class="faq__answer">
                             <div class="wysiwyg">
-                                <p>Не волнуйтесь. В большинстве ситуаций есть решение. Ведь всем нам известно, что «нет» - далеко не всегда означает «совсем никак». Очень часто есть как минимум 1-2 полностью жизнеспособных варианта получить желаемое.</p>
-                                <p><strong>Не получается? Давайте мы попробуем. Мы не обещаем, но делаем. Обсудим?</strong></p>
+                                <p>Не волнуйтесь. В большинстве ситуаций есть решение. Ведь всем нам известно, что «нет» — далеко не всегда означает «совсем никак». Очень часто есть как минимум 1-2 полностью жизнеспособных варианта получить желаемое.</p>
+                                <p><strong>Не получается? Давайте мы попробуем. Мы не обещаем, но делаем. Обсудим?</strong></p>
                             </div>
                         </div>
                     </div>
@@ -990,88 +1131,88 @@
                         </button>
                         <div class="faq__answer">
                             <div class="wysiwyg">
-                                <p>Для начала давайте разберемся для каких целей Вам нужна котельная? Т.к., по принятой классификации, котельные бывают:</p>
-                                <b>По назначению:</b>
+                                <p>Для начала давайте разберемся для каких целей Вам нужна котельная? Т.к., по принятой классификации, котельные бывают:</p>
+                                <b>По назначению:</b>
                                 <ul>
                                     <li>отопительная</li>
                                     <li>производственная</li>
                                     <li>отопительно-производственная</li>
                                 </ul>
-                                <b>По целевому назначению в системе теплоснабжения:</b>
+                                <b>По целевому назначению в системе теплоснабжения:</b>
                                 <ul>
                                     <li>центральная</li>
                                     <li>автономная</li>
                                 </ul>
-                                <b>По размещению:</b>
+                                <b>По размещению:</b>
                                 <ul>
                                     <li>отдельно стоящая</li>
-                                    <li>интегрированная в здание (встроенная)</li>
+                                    <li>интегрированная в здание (встроенная)</li>
                                     <li>наружного размещения</li>
                                 </ul>
-                                <b>По надежности отпуска тепловой энергии:</b>
+                                <b>По надежности отпуска тепловой энергии:</b>
                                 <ul>
                                     <li>первая категория</li>
                                     <li>вторая категория</li>
                                 </ul>
-                                <b>По виду топлива:</b>
+                                <b>По виду топлива:</b>
                                 <ul>
                                     <li>газовая (природный газ, СУГ, попутный нефтяной газ)</li>
                                     <li>жидкотопливная (дизельное топливо, мазут, нефть, отработанное масло)</li>
                                     <li>твердотопливная (уголь, щепа, дрова, пеллеты)</li>
                                 </ul>
-                                <b>По типу котлов:</b>
+                                <b>По типу котлов:</b>
                                 <ul>
                                     <li>водогрейная</li>
                                     <li>паровая</li>
                                     <li>диатермическая</li>
                                 </ul>
                                 <p>
-                                    <strong>Не устали? <a class="mfp-handler" href="#callback-popup">Свяжитесь с нами</a> и получите подробную консультацию.</strong>
+                                    <strong>Не устали? <a class="mfp-handler" href="#callback-popup">Свяжитесь с нами</a> и получите подробную консультацию.</strong>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="faq__item">
                         <button class="faq__question" type="button">
-                            А с чего начать?
+                            А с чего начать?
                         </button>
                         <div class="faq__answer">
                             <div class="wysiwyg">
-                                <p>Как театр начинается в вешалки, так и решение задач теплоснабжения начинается с расчетов. Основной документ здесь – Расчет потребности в тепле и топливе, или, иными словами, Теплотехнический расчет.</p>
-                                <p>Именно этот документ определяет все тепловые нагрузки Вашего проекта, устанавливает температурные режимы помещений и зон различного назначения, учитывает все климатические особенности и свойства конструкций и материалов Вашего объекта. Финальная стадия расчета – вывод о потребностях объекта в тепловой энергии, топливе и остальных ресурсах.</p>
-                                <p>Такой расчет составляется проектными организациями, имеющими достаточно высокий уровень квалификации, а также необходимый опыт.</p>
-                                <p>Цена ошибки в таком расчете очень высока, так как именно он дает основные исходные данные для создания источника тепловой энергии: потребности в тепле, температурный график систем, потребность в топливе и режимы работы.</p>
-                                <p><strong>Нужен расчет? Мы готовы подключиться и помочь.</strong></p>
+                                <p>Как театр начинается в вешалки, так и решение задач теплоснабжения начинается с расчетов. Основной документ здесь — Расчет потребности в тепле и топливе, или, иными словами, Теплотехнический расчет.</p>
+                                <p>Именно этот документ определяет все тепловые нагрузки Вашего проекта, устанавливает температурные режимы помещений и зон различного назначения, учитывает все климатические особенности и свойства конструкций и материалов Вашего объекта. Финальная стадия расчета — вывод о потребностях объекта в тепловой энергии, топливе и остальных ресурсах.</p>
+                                <p>Такой расчет составляется проектными организациями, имеющими достаточно высокий уровень квалификации, а также необходимый опыт.</p>
+                                <p>Цена ошибки в таком расчете очень высока, так как именно он дает основные исходные данные для создания источника тепловой энергии: потребности в тепле, температурный график систем, потребность в топливе и режимы работы.</p>
+                                <p><strong>Нужен расчет? Мы готовы подключиться и помочь.</strong></p>
                             </div>
                         </div>
                     </div>
                     <div class="faq__item">
                         <button class="faq__question" type="button">
-                            Да есть у меня расчет! Дальше-то что?
+                            Да есть у меня расчет! Дальше-то что?
                         </button>
                         <div class="faq__answer">
                             <div class="wysiwyg">
-                                <p>А дальше все «глубже в лес» и без толкового специалиста уже тяжеловато.</p>
+                                <p>А дальше все «глубже в лес» и без толкового специалиста уже тяжеловато.</p>
 
                                 <b>Надо, как минимум:</b>
                                 <ul>
                                     <li>получить/обновить ГПЗУ</li>
                                     <li>
-                                        собрать пакет исходно-разрешительной документации, а это весьма объемная задача:
+                                        собрать пакет исходно-разрешительной документации, а это весьма объемная задача:
                                         <ul>
-                                            <li>подобрать комплект правоустанавливающих документов на ЗУ</li>
-                                            <li>запросить у ресурсоснабжающих организаций Технические Условия (ТУ) на обеспечение объекта ресурсами: вода, электроэнергия, топливо</li>
-                                            <li>получить ТУ</li>
-                                            <li>составить Техническое Задание (ТЗ) на проектирование источника теплоты</li>
-                                            <li>провести комплекс инженерных изысканий и получить на них положительное заключение соответствующей экспертизы</li>
-                                            <li>определить возможные ограничения при проектировании и строительстве объекта (запросы Росавиация, МЧС, ФСБ, Министерство Обороны и т.д.)</li>
-                                            <li>определить перечень потенциальных подрядчиков на работы, для чего придется создать/отправить/получить ответ и разобраться в полученной информации</li>
-                                            <li>откорректировать ТЗ с учетом полученной информации</li>
+                                            <li>подобрать комплект правоустанавливающих документов на ЗУ</li>
+                                            <li>запросить у ресурсоснабжающих организаций Технические Условия (ТУ) на обеспечение объекта ресурсами: вода, электроэнергия, топливо</li>
+                                            <li>получить ТУ</li>
+                                            <li>составить Техническое Задание (ТЗ) на проектирование источника теплоты</li>
+                                            <li>провести комплекс инженерных изысканий и получить на них положительное заключение соответствующей экспертизы</li>
+                                            <li>определить возможные ограничения при проектировании и строительстве объекта (запросы Росавиация, МЧС, ФСБ, Министерство Обороны и т.д.)</li>
+                                            <li>определить перечень потенциальных подрядчиков на работы, для чего придется создать/отправить/получить ответ и разобраться в полученной информации</li>
+                                            <li>откорректировать ТЗ с учетом полученной информации</li>
                                         </ul>
                                     </li>
                                 </ul>
-                                <p>И далее, далее, далее, далее…</p>
-                                <p><strong>Вы все еще хотите строить? Наш профиль – вот это вот все. и даже больше. Звоните!</strong></p>
+                                <p>И далее, далее, далее, далее...</p>
+                                <p><strong>Вы все еще хотите строить? Наш профиль — вот это вот все. и даже больше. Звоните!</strong></p>
                             </div>
                         </div>
                     </div>
@@ -1081,8 +1222,8 @@
                         </button>
                         <div class="faq__answer">
                             <div class="wysiwyg">
-                                <p>Бежать не надо. Надо вдумчиво и обстоятельно посмотреть по сторонам и выбрать проектную организацию. В зависимости от полноты задачи это могут быть как узко специализированные компании, так и генеральный подрядчик, «один за всё». Но и там и там есть свои минусы… Кучу подрядчиков надо сводить, контролировать, оплачивать, «накладывать» решения друг на друга и прочее… процесс хлопотный, но выигрыш в экономике проекта - существенный. Генподрядчик решает все сам, но у него те же проблемы и далеко не факт, что в его штате есть такие специалисты, которые сведут, проконтролируют, оплатят и сделают «как себе». Генподрядчик должен и заработать. Поэтому все, что пойдет через него будет с наценкой и с дополнительным итогом – услугами генподряда, что существенно скажется на Вашей экономике.</p>
-                                <p><strong>И что можно сделать? Решать Вам. А мы делаем все это бесплатно. Почти. Обращайтесь, договоримся.</strong></p>
+                                <p>Бежать не надо. Надо вдумчиво и обстоятельно посмотреть по сторонам и выбрать проектную организацию. В зависимости от полноты задачи это могут быть как узко специализированные компании, так и генеральный подрядчик, «один за всё». Но и там и там есть свои минусы... Кучу подрядчиков надо сводить, контролировать, оплачивать, «накладывать» решения друг на друга и прочее... процесс хлопотный, но выигрыш в экономике проекта — существенный. Генподрядчик решает все сам, но у него те же проблемы и далеко не факт, что в его штате есть такие специалисты, которые сведут, проконтролируют, оплатят и сделают «как себе». Генподрядчик должен и заработать. Поэтому все, что пойдет через него будет с наценкой и с дополнительным итогом — услугами генподряда, что существенно скажется на Вашей экономике.</p>
+                                <p><strong>И что можно сделать? Решать Вам. А мы делаем все это бесплатно. Почти. Обращайтесь, договоримся.</strong></p>
                             </div>
                         </div>
                     </div>
@@ -1097,7 +1238,7 @@
                         Оставить заявку
                     </h2>
                     <div class="callback__description">
-                        Нужно эффективное решение задачи? Хотите сэкономить время и деньги? Позвоните или напишите нам, мы на связи!
+                        Нужно эффективное решение задачи? Хотите сэкономить время и деньги? Позвоните или напишите нам, мы на связи!
                     </div>
                 </div>
                 <form class="callback__form">
@@ -1115,7 +1256,7 @@
                     </div>
                     <div class="callback__footer">
                         <div class="callback__agreement">
-                            Нажимая «Отправить», вы выражаете согласие на&nbsp;обработку персональных данных
+                            Нажимая «Отправить», вы выражаете согласие на обработку персональных данных
                         </div>
                         <button class="callback__submit button" type="submit">
                             Отправить
@@ -1133,7 +1274,7 @@
                     </h2>
                     <div class="contacts__channel">
                         <b class="contacts__sub-heading">Адрес</b>
-                        г. Москва, Дмитровское шоссе, 71Б, <span class="nobr">БЦ “7One”</span>, <span class="nobr">офис 407</span>
+                        г. Москва, Дмитровское шоссе, 71Б, <span class="nobr">БЦ «7One»</span>, <span class="nobr">офис 407</span>
                     </div>
                     <div class="contacts__channel">
                         <b class="contacts__sub-heading">
@@ -1152,7 +1293,7 @@
                     </div>
                     <div class="contacts__channel">
                         <b class="contacts__sub-heading">Режим работы</b>
-                        пн-пт 9.00 - 18.00
+                        пн-пт 9.00 — 18.00
                     </div>
                     <div class="contacts__social-networks">
                         <a class="net" href="#">
@@ -1181,30 +1322,30 @@
 
         <footer class="footer container">
             <div class="footer__item">
-                2024 © Все права защищены
+                2024 © Все права защищены
             </div>
             <div class="footer__item">
-                <a class="link link--inverted-text-alike" href="#">Политика конфиденциальности</a>
+                <a class="link link--inverted-text-alike mfp-handler" href="#privacy-policy-popup">Политика конфиденциальности</a>
             </div>
             <a class="footer__developer red-star" href="https://redstar.agency">
-                разработано в <b class="red-star__logo">Редстар</b>
+                разработано в <b class="red-star__logo">Редстар</b>
             </a>
         </footer>
 
 
-        <!-- .mfp -->
+        <!-- Попап с заявкой -->
         <div class="window mfp-hide" id="callback-popup">
             <button class="window__close mfp-close" type="button">
-                Close
+                Закрыть
             </button>
             <section class="callback callback--in-popup">
-                <div class="callback__wrap container">
+                <div class="callback__wrap">
                     <div class="callback__data">
                         <h2 class="callback__heading title">
                             Оставить заявку
                         </h2>
                         <div class="callback__description">
-                            Нужно эффективное решение задачи? Хотите сэкономить время и деньги? Позвоните или напишите нам, мы на связи!
+                            Нужно эффективное решение задачи? Хотите сэкономить время и деньги? Позвоните или напишите нам, мы на связи!
                         </div>
                     </div>
                     <form class="callback__form">
@@ -1222,7 +1363,7 @@
                         </div>
                         <div class="callback__footer">
                             <div class="callback__agreement">
-                                Нажимая «Отправить», вы выражаете согласие на&nbsp;обработку персональных данных
+                                Нажимая «Отправить», вы выражаете согласие на обработку персональных данных
                             </div>
                             <button class="callback__submit button" type="submit">
                                 Отправить
@@ -1233,11 +1374,73 @@
             </section>
         </div>
 
+        <!-- Попап с политикой конфиденциальности -->
+        <div class="window mfp-hide" id="privacy-policy-popup">
+            <button class="window__close mfp-close mfp-close--inverted" type="button">
+                Закрыть
+            </button>
+            <section class="privacy-policy callback--in-popup">
+                <h2 class="privacy-policy__heading title">
+                    Политика конфиденциальности
+                </h2>
+                <div class="privacy-policy__content wysiwyg">
+                    <p>Добро пожаловать на наш сайт. Мы ценим ваше доверие и стремимся защищать вашу конфиденциальность. Настоящая Политика конфиденциальности разъясняет, какие данные мы собираем, как их используем и с кем делимся, чтобы предоставить вам наилучший опыт использования наших сервисов. Мы прилагаем все усилия для защиты ваших персональных данных и обеспечения их безопасности.</p>
+
+                    <h3>1. Сбор данных</h3>
+                    <p>Мы можем собирать различные типы информации в зависимости от того, как вы взаимодействуете с нашим сайтом:</p>
+
+                    <p>Личные данные: Когда вы регистрируетесь на сайте, подписываетесь на рассылку, заполняете формы или совершаете покупки, мы можем собирать такие данные, как ваше имя, адрес электронной почты, номер телефона, адрес проживания и другие контактные данные.</p>
+                    <p>Автоматически собираемая информация: При посещении нашего сайта мы можем автоматически собирать определённую информацию о вашем устройстве и браузере, включая IP-адрес, тип браузера, версию операционной системы, языковые настройки, временные метки посещений, а также информацию о взаимодействии с сайтом.</p>
+                    <p>Файлы cookie и аналогичные технологии: Мы используем файлы cookie и аналогичные технологии для сбора информации о том, как вы используете наш сайт, что позволяет нам улучшать его работу и предоставлять вам персонализированный опыт.</p>
+
+                    <h3>2. Использование данных</h3>
+                    <p>Собранные данные могут быть использованы в следующих целях:</p>
+
+                    <p>Предоставление услуг: Использование ваших данных для выполнения обязательств по договору, обработки ваших запросов, заказов и предоставления вам доступа к услугам и продуктам.</p>
+                    <p>Персонализация: Использование информации для адаптации контента и рекламы в соответствии с вашими предпочтениями.</p>
+                    <p>Аналитика и улучшение сервиса: Сбор данных для анализа пользовательского поведения, чтобы лучше понять, как пользователи взаимодействуют с нашим сайтом, и как мы можем улучшить наш продукт и услуги.</p>
+                    <p>Маркетинговые рассылки: Мы можем использовать ваши контактные данные для отправки вам новостей, предложений и рекламных материалов, которые могут быть вам интересны. Вы всегда можете отказаться от получения подобных сообщений.</p>
+
+                    <h3>3. Передача данных третьим лицам</h3>
+                    <p>Мы можем передавать ваши данные третьим лицам в следующих случаях:</p>
+
+                    <p>Поставщики услуг: Мы можем делиться вашими данными с компаниями и физическими лицами, которые предоставляют нам услуги, такие как обработка платежей, хостинг, анализ данных, маркетинг и поддержка клиентов. Эти сторонние поставщики обязаны использовать ваши данные только в соответствии с нашими инструкциями и для выполнения своих функций.</p>
+                    <p>Правовые требования: Мы можем раскрыть ваши данные, если это требуется законом или в ответ на законные запросы государственных органов.</p>
+                    <p>Защита прав: Мы можем использовать и раскрывать информацию, если это необходимо для защиты наших прав, безопасности, собственности, а также безопасности наших пользователей или общественности.</p>
+
+                    <h3>4. Безопасность данных</h3>
+                    <p>Мы принимаем разумные меры для защиты ваших данных от несанкционированного доступа, изменения, раскрытия или уничтожения. Однако ни одна система передачи данных по интернету или система хранения данных не является полностью безопасной, и мы не можем гарантировать абсолютную безопасность ваших данных.</p>
+
+                    <h3>5. Ваши права</h3>
+                    <p>В зависимости от вашей юрисдикции у вас могут быть определённые права в отношении ваших данных:</p>
+
+                    <p>
+                        Право на доступ: Вы можете запросить копию ваших данных, которые мы храним.<br>
+                        Право на исправление: Вы можете запросить исправление неточных или неполных данных.<br>
+                        Право на удаление: Вы можете запросить удаление ваших данных, если они больше не нужны для целей, для которых были собраны.<br>
+                        Право на ограничение обработки: Вы можете запросить ограничение обработки ваших данных в определённых ситуациях.<br>
+                        Право на переносимость данных: Вы можете запросить передачу ваших данных другому поставщику услуг.<br>
+                        Право на возражение: Вы можете возразить против обработки ваших данных в определённых случаях, например, для прямого маркетинга.<br>
+                    </p>
+
+                    <h3>6. Хранение данных</h3>
+                    <p>Мы будем хранить ваши данные только столько времени, сколько это необходимо для выполнения целей, для которых они были собраны, или в соответствии с требованиями закона. По истечении этого срока данные будут удалены или анонимизированы.</p>
+
+                    <h3>7. Изменения в Политике конфиденциальности</h3>
+                    <p>Мы оставляем за собой право изменять настоящую Политику конфиденциальности в любое время. Все изменения будут опубликованы на этой странице с указанием даты последнего обновления. Мы рекомендуем вам периодически просматривать эту страницу, чтобы быть в курсе актуальной версии нашей Политики конфиденциальности.</p>
+
+                    <h3>8. Контактная информация</h3>
+                    <p>Если у вас есть какие-либо вопросы, комментарии или запросы, связанные с этой Политикой конфиденциальности, пожалуйста, свяжитесь с нами через контактные данные, указанные на нашем сайте.</p>
+
+                </div>
+            </section>
+        </div>
+
         <!-- Уведомления -->
         <div class="notifications-center">
             <div class="notifications-center__callback-success alert alert--success" style="display: none;">
                 <div class="alert__label">
-                    Ваша заявка получена. Спасибо за обращение!
+                    Ваша заявка получена. Спасибо за обращение!
                 </div>
                 <button class="alert__dismiss" type="button">
                     Закрыть
@@ -1245,8 +1448,8 @@
             </div>
             <div class="notifications-center__callback-failure alert alert--danger" style="display: none;">
                 <div class="alert__label">
-                    Во время отправки данных произошла ошибка.<br class="desktop-only">
-                    Проверьте ваше соединение и&nbsp;попробуйте позже.
+                    Во время отправки данных произошла ошибка.<br class="desktop-only">
+                    Проверьте ваше соединение и попробуйте позже.
                 </div>
                 <button class="alert__dismiss" type="button">
                     Закрыть
@@ -1255,11 +1458,10 @@
         </div>
 
 
-
         <script src="vendors/jquery/jquery-3.7.1.min.js"></script>
         <script src="vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="vendors/swiper/swiper-bundle.min.js"></script>
-        <script src="scripts/scripts.js?1723119312"></script>
+        <script src="scripts/scripts.js?1723262477"></script>
 
     </body>
 </html>
