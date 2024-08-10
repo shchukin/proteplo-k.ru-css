@@ -18,16 +18,16 @@
             color: #FFFFFF;
         }
             .quote__text {
-                max-width: 745px;
-                margin: 0 0 0 -20px;
-                padding: 10px 30px 10px 20px;
+                max-width: 760px;
+                margin: 0 0 0 -10px;
+                padding: 10px 0 10px 55px;
                 background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");
-                background-size: 62px 47px;
+                background-size: 50px 38px;
                 background-repeat: no-repeat;
                 background-position: left top, right bottom;
                 font-weight: 600;
                 font-style: italic;
-                font-size: 28px;
+                font-size: 26px;
                 line-height: 34px;
             }
                 .quote__text p {
@@ -35,7 +35,7 @@
                 }
 
             .quote__caption {
-                margin-top: 46px;
+                margin-top: 30px;
             }
                 .quote__photo {
                     position: absolute;
@@ -85,9 +85,9 @@
                 /*color: #FFFFFF;*/
             }
                 .quote__text {
-                    max-width: 878px;
-                    /*margin: 0;*/
-                    /*padding: 10px 30px 10px 20px;*/
+                    max-width: 940px;
+                    margin: 0 0 0 -10px;
+                    padding: 10px 0 10px 70px;
                     /*margin-left: -20px;*/
                     /*background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");*/
                     background-size: 62px 47px;
