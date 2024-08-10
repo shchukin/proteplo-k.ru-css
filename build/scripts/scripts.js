@@ -84,9 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
         breakpoints: {
             740: {
                 slidesPerView: 4,
-                slidesPerGroup: 4,
+                slidesPerGroup: 1,
             }
-        }
+        },
+
+        autoplay: {
+            delay: 3000, // Delay in ms
+            disableOnInteraction: false, // Continue autoplay after user interactions
+        },
     });
 
 
