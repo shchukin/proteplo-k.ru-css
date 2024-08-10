@@ -158,16 +158,16 @@
                     /*max-width: 745px;*/
                     /*margin: 0;*/
                     padding-right: 20px;
-                    padding-left: 10px;
-                    margin-left: -10px;
+                    padding-left: var(--container-padding);
+                    margin-left: calc(-1 * var(--container-padding));
                     /*background-image: url("../vectors/quote-left.svg"), url("../vectors/quote-right.svg");*/
-                    background-size: 44px 33px;
+                    background-size: 30px 23px;
                     /*background-repeat: no-repeat;*/
                     /*background-position: left top, right bottom;*/
                     /*font-weight: 600;*/
                     /*font-style: italic;*/
-                    font-size: 24px;
-                    line-height: 29px;
+                    font-size: 22px;
+                    line-height: 26px;
                 }
                     .quote__text p {
                         /*margin: 0;*/
