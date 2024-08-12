@@ -15,17 +15,14 @@
         }
 
     .tariffs__body {
-
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
         .tariffs__card {
-            margin-top: 10px;
             padding: 24px 24px 32px;
             background-color: #EAF8FF;
             border-radius: 6px;
-        }
-
-        .tariffs__card:first-child {
-            margin-top: 0;
         }
 
         .tariffs__card:nth-child(even) {
@@ -65,6 +62,38 @@
                 .tariffs__callback {
 
                 }
+
+
+
+/* Залипание карточек */
+
+@media (740px <= width) {
+
+    .tariffs__card {
+        position: sticky;
+    }
+
+    .tariffs__card:nth-child(1) { top: calc(var(--header) + 1 * var(--tariffs-offset)); }
+    .tariffs__card:nth-child(2) { top: calc(var(--header) + 2 * var(--tariffs-offset)); }
+    .tariffs__card:nth-child(3) { top: calc(var(--header) + 3 * var(--tariffs-offset)); }
+
+    .tariffs__card:last-child {
+        position: relative;
+    }
+        .tariffs__card:last-child .tariffs__content {
+
+        }
+
+
+    .tariffs__body--fully-scrolled {
+        position: relative;
+        height: 1566px;
+    }
+        .tariffs__body--fully-scrolled .tariffs__card {
+            position: absolute;
+            top: auto;
+        }
+}
 
 
 
@@ -158,6 +187,7 @@
 
         .tariffs__body {
             margin-top: 40px;
+            display: block;
         }
             .tariffs__card {
                 margin-top: 24px;
