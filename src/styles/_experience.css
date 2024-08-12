@@ -17,6 +17,15 @@
         margin-top: 60px;
         position: relative;
     }
+        /* Небольшая коррекция на высоту анимации var(--fade-in-translate), чтобы она не обрезалась слайдером: */
+        .experience__partners .swiper {
+            margin-bottom: calc(-1 * var(--fade-in-translate));
+        }
+
+        .experience__partners .swiper-slide {
+            padding-bottom: var(--fade-in-translate);
+        }
+
         .experience__partners-navigation {
             position: absolute;
             right: 0;
@@ -42,6 +51,24 @@
         margin-top: 60px;
         margin-bottom: -58px;
     }
+
+        /* Небольшая коррекция на высоту анимации var(--fade-in-translate), чтобы она не обрезалась слайдером: */
+        .experience__solutions-body .swiper {
+            margin-bottom: calc(-1 * var(--fade-in-translate));
+        }
+
+        .experience__solutions-body .swiper-slide {
+            padding-bottom: var(--fade-in-translate);
+        }
+
+
+        .experience__partners-navigation {
+            position: absolute;
+            right: 0;
+            bottom: 100%;
+            margin-bottom: 69px;
+        }
+
         .experience__solutions-navigation {
 
         }

@@ -2,6 +2,29 @@
     position: relative;
     padding-bottom: 58px;
 }
+
+
+@media (740px <= width) {
+
+    .tile.fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1200ms var(--ease-out-quint),
+        transform 1200ms var(--ease-out-quint);
+    }
+
+    .tile.fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .swiper-slide:nth-child(1) .tile {  }
+    .swiper-slide:nth-child(2) .tile { transition-delay: 100ms; }
+    .swiper-slide:nth-child(3) .tile { transition-delay: 200ms; }
+    .swiper-slide:nth-child(4) .tile { transition-delay: 300ms; }
+}
+
+
     .tile__body {
         display: flex;
         flex-direction: column;
