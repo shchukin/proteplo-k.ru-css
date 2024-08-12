@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 14px 15px 16px;
-    background-color: #B3BE49;
+    background-color: #FD8902;
     border-radius: 4px;
     font-size: 15px;
     line-height: 20px;
@@ -18,7 +18,7 @@
 }
 
 .alert--success {
-    background-color: #B3BE49;
+    background-color: #FD8902;
 }
 
 .alert--danger {
