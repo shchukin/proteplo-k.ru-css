@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isDesktop = window.matchMedia("(min-width: 740px)").matches;
     const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
+    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 0;
 
 
 
@@ -350,8 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const $headerMenu = $header.querySelector('.header__menu');
     const $headerBurger = $header.querySelector('.header__burger');
     const $headerLinks = document.querySelectorAll('.header__link');
-
-    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 0;
     const anchorOffset = isDesktop ? 50 : 24;
 
 
@@ -497,36 +496,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Find the tariffs__body element to calculate its top offset
+    /* Отлипание карточек тарифов */
+    // Алгоритм состоит из двух частей:
+    // Залипание делается стилями (position: sticky) -- смотри styles/_tariffs.css
+    // Отливание делается этим скриптом:
 
-    // Get the value of the --header custom property
-    const headerValue = getComputedStyle(document.documentElement).getPropertyValue('--header').trim();
-    const headerValueInPixels = parseFloat(headerValue) || 0; // Convert to number or default to 0
+    // Насколько карточки выглядывают друг из-под друга
+    const tariffsOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset')) || 0;
 
-    const gapValue = getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset').trim();
-    const gapValueInPixels = parseFloat(gapValue) || 0; // Convert to number or default to 0
 
+    // Первая важная сущность -- родитель .tariffs__body
     const $tariffsBody = document.querySelector('.tariffs__body');
+
+    // Несколько раз понадобится его высота
     const tariffsBodyHeight = $tariffsBody.offsetHeight;
+
+    // Сразу же проставляем эту высоту явно, так как внутри будет появляться position: absolute, и чтобы секция не схлопнулась -- удерживаем её
     $tariffsBody.style.height = tariffsBodyHeight + 'px';
 
+
+    // Вторая важная сущность -- сами карточки .tariffs__card
     const $cards = document.querySelectorAll('.tariffs__card');
+
+    // В частности последняя из них
     const $lastCard = $cards[$cards.length - 1];
+
+    // Понадобится так же высота последней карточки
     const lastCardHeight = $lastCard.offsetHeight;
 
 
-    // Когда прилипла последняя карточка (на самом деле она не прилипает, а как бы всегда находится в самом низу, и когда дошло до неё время она запускает алгоритм отлипания)
-    const unstickingPoint = $lastCard.offsetTop - headerValueInPixels - $cards.length * gapValueInPixels;
+    // Координата отлипания -- когда проскролили до последней карточки. Он, на самом деле, не прилипает, не успевает.
+    const unstickingPoint = $lastCard.offsetTop - headerHeight - $cards.length * tariffsOffset;
 
 
-    // Initialize an array to store the elements with their sticky positions
+    /* Алгоритм отлипания */
 
-
-    // Add a scroll event listener to the window
     window.addEventListener('scroll', () => {
-        // Get the current scroll position from the top of the page
+
+        // Ловим позицию скролла
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+        // Когда пришло время карточкам отлипать нужно просто расположить их внизу $tariffsBody.
+        // В этот момент включаем состояние tariffs__body--fully-scrolled и в контексте этого класса
+        // карточки перестроится в position: absolute. Нужно дать им координату top.
+        // При этом небольшые вытягивания карточек типа 80px, 160px, 240px прилетят из стилей.
         if(scrollTop > unstickingPoint) {
             $tariffsBody.classList.add('tariffs__body--fully-scrolled');
             $cards.forEach((element, index) => {
@@ -538,28 +551,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.style.removeProperty('top');
             });
         }
-
-
-
-        // Iterate through elementsWithStickyPositions
-        // cardsWithCoordinates.forEach(item => {
-        //     const { element, stickyPosition } = item;
-        //
-        //     // Check if the page has scrolled to the sticky position
-        //     if (scrollTop >= stickyPosition) {
-        //         // Perform your desired action when scrolled to the sticky position
-        //         // Example: Add a 'sticky-active' class to the element
-        //         element.classList.add('tariffs__detachable-part-of-card--fixed');
-        //     } else {
-        //         // Remove the 'sticky-active' class if not at the sticky position
-        //         element.classList.remove('tariffs__detachable-part-of-card--fixed');
-        //     }
-        // });
     });
 
 
 
-    /* Модалка -- здесь кусок кода на jQuery посколько пока не могу
+    /* Модалка -- здесь кусок кода на jQuery поскольку пока не могу
        найти хорошую замену magnific popup */
 
     (function ($) {
