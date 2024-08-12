@@ -496,6 +496,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+    // Find the tariffs__body element to calculate its top offset
+
+    // Get the value of the --header custom property
+    const headerValue = getComputedStyle(document.documentElement).getPropertyValue('--header').trim();
+    const headerValueInPixels = parseFloat(headerValue) || 0; // Convert to number or default to 0
+
+    const gapValue = getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset').trim();
+    const gapValueInPixels = parseFloat(gapValue) || 0; // Convert to number or default to 0
+
+    const $tariffsBody = document.querySelector('.tariffs__body');
+    const tariffsBodyOffsetTop = $tariffsBody.offsetTop;
+
+    const $cards = document.querySelectorAll('.tariffs__card');
+    const $lastCard = $cards[$cards.length - 1];
+    const lastCardHeight = $lastCard.offsetHeight;
+
+
+    // Когда прилипла последняя карточка (на самом деле она не прилипает, а как бы всегда находится в самом низу, и когда дошло до неё время она запускает алгоритм отлипания)
+    const unstickingPoint = $lastCard.offsetTop - headerValueInPixels - $cards.length * gapValueInPixels;
+
+
+    // Initialize an array to store the elements with their sticky positions
+    const cardsWithCoordinates = [];
+
+    // Calculate sticky positions and store the results
+    $cards.forEach((element, index) => {
+        const positionAfterUnstick = tariffsBodyOffsetTop - headerValueInPixels - (index + 1) * gapValueInPixels;
+        cardsWithCoordinates.push({
+            element: element,
+            stickyPosition: positionAfterUnstick
+        });
+    });
+
+
+
+    // Add a scroll event listener to the window
+    window.addEventListener('scroll', () => {
+        // Get the current scroll position from the top of the page
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if(scrollTop > unstickingPoint) {
+            $tariffsBody.classList.add('tariffs__body--fully-scrolled');
+        } else {
+            $tariffsBody.classList.remove('tariffs__body--fully-scrolled');
+
+        }
+
+
+
+        // Iterate through elementsWithStickyPositions
+        // cardsWithCoordinates.forEach(item => {
+        //     const { element, stickyPosition } = item;
+        //
+        //     // Check if the page has scrolled to the sticky position
+        //     if (scrollTop >= stickyPosition) {
+        //         // Perform your desired action when scrolled to the sticky position
+        //         // Example: Add a 'sticky-active' class to the element
+        //         element.classList.add('tariffs__detachable-part-of-card--fixed');
+        //     } else {
+        //         // Remove the 'sticky-active' class if not at the sticky position
+        //         element.classList.remove('tariffs__detachable-part-of-card--fixed');
+        //     }
+        // });
+    });
+
+
+
     /* Модалка -- здесь кусок кода на jQuery посколько пока не могу
        найти хорошую замену magnific popup */
 
