@@ -4,131 +4,138 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isDesktop = window.matchMedia("(min-width: 740px)").matches;
     const responsiveSpacing = isDesktop ? 24 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding'));
+    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 0;
 
 
 
-    /* Слайдер "Service" */
+    /* Слайдеры */
 
-    new Swiper('.swiper--service', {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: responsiveSpacing,
-        autoHeight: true,
+    // Слайдеры чувствителен к количеству контента внутри. По-этому ждём пока прогрузятся картинки и применятся шрифты
+    window.addEventListener('load', function() {
 
-        navigation: {
-            prevEl: '.service__navigation .swiper-button-prev',
-            nextEl: '.service__navigation .swiper-button-next',
-        },
+        /* Слайдер "Service" */
 
-        breakpoints: {
-            740: {
-                slidesPerView: 4,
-                slidesPerGroup: 4,
-            }
-        }
-    });
-
-
-    /* Слайдер "Team" */
-
-    new Swiper('.swiper--team', {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: responsiveSpacing,
-        autoHeight: true,
-
-        navigation: {
-            prevEl: '.team__navigation .swiper-button-prev',
-            nextEl: '.team__navigation .swiper-button-next',
-        },
-
-        breakpoints: {
-            740: {
-                slidesPerView: 4,
-                slidesPerGroup: 4,
-            }
-        }
-    });
-
-
-    /* Слайдер "Guide" */
-
-    if( ! isDesktop ) {
-        new Swiper('.swiper--guide', {
+        new Swiper('.swiper--service', {
             slidesPerView: 1,
             slidesPerGroup: 1,
             spaceBetween: responsiveSpacing,
             autoHeight: true,
 
             navigation: {
-                prevEl: '.guide__navigation .swiper-button-prev',
-                nextEl: '.guide__navigation .swiper-button-next',
+                prevEl: '.service__navigation .swiper-button-prev',
+                nextEl: '.service__navigation .swiper-button-next',
+            },
+
+            breakpoints: {
+                740: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                }
+            }
+        });
+
+
+        /* Слайдер "Team" */
+
+        new Swiper('.swiper--team', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: responsiveSpacing,
+            autoHeight: true,
+
+            navigation: {
+                prevEl: '.team__navigation .swiper-button-prev',
+                nextEl: '.team__navigation .swiper-button-next',
+            },
+
+            breakpoints: {
+                740: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                }
+            }
+        });
+
+
+        /* Слайдер "Guide" */
+
+        if( ! isDesktop ) {
+            new Swiper('.swiper--guide', {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: responsiveSpacing,
+                autoHeight: true,
+
+                navigation: {
+                    prevEl: '.guide__navigation .swiper-button-prev',
+                    nextEl: '.guide__navigation .swiper-button-next',
+                },
+            });
+        }
+
+
+        /* Слайдер "Solutions" */
+
+        new Swiper('.swiper--partners', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: responsiveSpacing,
+            autoHeight: true,
+
+            navigation: {
+                prevEl: '.experience__partners-navigation .swiper-button-prev',
+                nextEl: '.experience__partners-navigation .swiper-button-next',
+            },
+
+            breakpoints: {
+                740: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 1,
+                }
+            },
+
+            autoplay: {
+                delay: 3000, // Delay in ms
+                disableOnInteraction: false, // Continue autoplay after user interactions
             },
         });
-    }
 
 
-    /* Слайдер "Solutions" */
+        /* Слайдер "Solutions" */
 
-    new Swiper('.swiper--partners', {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: responsiveSpacing,
-        autoHeight: true,
+        new Swiper('.swiper--solutions', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: responsiveSpacing,
+            autoHeight: true,
 
-        navigation: {
-            prevEl: '.experience__partners-navigation .swiper-button-prev',
-            nextEl: '.experience__partners-navigation .swiper-button-next',
-        },
+            navigation: {
+                prevEl: '.experience__solutions-navigation .swiper-button-prev',
+                nextEl: '.experience__solutions-navigation .swiper-button-next',
+            },
 
-        breakpoints: {
-            740: {
-                slidesPerView: 4,
-                slidesPerGroup: 1,
+            breakpoints: {
+                740: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                }
             }
-        },
-
-        autoplay: {
-            delay: 3000, // Delay in ms
-            disableOnInteraction: false, // Continue autoplay after user interactions
-        },
-    });
+        });
 
 
-    /* Слайдер "Solutions" */
+        /* Слайдер "Feedback" */
 
-    new Swiper('.swiper--solutions', {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: responsiveSpacing,
-        autoHeight: true,
+        new Swiper('.swiper--feedback', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding')),
+            autoHeight: true,
 
-        navigation: {
-            prevEl: '.experience__solutions-navigation .swiper-button-prev',
-            nextEl: '.experience__solutions-navigation .swiper-button-next',
-        },
-
-        breakpoints: {
-            740: {
-                slidesPerView: 4,
-                slidesPerGroup: 4,
-            }
-        }
-    });
-
-
-    /* Слайдер "Feedback" */
-
-    new Swiper('.swiper--feedback', {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--container-padding')),
-        autoHeight: true,
-
-        navigation: {
-            prevEl: '.feedback__navigation .swiper-button-prev',
-            nextEl: '.feedback__navigation .swiper-button-next',
-        },
+            navigation: {
+                prevEl: '.feedback__navigation .swiper-button-prev',
+                nextEl: '.feedback__navigation .swiper-button-next',
+            },
+        });
 
     });
 
@@ -350,8 +357,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const $headerMenu = $header.querySelector('.header__menu');
     const $headerBurger = $header.querySelector('.header__burger');
     const $headerLinks = document.querySelectorAll('.header__link');
-
-    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 0;
     const anchorOffset = isDesktop ? 50 : 24;
 
 
@@ -496,7 +501,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    /* Модалка -- здесь кусок кода на jQuery посколько пока не могу
+
+    /* Отлипание карточек тарифов */
+
+    // Алгоритм состоит из двух частей:
+    // Залипание делается стилями (position: sticky) -- смотри styles/_tariffs.css
+    // Отливание делается этим скриптом:
+
+    // Этот алгоритм чувствителен к высоте и координатам. По-этому ждём пока прогрузятся картинки и применятся шрифты
+    window.addEventListener('load', function() {
+
+        // Насколько карточки выглядывают друг из-под друга
+        const tariffsOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset')) || 0;
+
+
+        // Первая важная сущность -- родитель .tariffs__body
+        const $tariffsBody = document.querySelector('.tariffs__body');
+
+        // Несколько раз понадобится его высота
+        const tariffsBodyHeight = $tariffsBody.offsetHeight;
+
+        // Сразу же проставляем эту высоту явно, так как внутри будет появляться position: absolute, и чтобы секция не схлопнулась -- удерживаем её
+        $tariffsBody.style.height = tariffsBodyHeight + 'px';
+
+
+        // Вторая важная сущность -- сами карточки .tariffs__card
+        const $cards = document.querySelectorAll('.tariffs__card');
+
+        // В частности последняя из них
+        const $lastCard = $cards[$cards.length - 1];
+
+        // Понадобится так же высота последней карточки
+        const lastCardHeight = $lastCard.offsetHeight;
+
+
+        // Координата отлипания -- когда проскролили до последней карточки. Он, на самом деле, не прилипает, не успевает.
+        const unstickingPoint = $lastCard.offsetTop - headerHeight - $cards.length * tariffsOffset;
+
+
+        /* Алгоритм отлипания */
+
+        window.addEventListener('scroll', () => {
+
+            // Ловим позицию скролла
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Когда пришло время карточкам отлипать нужно просто расположить их внизу $tariffsBody.
+            // В этот момент включаем состояние tariffs__body--fully-scrolled и в контексте этого класса
+            // карточки перестроится в position: absolute. Нужно дать им координату top.
+            // При этом небольшые вытягивания карточек типа 80px, 160px, 240px прилетят из стилей.
+            if(scrollTop > unstickingPoint) {
+                $tariffsBody.classList.add('tariffs__body--fully-scrolled');
+                $cards.forEach((element, index) => {
+                    element.style.top = (tariffsBodyHeight - lastCardHeight) + 'px';
+                });
+            } else {
+                $tariffsBody.classList.remove('tariffs__body--fully-scrolled');
+                $cards.forEach((element, index) => {
+                    element.style.removeProperty('top');
+                });
+            }
+        });
+    });
+
+
+
+    /* Модалка -- здесь кусок кода на jQuery поскольку пока не могу
        найти хорошую замену magnific popup */
 
     (function ($) {
