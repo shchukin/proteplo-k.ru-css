@@ -97,20 +97,20 @@
      * В этот момент вообще невозможно использовать position: sticky. Переключаемся в старый,
      * добрый "position: absolute" для карточек внутри .tariffs__body с "position: relative".
      * Чтобы при этом секция .tariffs__body не схлопнулась от отстутствия контента, жаба-скрипт
-     * явно проставит ей высоту, которая было изначально (что-нибудь типа 1566px). Карточкам же
+     * явно проставит ей высоту, которая было изначально (что-нибудь типа 1582px). Карточкам же
      * проставит координату "top" равную высоте .tariffs__body минус высота последний карточки.
      * стилям же остаётся вытащить каждую карточку немного вверх: -80px, -160px, -240px и т.д.
      */
 
     .tariffs__body--fully-scrolled {
         position: relative;
-        height: 1566px;
+        /* height: ... ;   ← значение из JS */
     }
         .tariffs__body--fully-scrolled .tariffs__card {
             position: absolute;
             left: 0;
             right: 0;
-            top: auto;
+            /* top: ... ;  ← значение из JS */
         }
 
         .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(1) { margin-top: 0; }

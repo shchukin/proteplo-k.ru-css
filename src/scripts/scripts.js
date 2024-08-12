@@ -508,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const $tariffsBody = document.querySelector('.tariffs__body');
     const tariffsBodyHeight = $tariffsBody.offsetHeight;
+    $tariffsBody.style.height = tariffsBodyHeight + 'px';
 
     const $cards = document.querySelectorAll('.tariffs__card');
     const $lastCard = $cards[$cards.length - 1];
