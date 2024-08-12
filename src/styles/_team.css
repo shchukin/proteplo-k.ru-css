@@ -13,6 +13,18 @@
     .team__body {
         margin-top: 60px;
     }
+
+        /* Небольшая коррекция на высоту анимации var(--fade-in-translate), чтобы она не обрезалась слайдером: */
+
+        .team__body .swiper {
+            margin-bottom: calc(-1 * var(--fade-in-translate));
+        }
+
+        .team__body .swiper-slide {
+            padding-bottom: var(--fade-in-translate);
+        }
+
+
         .team__navigation {
 
         }
