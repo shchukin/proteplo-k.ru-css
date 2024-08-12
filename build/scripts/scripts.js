@@ -407,50 +407,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Анимация цифр в секции about */
 
-    const $about = document.querySelector('.about__summary')
+    if( isDesktop) {
 
-    function runCounters() {
+        const $about = document.querySelector('.about__summary')
 
-        // Создаём счетчики, заполняем их данными со страницы
-        const aboutCounter1 = {
-            reference: document.querySelector('.about__counter-1'),
-            value: document.querySelector('.about__counter-1').textContent
-        };
+        function runCounters() {
 
-        const aboutCounter2 = {
-            reference: document.querySelector('.about__counter-2'),
-            value: document.querySelector('.about__counter-2').textContent
-        };
+            // Создаём счетчики, заполняем их данными со страницы
+            const aboutCounter1 = {
+                reference: document.querySelector('.about__counter-1'),
+                value: document.querySelector('.about__counter-1').textContent
+            };
 
-        const counter3 = {
-            reference: document.querySelector('.about__counter-3'),
-            value: document.querySelector('.about__counter-3').textContent
-        };
+            const aboutCounter2 = {
+                reference: document.querySelector('.about__counter-2'),
+                value: document.querySelector('.about__counter-2').textContent
+            };
 
-        // запускаем countUp
-        new CountUp(aboutCounter1.reference, 0, aboutCounter1.value).start();
-        new CountUp(aboutCounter2.reference, 0, aboutCounter2.value).start();
-        new CountUp(counter3.reference, 0, counter3.value).start();
-    }
+            const counter3 = {
+                reference: document.querySelector('.about__counter-3'),
+                value: document.querySelector('.about__counter-3').textContent
+            };
 
-    // Но всё это не сразу, а только тогда, когда докрутили до этой секции
-    const observer = new IntersectionObserver(
-        ([about]) => {
-            if (about.isIntersecting) {
-                runCounters()
-                observer.unobserve(about.target); /* Останавливаем observer */
-            }
-        },
-        {
-            root: null, // Используем viewport в качестве контейнер
-            rootMargin: '0px',
-            threshold: 0.7 // порог, когда 70% элемента видимо
+            // запускаем countUp
+            new CountUp(aboutCounter1.reference, 0, aboutCounter1.value).start();
+            new CountUp(aboutCounter2.reference, 0, aboutCounter2.value).start();
+            new CountUp(counter3.reference, 0, counter3.value).start();
         }
-    );
 
-    // Запускаем observer
-    observer.observe($about);
+        // Но всё это не сразу, а только тогда, когда докрутили до этой секции
+        const observer = new IntersectionObserver(
+            ([about]) => {
+                if (about.isIntersecting) {
+                    runCounters()
+                    observer.unobserve(about.target); /* Останавливаем observer */
+                }
+            },
+            {
+                root: null, // Используем viewport в качестве контейнер
+                rootMargin: '0px',
+                threshold: 0.7 // порог, когда 70% элемента видимо
+            }
+        );
 
+        // Запускаем observer
+        observer.observe($about);
+    }
 
 
     /* Инпуты */
