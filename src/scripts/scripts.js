@@ -501,6 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Залипание делается стилями (position: sticky) -- смотри styles/_tariffs.css
     // Отливание делается этим скриптом:
 
+    
     // Насколько карточки выглядывают друг из-под друга
     const tariffsOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset')) || 0;
 
