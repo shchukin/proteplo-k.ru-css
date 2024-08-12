@@ -96,10 +96,15 @@
             top: auto;
         }
 
-        .tariffs__body--fully-scrolled .tariffs__card:nth-child(1) { top: calc(800px + 1 * var(--tariffs-offset)); }
-        .tariffs__body--fully-scrolled .tariffs__card:nth-child(2) { top: calc(800px + 2 * var(--tariffs-offset)); }
-        .tariffs__body--fully-scrolled .tariffs__card:nth-child(3) { top: calc(800px + 3 * var(--tariffs-offset)); }
-        .tariffs__body--fully-scrolled .tariffs__card:nth-child(4) { top: calc(800px + 4 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(1) { margin-top: 0; }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(2) { margin-top: calc(-1 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(3) { margin-top: calc(-2 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(4) { margin-top: calc(-3 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(5) { margin-top: calc(-4 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(6) { margin-top: calc(-5 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(7) { margin-top: calc(-6 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(8) { margin-top: calc(-7 * var(--tariffs-offset)); }
+        .tariffs__body--fully-scrolled .tariffs__card:nth-last-child(9) { margin-top: calc(-8 * var(--tariffs-offset)); }
 }
 
 

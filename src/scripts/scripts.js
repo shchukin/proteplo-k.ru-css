@@ -507,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gapValueInPixels = parseFloat(gapValue) || 0; // Convert to number or default to 0
 
     const $tariffsBody = document.querySelector('.tariffs__body');
-    const tariffsBodyOffsetTop = $tariffsBody.offsetTop;
+    const tariffsBodyHeight = $tariffsBody.offsetHeight;
 
     const $cards = document.querySelectorAll('.tariffs__card');
     const $lastCard = $cards[$cards.length - 1];
@@ -519,17 +519,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Initialize an array to store the elements with their sticky positions
-    const cardsWithCoordinates = [];
-
-    // Calculate sticky positions and store the results
-    $cards.forEach((element, index) => {
-        const positionAfterUnstick = tariffsBodyOffsetTop - headerValueInPixels - (index + 1) * gapValueInPixels;
-        cardsWithCoordinates.push({
-            element: element,
-            stickyPosition: positionAfterUnstick
-        });
-    });
-
 
 
     // Add a scroll event listener to the window
@@ -539,9 +528,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(scrollTop > unstickingPoint) {
             $tariffsBody.classList.add('tariffs__body--fully-scrolled');
+            $cards.forEach((element, index) => {
+                element.style.top = (tariffsBodyHeight - lastCardHeight) + 'px';
+            });
         } else {
             $tariffsBody.classList.remove('tariffs__body--fully-scrolled');
-
+            $cards.forEach((element, index) => {
+                element.style.removeProperty('top');
+            });
         }
 
 
