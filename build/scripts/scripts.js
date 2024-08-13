@@ -506,68 +506,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Отлипание карточек тарифов */
 
-    if(isDesktop) {
+    // Алгоритм состоит из двух частей:
+    // 1) Залипание делается стилями (position: sticky) -- смотри styles/_tariffs.css
+    // 2) Отливание делается этим скриптом.
 
-        // Алгоритм состоит из двух частей:
-        // 1) Залипание делается стилями (position: sticky) -- смотри styles/_tariffs.css
-        // 2) Отливание делается этим скриптом.
+    // Этот алгоритм чувствителен к высоте и координатам. По-этому ждём пока прогрузятся картинки и применятся шрифты
+    window.addEventListener('load', function() {
 
-        // Этот алгоритм чувствителен к высоте и координатам. По-этому ждём пока прогрузятся картинки и применятся шрифты
-        window.addEventListener('load', function() {
+        // Насколько карточки выглядывают друг из-под друга
+        const tariffsOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset')) || 0;
 
-            // Насколько карточки выглядывают друг из-под друга
-            const tariffsOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset')) || 0;
-
-
-            // Первая важная сущность -- родитель .tariffs__body
-            const $tariffsBody = document.querySelector('.tariffs__body');
-
-            // Несколько раз понадобится его высота
-            const tariffsBodyHeight = $tariffsBody.offsetHeight;
-
-            // Сразу же проставляем эту высоту явно, так как внутри будет появляться position: absolute, и чтобы секция не схлопнулась -- удерживаем её
-            $tariffsBody.style.height = tariffsBodyHeight + 'px';
+        // Паддинг перед всей секцией
+        const tariffsPadding = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-padding')) || 0;
 
 
-            // Вторая важная сущность -- сами карточки .tariffs__card
-            const $cards = document.querySelectorAll('.tariffs__card');
+        // Первая важная сущность -- родитель .tariffs__body
+        const $tariffsBody = document.querySelector('.tariffs__body');
 
-            // В частности последняя из них
-            const $lastCard = $cards[$cards.length - 1];
+        // Несколько раз понадобится его высота
+        const tariffsBodyHeight = $tariffsBody.offsetHeight;
 
-            // Понадобится так же высота последней карточки
-            const lastCardHeight = $lastCard.offsetHeight;
-
-
-            // Координата отлипания -- когда проскролили до последней карточки. Он, на самом деле, не прилипает, не успевает.
-            const unstickingPoint = $lastCard.offsetTop - headerHeight - $cards.length * tariffsOffset;
+        // Сразу же проставляем эту высоту явно, так как внутри будет появляться position: absolute, и чтобы секция не схлопнулась -- удерживаем её
+        $tariffsBody.style.height = tariffsBodyHeight + 'px';
 
 
-            /* Алгоритм отлипания */
+        // Вторая важная сущность -- сами карточки .tariffs__card
+        const $cards = document.querySelectorAll('.tariffs__card');
 
-            window.addEventListener('scroll', () => {
+        // В частности последняя из них
+        const $lastCard = $cards[$cards.length - 1];
 
-                // Ловим позицию скролла
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        // Понадобится так же высота последней карточки
+        const lastCardHeight = $lastCard.offsetHeight;
 
-                // Когда пришло время карточкам отлипать нужно просто расположить их внизу $tariffsBody.
-                // В этот момент включаем состояние tariffs__body--fully-scrolled и в контексте этого класса
-                // карточки перестроится в position: absolute. Нужно дать им координату top.
-                // При этом небольшые вытягивания карточек типа 80px, 160px, 240px прилетят из стилей.
-                if(scrollTop > unstickingPoint) {
-                    $tariffsBody.classList.add('tariffs__body--fully-scrolled');
-                    $cards.forEach((element, index) => {
-                        element.style.top = (tariffsBodyHeight - lastCardHeight) + 'px';
-                    });
-                } else {
-                    $tariffsBody.classList.remove('tariffs__body--fully-scrolled');
-                    $cards.forEach((element, index) => {
-                        element.style.removeProperty('top');
-                    });
-                }
-            });
+
+        // Координата отлипания -- когда проскролили до последней карточки. Он, на самом деле, не прилипает, не успевает.
+        const unstickingPoint = $lastCard.offsetTop - headerHeight - tariffsPadding - ($cards.length - 1) * tariffsOffset;
+
+
+        /* Алгоритм отлипания */
+
+        window.addEventListener('scroll', () => {
+
+            // Ловим позицию скролла
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Когда пришло время карточкам отлипать нужно просто расположить их внизу $tariffsBody.
+            // В этот момент включаем состояние tariffs__body--fully-scrolled и в контексте этого класса
+            // карточки перестроится в position: absolute. Нужно дать им координату top.
+            // При этом небольшые вытягивания карточек типа 80px, 160px, 240px прилетят из стилей.
+            if(scrollTop > unstickingPoint) {
+                $tariffsBody.classList.add('tariffs__body--fully-scrolled');
+                $cards.forEach((element, index) => {
+                    element.style.top = (tariffsBodyHeight - lastCardHeight) + 'px';
+                });
+            } else {
+                $tariffsBody.classList.remove('tariffs__body--fully-scrolled');
+                $cards.forEach((element, index) => {
+                    element.style.removeProperty('top');
+                });
+            }
         });
-    }
+    });
 
 
     /* Модалка -- здесь кусок кода на jQuery поскольку пока не могу
