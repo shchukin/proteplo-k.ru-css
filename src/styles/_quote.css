@@ -73,37 +73,37 @@
                 }
 
 
+/* Анимация фото, но клиенту не понравилось */
+/*@media (740px <= width) {*/
 
-@media (740px <= width) {
+/*    !* фон *!*/
+/*    .quote.fade-in .quote__body::before {*/
+/*        opacity: 0;*/
+/*        transform: translateX(80px);*/
+/*        transition: opacity 2000ms var(--ease-out-quint),*/
+/*                    transform 1200ms var(--ease-out-quint);*/
+/*    }*/
 
-    /* фон */
-    .quote.fade-in .quote__body::before {
-        opacity: 0;
-        transform: translateX(80px);
-        transition: opacity 2000ms var(--ease-out-quint),
-                    transform 1200ms var(--ease-out-quint);
-    }
-
-    .quote.fade-in.show .quote__body::before {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/*    .quote.fade-in.show .quote__body::before {*/
+/*        opacity: 1;*/
+/*        transform: translateX(0);*/
+/*    }*/
 
 
-    /* фото */
-    .quote.fade-in .quote__photo {
-        opacity: 0;
-        transform: translateX(140px);
-        transition: opacity 1600ms var(--ease-out-quint),
-                    transform 1600ms var(--ease-out-quint);
-        transition-delay: 300ms; /* фото выводится с задержкой (после фона) */
-    }
+/*    !* фото *!*/
+/*    .quote.fade-in .quote__photo {*/
+/*        opacity: 0;*/
+/*        transform: translateX(140px);*/
+/*        transition: opacity 1600ms var(--ease-out-quint),*/
+/*                    transform 1600ms var(--ease-out-quint);*/
+/*        transition-delay: 300ms; !* фото выводится с задержкой (после фона) *!*/
+/*    }*/
 
-    .quote.fade-in.show .quote__photo {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+/*    .quote.fade-in.show .quote__photo {*/
+/*        opacity: 1;*/
+/*        transform: translateX(0);*/
+/*    }*/
+/*}*/
 
 
 
