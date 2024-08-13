@@ -53,11 +53,20 @@
                 justify-content: space-between;
             }
                 .tariffs__price {
-                    font-weight: bold;
-                    font-size: 22px;
-                    line-height: 28px;
-                    white-space: nowrap;
+
                 }
+                    .tariffs__estimated-price {
+                        font-weight: bold;
+                        font-size: 22px;
+                        line-height: 28px;
+                        white-space: nowrap;
+                    }
+
+                    .tariffs__hint {
+                        margin-top: 2px;
+                        font-size: 13px;
+                        line-height: 16px;
+                    }
 
                 .tariffs__callback {
 
@@ -182,10 +191,17 @@
                     /*justify-content: space-between;*/
                 }
                     .tariffs__price {
-                        /*font-weight: bold;*/
-                        font-size: 28px;
-                        line-height: 34px;
+
                     }
+                        .tariffs__estimated-price {
+                            /*font-weight: bold;*/
+                            font-size: 28px;
+                            line-height: 34px;
+                        }
+
+                        .tariffs__hint {
+
+                        }
 
                     .tariffs__callback {
 
@@ -254,10 +270,17 @@
                     /*justify-content: space-between;*/
                 }
                     .tariffs__price {
-                        /*font-weight: bold;*/
-                        font-size: 20px;
-                        line-height: 24px;
+
                     }
+                        .tariffs__estimated-price {
+                            /*font-weight: bold;*/
+                            font-size: 20px;
+                            line-height: 24px;
+                        }
+
+                        .tariffs__hint {
+
+                        }
 
                     .tariffs__callback {
                         margin-top: 24px;
