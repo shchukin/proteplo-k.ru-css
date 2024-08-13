@@ -516,6 +516,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Насколько карточки выглядывают друг из-под друга
         const tariffsOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-offset')) || 0;
 
+        // Паддинг перед всей секцией
+        const tariffsPadding = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tariffs-padding')) || 0;
+
 
         // Первая важная сущность -- родитель .tariffs__body
         const $tariffsBody = document.querySelector('.tariffs__body');
@@ -538,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // Координата отлипания -- когда проскролили до последней карточки. Он, на самом деле, не прилипает, не успевает.
-        const unstickingPoint = $lastCard.offsetTop - headerHeight - $cards.length * tariffsOffset;
+        const unstickingPoint = $lastCard.offsetTop - headerHeight - tariffsPadding - ($cards.length - 1) * tariffsOffset;
 
 
         /* Алгоритм отлипания */

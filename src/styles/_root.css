@@ -19,7 +19,8 @@
     --body-line-height: 22px;
     --sections-spacing: 120px;
     --header: 84px;
-    --tariffs-offset: 80px;
+    --tariffs-offset: 80px; /* Насколько каждый ярлычок вылезает */
+    --tariffs-padding: 80px; /* Отступ перед всей секцией */
     --fade-in-translate: 40px;
 }
 
@@ -44,7 +45,8 @@
         --body-line-height: 20px;
         --sections-spacing: 80px;
         --header: 58px;
-        --tariffs-offset: 64px;
+        --tariffs-offset: 60px; /* Насколько каждый ярлычок вылезает */
+        --tariffs-padding: 20px; /* Отступ перед всей секцией */
     }
 }
 

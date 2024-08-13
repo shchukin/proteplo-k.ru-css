@@ -11,7 +11,7 @@
             margin-top: 0;
             margin-bottom: 0;
             position: sticky;
-            top: calc(var(--header) + var(--tariffs-offset));
+            top: calc(var(--header) + var(--tariffs-padding));
         }
 
     .tariffs__body {
@@ -74,15 +74,15 @@
     position: sticky;
 }
 
-.tariffs__card:nth-child(1) { top: calc(var(--header) + 1 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(2) { top: calc(var(--header) + 2 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(3) { top: calc(var(--header) + 3 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(4) { top: calc(var(--header) + 4 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(5) { top: calc(var(--header) + 5 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(6) { top: calc(var(--header) + 6 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(7) { top: calc(var(--header) + 7 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(8) { top: calc(var(--header) + 8 * var(--tariffs-offset)); }
-.tariffs__card:nth-child(9) { top: calc(var(--header) + 9 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(1) { top: calc(var(--header) + var(--tariffs-padding) + 0 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(2) { top: calc(var(--header) + var(--tariffs-padding) + 1 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(3) { top: calc(var(--header) + var(--tariffs-padding) + 2 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(4) { top: calc(var(--header) + var(--tariffs-padding) + 3 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(5) { top: calc(var(--header) + var(--tariffs-padding) + 4 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(6) { top: calc(var(--header) + var(--tariffs-padding) + 5 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(7) { top: calc(var(--header) + var(--tariffs-padding) + 6 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(8) { top: calc(var(--header) + var(--tariffs-padding) + 7 * var(--tariffs-offset)); }
+.tariffs__card:nth-child(9) { top: calc(var(--header) + var(--tariffs-padding) + 8 * var(--tariffs-offset)); }
 
 
 /* Отлипание */
@@ -216,7 +216,7 @@
             gap: 24px;
         }
             .tariffs__card {
-                padding: 20px 16px 28px;
+                padding: 18px 16px 28px;
                 /*background-color: #EAF8FF;*/
                 /*border-radius: 6px;*/
             }
@@ -234,7 +234,7 @@
                 }
 
                 .tariffs__content {
-                    /*margin-top: 24px;*/
+                    margin-top: 16px;
                     /*max-width: 664px;*/
                 }
                     .tariffs__content.wysiwyg,
