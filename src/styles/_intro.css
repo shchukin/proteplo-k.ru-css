@@ -12,9 +12,9 @@
             min-height: 500px;
             background-color: var(--primary);
             background-image: url("../vectors/intro.svg");
-            background-size: 730px 600px;
+            background-size: 730px 739px;
             background-repeat: no-repeat;
-            background-position: right -100px top -20px;
+            background-position: right -100px top;
             border-radius: 8px;
             color: #FFFFFF;
             overflow: hidden; /* Обрезаем анимации */
@@ -127,7 +127,7 @@
                 min-height: 600px;
                 /*background-color: var(--primary);*/
                 /*background-image: url("../vectors/intro.svg");*/
-                background-size: 796px 600px;
+                background-size: 796px 806px;
                 /*background-repeat: no-repeat;*/
                 background-position: right top;
                 /*border-radius: 8px;*/
