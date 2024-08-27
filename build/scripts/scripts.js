@@ -313,17 +313,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isExpanded) {
 
-            faqQuestions.forEach((q, i) => {
-                if (i !== index) {
-                    q.parentElement.classList.remove('faq__item--expanded');
-                }
-            });
+            // Закрывать все остальные нужно только на десктопах
+            if(isDesktop) {
+                faqQuestions.forEach((q, i) => {
+                    if (i !== index) {
+                        q.parentElement.classList.remove('faq__item--expanded');
+                    }
+                });
 
-            faqDesktopCopies.forEach((c, i) => {
-                if (i !== index) {
-                    c.classList.remove('faq__desktop-question-copy--current');
-                }
-            });
+                faqDesktopCopies.forEach((c, i) => {
+                    if (i !== index) {
+                        c.classList.remove('faq__desktop-question-copy--current');
+                    }
+                });
+            }
 
             correspondingCopy.classList.add('faq__desktop-question-copy--current');
         } else {
@@ -573,25 +576,49 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Модалка -- здесь кусок кода на jQuery поскольку пока не могу
        найти хорошую замену magnific popup */
 
+
     (function ($) {
+
+        const $fixedHeader = $('.header__fixed-part');
+        const scrollWidth = $(window).outerWidth() - $(window).width();
 
         $('.mfp-handler').magnificPopup({
             type: 'inline',
             removalDelay: 200,
             showCloseBtn: false,
             callbacks: {
-                // Перезапускаем обсчёт expanding textareas для инстансов внутри откртой модалки
                 open: function() {
+
+                    // Перезапускаем обсчёт expanding textareas для инстансов внутри откртой модалки
                     const instance = $.magnificPopup.instance;
-                        const modalContent = instance.content[0];
-                        const textareas = $(modalContent).find('.input--expandable .input__widget');
+                    const modalContent = instance.content[0];
+                    const textareas = $(modalContent).find('.input--expandable .input__widget');
+                    textareas.each(function() {
+                        expandTextarea(this);
+                    });
 
-                        textareas.each(function() {
-                            expandTextarea(this);
-                        });
-
+                    /* Шапка фиксированная, ей тоже надо корректировать пропавшее пространство подскроллбаром */
+                    $fixedHeader.css({'margin-right': scrollWidth});
+                },
+                close: function() {
+                    $fixedHeader.css({'margin-right': '0'});
                 }
             }
+        });
+
+    })(jQuery);
+
+
+    /* Маска для телефона -- используем старую версию input.mask
+     * Для неё есть плагин для номеров телефонов, который понимает
+     * русские города. Например, при ввооде +74852 скобочка увеличивается
+     * с трёх до четырёх штук.
+     */
+
+    (function ($) {
+
+        $('[type="tel"]').inputmask({
+            alias: 'phoneru',
         });
 
     })(jQuery);
