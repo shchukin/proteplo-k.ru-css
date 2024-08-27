@@ -322,21 +322,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const isExpanded = faqItem.classList.toggle('faq__item--expanded');
 
         if (isExpanded) {
+            faqQuestions.forEach((q, i) => {
+                if (i !== index) {
+                    q.parentElement.classList.remove('faq__item--expanded');
+                }
+            });
 
-            // Закрывать все остальные нужно только на десктопах
-            if(isDesktop) {
-                faqQuestions.forEach((q, i) => {
-                    if (i !== index) {
-                        q.parentElement.classList.remove('faq__item--expanded');
-                    }
-                });
-
-                faqDesktopCopies.forEach((c, i) => {
-                    if (i !== index) {
-                        c.classList.remove('faq__desktop-question-copy--current');
-                    }
-                });
-            }
+            faqDesktopCopies.forEach((c, i) => {
+                if (i !== index) {
+                    c.classList.remove('faq__desktop-question-copy--current');
+                }
+            });
 
             correspondingCopy.classList.add('faq__desktop-question-copy--current');
         } else {
@@ -347,6 +343,11 @@ document.addEventListener('DOMContentLoaded', () => {
     faqQuestions.forEach((question, index) => {
         question.addEventListener('click', () => {
             handleFaqToggle(index);
+
+            if( !isDesktop) {
+                window.scrollTo({ top: question.getBoundingClientRect().top - headerHeight + window.scrollY - 20, behavior: 'smooth' });
+            }
+
         });
     });
 
