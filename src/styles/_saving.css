@@ -8,7 +8,7 @@
             padding: 39px 39px 35px;
             background-color: #FFFFFF;
             background-image: url("../vectors/savings.svg");
-            background-size: 618px 402px;
+            background-size: 618px 520px;
             background-repeat: no-repeat;
             background-position: right -222px top;
             border: 1px solid var(--primary);
@@ -71,7 +71,7 @@
             .savings__body {
                 /*background-color: #FFFFFF;*/
                 /*background-image: url("../vectors/savings.svg");*/
-                background-size: 629px 409px;
+                background-size: 629px 529px;
                 /*background-repeat: no-repeat;*/
                 background-position: right top;
                 /*border: 1px solid var(--primary);*/
