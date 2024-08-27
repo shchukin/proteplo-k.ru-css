@@ -313,17 +313,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isExpanded) {
 
-            faqQuestions.forEach((q, i) => {
-                if (i !== index) {
-                    q.parentElement.classList.remove('faq__item--expanded');
-                }
-            });
+            // Закрывать все остальные нужно только на десктопах
+            if(isDesktop) {
+                faqQuestions.forEach((q, i) => {
+                    if (i !== index) {
+                        q.parentElement.classList.remove('faq__item--expanded');
+                    }
+                });
 
-            faqDesktopCopies.forEach((c, i) => {
-                if (i !== index) {
-                    c.classList.remove('faq__desktop-question-copy--current');
-                }
-            });
+                faqDesktopCopies.forEach((c, i) => {
+                    if (i !== index) {
+                        c.classList.remove('faq__desktop-question-copy--current');
+                    }
+                });
+            }
 
             correspondingCopy.classList.add('faq__desktop-question-copy--current');
         } else {
