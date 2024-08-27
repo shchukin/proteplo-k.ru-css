@@ -182,6 +182,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        /* Очистка инпутов (после успешной отправки форму должны очищаться) */
+        function cleanSubscriptionInputs() {
+            subscriptionInputs.forEach((input) => {
+                input.querySelector('.input__widget').value = '';
+            });
+        }
+
         /* Состояния кнопки */
         function changeSubmitStateToLoading() {
             subscriptionSubmit.classList.add('button--loading');
@@ -241,6 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         subscriptionSuccessAlert.style.display = 'none';
                         changeSubmitStateToPristine();
                         enableSubscriptionInputs();
+
+                        //и очищаем форму:
+                        cleanSubscriptionInputs();
                     }, 4500);
 
                 }
