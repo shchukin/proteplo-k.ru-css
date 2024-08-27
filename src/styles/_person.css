@@ -23,7 +23,7 @@
 }
 
     .person__preview {
-        background-color: #B4E0F2; /* Фон под картинкой тянется */
+        background-color: #E6E6E6; /* Фон под картинкой тянется */
         border-radius: 6px;
         overflow: hidden;
         text-align: center;
@@ -32,7 +32,6 @@
             vertical-align: top;
             width: auto;
             height: 346px;
-            background-color: #B4E0F2;
         }
 
     .person__name {
