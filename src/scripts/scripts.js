@@ -443,9 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // запускаем countUp
-            new CountUp(aboutCounter1.reference, 0, aboutCounter1.value).start();
-            new CountUp(aboutCounter2.reference, 0, aboutCounter2.value).start();
-            new CountUp(counter3.reference, 0, counter3.value).start();
+            new CountUp(aboutCounter1.reference, 0, aboutCounter1.value, 0, 4).start();
+            new CountUp(aboutCounter2.reference, 0, aboutCounter2.value, 0, 4).start();
+            new CountUp(counter3.reference, 0, counter3.value, 0, 4).start();
         }
 
         // Но всё это не сразу, а только тогда, когда докрутили до этой секции
