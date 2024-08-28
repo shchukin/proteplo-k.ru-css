@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 value: document.querySelector('.about__counter-2').textContent
             };
 
-            const counter3 = {
+            const aboutCounter3 = {
                 reference: document.querySelector('.about__counter-3'),
                 value: document.querySelector('.about__counter-3').textContent
             };
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // запускаем countUp
             new CountUp(aboutCounter1.reference, 0, aboutCounter1.value, 0, 4).start();
             new CountUp(aboutCounter2.reference, 0, aboutCounter2.value, 0, 4).start();
-            new CountUp(counter3.reference, 0, counter3.value, 0, 4).start();
+            new CountUp(aboutCounter3.reference, 0, aboutCounter3.value, 0, 4).start();
         }
 
         // Но всё это не сразу, а только тогда, когда докрутили до этой секции
